@@ -1,0 +1,18 @@
+digraph parsetree {
+    ratio=fill
+    node [shape="box"]
+    edge [style=bold]
+    ranksep=equally
+    nodesep=0.5
+    rankdir = TB
+    clusterrank = local
+N0 [label="oper *"]
+N1 [label="number (2)"]
+N0->N1 [label="left"]
+N2 [label="oper +"]
+N3 [label="number (12)"]
+N2->N3 [label="left"]
+N4 [label="number (3)"]
+N2->N4 [label="right"]
+N0->N2 [label="right"]
+}
