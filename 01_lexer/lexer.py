@@ -57,12 +57,13 @@ t_MULT = r'\*'
 t_DIV = r'/'
 
 def t_INFO_STRING(t):
-    r'!.*?!!'
+    r'!.*?!'
     t.value = t.value[1:-1]
     return t
 
 def t_COORDINATE_IDENT(t):
     r'([A-Z]{1,2}[0-9]{1,3})\s'
+    t.value = t.value[:-1]
     return t
 
 def t_DECIMAL_LITERAL(t):
@@ -105,7 +106,7 @@ def t_newline(t):
     t.lexer.lineno += t.value.count("\n")
 
 def t_COMMENT(t):
-    r"\.{3,3}(.*?)\.{3,3}"
+    r"\.{3,3}([\s\S]*?)\.{3,3}"
     pass
 
 def t_error(t):
@@ -123,15 +124,11 @@ if __name__ == '__main__':
 
     ns = parser.parse_args()
     if ns.who == True:
-        # identify who wrote this
         print( '292119 Nghia Duc Hong' )
     elif ns.file is None:
-        # user didn't provide input filename
         parser.print_help()
     else:
-        # using codecs to make sure we process unicode
         with codecs.open( ns.file, 'r', encoding='utf-8' ) as INFILE:
-            # blindly read all to memory (what if that is a 42Gb file?)
             data = INFILE.read() 
 
         lexer.input( data )
