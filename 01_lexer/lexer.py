@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys, ply.lex
-
+import re
 tokens = ('ASSIGN',
         'LPAREN', 'RPAREN',
         'LSQUARE','RSQUARE',
@@ -27,8 +27,48 @@ tokens = ('ASSIGN',
         'IDENT',
         'RANGE_IDENT',
         'SHEET_IDENT',
-        'FUNC_IDENT'
+        'FUNC_IDENT',
+        #keywords:
+        'SHEET',
+        'SCALAR',
+        'RANGE',
+        'DO',
+        'DONE',
+        'IS',
+        'WHILE',
+        'FOR',
+        'IF',
+        'THEN',
+        'ELSE',
+        'ENDIF',
+        'FUNCTION',
+        'SUBROUTINE',
+        'RETURN',
+        'END',
+        'PRINT_SHEET',
+        'PRINT SCALAR',
+        'PRINT_RANGE'
         )
+
+t_SHEET = 'sheet'
+t_SCALAR = 'scalar'
+t_RANGE = 'range'
+t_DO = 'do'
+t_DONE = 'done'
+t_IS = 'is'
+t_WHILE = 'while'
+t_FOR = 'for'
+t_IF = 'if'
+t_THEN = 'then'
+t_ELSE = 'else'
+t_ENDIF = 'endif'
+t_FUNCTION = 'function'
+t_SUBROUTINE = 'subroutine'
+t_RETURN = 'return'
+t_END = 'end'
+t_PRINT_SHEET = 'print_sheet'
+t_PRINT_SCALAR = 'print_scalar'
+t_PRINT_RANGE = 'print_range'
 
 t_ASSIGN = r':='
 t_LPAREN = r'\('
@@ -71,7 +111,7 @@ def t_DECIMAL_LITERAL(t):
     try:
         t.value = float(t.value)
     except ValueError:
-        print('float is too big')
+        print('Float is too large')
         t.value =0
     return t
 
@@ -130,7 +170,8 @@ if __name__ == '__main__':
     else:
         with codecs.open( ns.file, 'r', encoding='utf-8' ) as INFILE:
             data = INFILE.read() 
-
+        #pre eliminate comments 
+        data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
         lexer.input( data )
 
         while True:
