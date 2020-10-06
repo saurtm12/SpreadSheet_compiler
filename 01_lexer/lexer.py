@@ -2,7 +2,32 @@
 
 import sys, ply.lex
 import re
-tokens = ('ASSIGN',
+
+reserved = {
+        'sheet':'SHEET',
+        'scalar':'SCALAR',
+        'range':'RANGE',
+        'do':'DO',
+        'done':'DONE',
+        'is':'IS',
+        'while':'WHILE',
+        'for':'FOR',
+        'if':'IF',
+        'then':'THEN',
+        'else':'ELSE',
+        'endif':'ENDIF',
+        'function':'FUNCTION',
+        'subroutine':'SUBROUTINE',
+        'return':'RETURN',
+        'end':'END',
+        'print_sheet':'PRINT_SHEET',
+        'print_scalar':'PRINT_SCALAR',
+        'print_range':'PRINT_RANGE',
+}
+
+tokens = [
+        #1-2 letter tokens
+        'ASSIGN',
         'LPAREN', 'RPAREN',
         'LSQUARE','RSQUARE',
         'LCURLY', 'RCURLY',
@@ -20,6 +45,7 @@ tokens = ('ASSIGN',
         'MINUS',
         'MULT',
         'DIV',
+        #long token
         'INFO_STRING',
         'COORDINATE_IDENT',
         'DECIMAL_LITERAL',
@@ -28,47 +54,17 @@ tokens = ('ASSIGN',
         'RANGE_IDENT',
         'SHEET_IDENT',
         'FUNC_IDENT',
-        #keywords:
-        'SHEET',
-        'SCALAR',
-        'RANGE',
-        'DO',
-        'DONE',
-        'IS',
-        'WHILE',
-        'FOR',
-        'IF',
-        'THEN',
-        'ELSE',
-        'ENDIF',
-        'FUNCTION',
-        'SUBROUTINE',
-        'RETURN',
-        'END',
-        'PRINT_SHEET',
-        'PRINT SCALAR',
-        'PRINT_RANGE'
-        )
+        'ID'
+        ] + list(reserved.values())
 
-t_SHEET = 'sheet'
-t_SCALAR = 'scalar'
-t_RANGE = 'range'
-t_DO = 'do'
-t_DONE = 'done'
-t_IS = 'is'
-t_WHILE = 'while'
-t_FOR = 'for'
-t_IF = 'if'
-t_THEN = 'then'
-t_ELSE = 'else'
-t_ENDIF = 'endif'
-t_FUNCTION = 'function'
-t_SUBROUTINE = 'subroutine'
-t_RETURN = 'return'
-t_END = 'end'
-t_PRINT_SHEET = 'print_sheet'
-t_PRINT_SCALAR = 'print_scalar'
-t_PRINT_RANGE = 'print_range'
+#check for reserved keywords
+def t_ID(t):
+    r'[a-z_]+'
+    if (reserved.get(t.value) != None):
+        t.type = reserved.get(t.value,'ID')
+    else:
+        t = t_IDENT(t)
+    return t
 
 t_ASSIGN = r':='
 t_LPAREN = r'\('
@@ -85,12 +81,12 @@ t_COLON = r':'
 t_DOLLAR = r'\$'
 t_NUMBER_SIGN = r'\#'
 
-t_EQ = r'='
 t_NOTEQ = r'!='
-t_LT = r'<'
 t_LTEQ = r'<='
-t_GT = r'>'
 t_GTEQ = r'>='
+t_EQ = r'='
+t_LT = r'<'
+t_GT = r'>'
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_MULT = r'\*'
@@ -102,8 +98,7 @@ def t_INFO_STRING(t):
     return t
 
 def t_COORDINATE_IDENT(t):
-    r'([A-Z]{1,2}[0-9]{1,3})\s'
-    t.value = t.value[:-1]
+    r'([A-Z]{1,2}[0-9]{1,3})'
     return t
 
 def t_DECIMAL_LITERAL(t):
@@ -126,18 +121,21 @@ def t_INT_LITERAL(t):
 
 def t_IDENT(t):
     r'[a-z][a-zA-Z0-9_]+'
+    t.type = "IDENT"
     return t
 
 def t_RANGE_IDENT(t):
-    r'_[a-zA-Z0-9_]+'
+    r'_[a-zA-Z0-9_]+\s'
+    return t
+
+
+def t_FUNC_IDENT(t):
+    r'[A-Z][a-z0-9_]+'
     return t
 
 def t_SHEET_IDENT(t):
     r'[A-Z]+'
     return t
-
-def t_FUNC_IDENT(t):
-    r'[A-Z][a-z0-9_]+'
 
 t_ignore = " \t"
 
@@ -170,6 +168,7 @@ if __name__ == '__main__':
     else:
         with codecs.open( ns.file, 'r', encoding='utf-8' ) as INFILE:
             data = INFILE.read() 
+            
         #pre eliminate comments 
         data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
         lexer.input( data )
