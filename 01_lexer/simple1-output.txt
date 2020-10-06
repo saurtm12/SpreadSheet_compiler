@@ -1,0 +1,7 @@
+LexToken(SCALAR,'scalar',1,0)
+LexToken(IDENT,'variable',1,7)
+LexToken(EQ,'=',1,16)
+LexToken(DECIMAL_LITERAL,Decimal('0.0'),1,18)
+LexToken(PRINT_SCALAR,'print_scalar',2,22)
+LexToken(INFO_STRING,'Hello world',2,35)
+LexToken(IDENT,'variable',2,49)
