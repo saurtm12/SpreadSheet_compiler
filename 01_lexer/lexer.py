@@ -63,7 +63,7 @@ def t_ID(t):
     if (reserved.get(t.value) != None):
         t.type = reserved.get(t.value,'ID')
     else:
-        t = t_IDENT(t)
+        return t_IDENT(t)
     return t
 
 t_ASSIGN = r':='
