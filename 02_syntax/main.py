@@ -370,5 +370,7 @@ if __name__ == '__main__':
         #pre eliminate comments 
         data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
         lexer.input( data )
-
-        rTokens = lexer.tokens
+        result = parser.parse(data, lexer=lexer.lexer, debug=False)
+        if result is None:
+            print('syntax OK')
+        
