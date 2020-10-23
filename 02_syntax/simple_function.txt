@@ -1,0 +1,25 @@
+variable_definition( SS:sheet )
+atom( 1.0 )
+factor
+term
+scalar_expr
+variable_definition( ii:scalar )
+variable_definition( _rng:range )
+atom( ii )
+factor
+term
+scalar_expr
+atom( ii )
+factor
+term
+atom( 1.0 )
+factor
+term
+scalar_expr
+assignment( ii )
+statement( for )
+subroutine_definition( Init )
+subroutine_call( Init )
+statement( print_sheet )
+program
+syntax OK

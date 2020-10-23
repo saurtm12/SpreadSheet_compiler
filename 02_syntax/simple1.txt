@@ -1,0 +1,12 @@
+atom( 0.0 )
+factor
+term
+scalar_expr
+variable_definition( variable:scalar )
+atom( variable )
+factor
+term
+scalar_expr
+statement( print_scalar )
+program
+syntax OK

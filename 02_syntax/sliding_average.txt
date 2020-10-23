@@ -1,0 +1,80 @@
+atom( 1.0 )
+factor
+term
+scalar_expr
+atom( 2.0 )
+factor
+term
+scalar_expr
+atom( 3.0 )
+factor
+term
+scalar_expr
+atom( 4.0 )
+factor
+term
+scalar_expr
+atom( 5.0 )
+factor
+term
+scalar_expr
+atom( 6.0 )
+factor
+term
+scalar_expr
+atom( 7.0 )
+factor
+term
+scalar_expr
+atom( 8.0 )
+factor
+term
+scalar_expr
+atom( 9.0 )
+factor
+term
+scalar_expr
+atom( 10.0 )
+factor
+term
+scalar_expr
+variable_definition( INDATA:sheet )
+variable_definition( OUTDATA:sheet )
+atom( 0.0 )
+factor
+term
+scalar_expr
+variable_definition( avgtmp:scalar )
+atom( avgtmp )
+factor
+term
+atom
+factor
+term
+scalar_expr
+assignment( avgtmp )
+statement( for )
+atom( avgtmp )
+factor
+term
+atom
+factor
+term
+scalar_expr
+statement( return )
+function_definition( Average )
+variable_definition( _windowstart:range )
+variable_definition( _windowend:range )
+variable_definition( _avgresult:range )
+variable_definition( _window:range )
+assignment( OUTDATA )
+assignment( _window )
+function_call( Average )
+atom
+factor
+term
+scalar_expr
+statement( for )
+statement( print_sheet )
+program
+syntax OK
