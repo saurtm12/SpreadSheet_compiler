@@ -353,16 +353,16 @@ parser = yacc.yacc()
 
 if __name__ == '__main__':
     import argparse, codecs
-    parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
+    arg_parser = argparse.ArgumentParser()
+    group = arg_parser.add_mutually_exclusive_group()
     group.add_argument('--who', action='store_true', help='who wrote this' )
     group.add_argument('-f', '--file', help='filename to process')
 
-    ns = parser.parse_args()
+    ns = arg_parser.parse_args()
     if ns.who == True:
         print( '292119 Nghia Duc Hong' )
     elif ns.file is None:
-        parser.print_help()
+        arg_parser.print_help()
     else:
         with codecs.open( ns.file, 'r', encoding='utf-8' ) as INFILE:
             data = INFILE.read() 
