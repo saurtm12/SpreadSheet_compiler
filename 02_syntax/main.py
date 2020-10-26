@@ -95,6 +95,7 @@ t_DIV = r'/'
 def t_INFO_STRING(t):
     r'!.*?!'
     t.value = t.value[1:-1]
+    t.value = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",t.value)
     return t
 
 def t_COORDINATE_IDENT(t):
