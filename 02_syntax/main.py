@@ -352,6 +352,12 @@ def p_function_call(p):
     '''function_call : FUNC_IDENT LSQUARE arguments RSQUARE
                         | FUNC_IDENT LSQUARE empty RSQUARE'''
     print(f"function_call( {p[1]} )")
+
+precedence = (
+    ('left', 'scalar_expr'),
+    ('left', 'simple_expr')
+)
+
 # define empty productions
 def p_empty(p):
     '''empty :'''
@@ -363,8 +369,6 @@ def p_error(p):
 
 
 parser = yacc.yacc()
-
-
 
 
 if __name__ == '__main__':
