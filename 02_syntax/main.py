@@ -310,8 +310,8 @@ def p_cell_ref(p):
                 | DOLLAR  COLON RANGE_IDENT'''
 
 def p_scalar_expr(p):
-    '''scalar_expr : scalar_expr compare simple_expr
-                    | simple_expr'''
+    '''scalar_expr : simple_expr
+                    | scalar_expr compare simple_expr'''
     print("scalar_expr")
 
 def p_compare(p):
