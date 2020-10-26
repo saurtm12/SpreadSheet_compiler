@@ -2,6 +2,7 @@
 
 import sys, ply.lex
 import re
+from decimal import *
 
 reserved = {
         'sheet':'SHEET',
@@ -104,11 +105,7 @@ def t_COORDINATE_IDENT(t):
 
 def t_DECIMAL_LITERAL(t):
     r'-?\d+\.\d'
-    try:
-        t.value = float(t.value)
-    except ValueError:
-        print('Float is too large')
-        t.value =0
+    t.value = Decimal(t.value)
     return t
 
 def t_INT_LITERAL(t):
