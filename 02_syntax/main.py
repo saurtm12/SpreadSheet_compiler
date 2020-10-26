@@ -353,10 +353,6 @@ def p_function_call(p):
                         | FUNC_IDENT LSQUARE empty RSQUARE'''
     print(f"function_call( {p[1]} )")
 
-precedence = (
-    ('left', 'scalar_expr'),
-    ('left', 'simple_expr')
-)
 
 # define empty productions
 def p_empty(p):
