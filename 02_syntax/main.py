@@ -163,6 +163,7 @@ from ply import yacc
 ### <a+> : a_plus // if necessary 
 def p_program(p):
     ''' program : function_or_vaiable_definition_star statement_list'''
+    print('program')
 
 def p_function_or_vaiable_definition_star(p):
     '''function_or_vaiable_definition_star  : function_or_vaiable_definition_star function_or_vaiable_definition
@@ -182,6 +183,7 @@ def p_variable_definition(p):
                             | range_definition 
                             | sheet_definition'''
 
+
 def p_function_definition(p):
     '''function_definition : FUNCTION FUNC_IDENT LSQUARE formals_opt RSQUARE \
                             RETURN SCALAR IS \
@@ -193,12 +195,15 @@ def p_function_definition(p):
                             variable_definition_star \
                             statement_list \
                             END'''
+    print(f"function_definition( {p[2]} )")
  
 def p_subroutine_definition(p):
-    '''subroutine_definition : FUNC_IDENT LSQUARE formals_opt RSQUARE IS \
+    '''subroutine_definition : SUBROUTINE FUNC_IDENT LSQUARE formals_opt RSQUARE IS \
                                 variable_definition_star \
                                 statement_list \
                                 END'''
+    print(f"subroutine_definition( {p[2]} )")
+
 
 def p_formals_opt(p):
     '''formals_opt : formals
@@ -215,6 +220,7 @@ def p_formal_arg(p):
 
 def p_sheet_definition(p):
     '''sheet_definition : SHEET SHEET_IDENT sheet_init_opt'''
+    print(f"variable_definition( {p[2]}:sheet )")
 
 def p_sheet_init_opt(p):
     '''sheet_init_opt : sheet_init
@@ -238,10 +244,14 @@ def p_sheet_row(p):
 def p_range_definition(p):
     '''range_definition : RANGE RANGE_IDENT 
                         | RANGE RANGE_IDENT EQ range_expr'''
+    print(f"variable_definition( {p[2]}:range )")
+
 
 def p_scalar_definition(p):
     '''scalar_definition : SCALAR IDENT  
                             | SCALAR IDENT EQ scalar_expr'''
+    print(f"variable_definition( {p[2]}:scalar )")
+
 
 def p_statement_list(p):
     '''statement_list : statement_list statement
@@ -259,6 +269,7 @@ def p_statement(p):
                     | RETURN scalar_expr
                     | RETURN range_expr
                     | assignment'''
+    print(f"statement( {p[1]} )")
 
 def p_info_string_opt(p):
     '''info_string_opt : INFO_STRING
@@ -280,12 +291,14 @@ def p_arg_expr(p):
 def p_subroutine_call(p):
     '''subroutine_call : FUNC_IDENT LSQUARE empty RSQUARE
                         | FUNC_IDENT LSQUARE arguments RSQUARE'''
+    print(f"subroutine_call( {p[1]} )")
 
 def p_assignment(p):
     '''assignment : IDENT ASSIGN scalar_expr
                     | cell_ref ASSIGN scalar_expr
                     | RANGE_IDENT ASSIGN range_expr
                     | SHEET_IDENT ASSIGN SHEET_IDENT'''
+    print(f"assignment( {p[1]} )")
 
 def p_range_expr(p):
     '''range_expr : RANGE_IDENT
@@ -301,6 +314,7 @@ def p_cell_ref(p):
 def p_scalar_expr(p):
     '''scalar_expr : scalar_expr compare simple_expr
                     | simple_expr'''
+    print("scalar_expr")
 
 def p_compare(p):
     '''compare : EQ 
@@ -314,15 +328,17 @@ def p_simple_expr(p):
     '''simple_expr : simple_expr PLUS term
                     | simple_expr MINUS term
                     | term'''
-
+    
 def p_term(p):
     '''term : term MULT factor
             | term DIV factor
             | factor'''
+    print("term")
 
 def p_factor(p):
     '''factor : empty atom
                 | MINUS atom'''
+    print("factor")
 
 def p_atom(p):
     '''atom : IDENT 
@@ -331,11 +347,13 @@ def p_atom(p):
             | cell_ref 
             | NUMBER_SIGN range_expr
             | LPAREN scalar_expr RPAREN'''
+    if len(p) == 2:
+        print(f"atom( {p[1]} )")
 
 def p_function_call(p):
     '''function_call : FUNC_IDENT LSQUARE arguments RSQUARE
                         | FUNC_IDENT LSQUARE empty RSQUARE'''
-
+    print(f"function_call( {p[1]} )")
 # define empty productions
 def p_empty(p):
     '''empty :'''
@@ -366,11 +384,10 @@ if __name__ == '__main__':
     else:
         with codecs.open( ns.file, 'r', encoding='utf-8' ) as INFILE:
             data = INFILE.read() 
-            
-        #pre eliminate comments 
-        data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
+                    
         lexer.input( data )
-        result = parser.parse(data, lexer=lexer.lexer, debug=False)
+        data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
+        result = parser.parse(data, lexer=lexer, debug=False)
         if result is None:
             print('syntax OK')
         
