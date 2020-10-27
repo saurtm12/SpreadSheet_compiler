@@ -266,7 +266,7 @@
 <g id="node17" class="node">
 <title>N16</title>
 <polygon fill="none" stroke="black" points="684.5,-123 565.5,-123 565.5,-87 684.5,-87 684.5,-123"/>
-<text text-anchor="middle" x="625" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A1&#39;))</text>
+<text text-anchor="middle" x="625" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 0, &#39;A1&#39;))</text>
 </g>
 <!-- N14&#45;&gt;N16 -->
 <g id="edge12" class="edge">
@@ -292,7 +292,7 @@
 <g id="node20" class="node">
 <title>N19</title>
 <polygon fill="none" stroke="black" points="1005,-123 891,-123 891,-87 1005,-87 1005,-123"/>
-<text text-anchor="middle" x="948" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((9, 1, &#39;J1&#39;))</text>
+<text text-anchor="middle" x="948" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((9, 0, &#39;J1&#39;))</text>
 </g>
 <!-- N17&#45;&gt;N19 -->
 <g id="edge15" class="edge">

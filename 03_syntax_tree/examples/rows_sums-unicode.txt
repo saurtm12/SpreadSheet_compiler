@@ -1,0 +1,158 @@
+program
+├──funcs_vars[0]: function-def
+│  ├──name: FUNC_IDENT (Sum)
+│  ├──formals[0]: formal_arg
+│  │  └──name: RANGE_IDENT (_rng)
+│  ├──rettype: rettype (scalar)
+│  ├──vars[0]: scalar_definition
+│  │  ├──name: IDENT (sum)
+│  │  └──init: decimal_number (0.0)
+│  ├──stmts[0]: for_stmt
+│  │  ├──ranges[0]: range_ref
+│  │  │  └──name: RANGE_IDENT (_rng)
+│  │  └──stmts[0]: scalar_assign
+│  │     ├──var: scalar_ref
+│  │     │  └──name: IDENT (sum)
+│  │     └──expr: oper +
+│  │        ├──left: scalar_ref
+│  │        │  └──name: IDENT (sum)
+│  │        └──right: loopvar
+│  │           └──range_selector: NONE
+│  └──stmts[1]: return
+│     ├──expr: scalar_ref
+│     │  └──name: IDENT (sum)
+│     └──usage: usage (scalar)
+├──funcs_vars[1]: sheet_definition
+│  ├──name: SHEET_IDENT (DATA)
+│  └──init: sheet_init_list
+│     ├──rows[0]: col_init_list
+│     │  ├──cols[0]: decimal_number (1.0)
+│     │  ├──cols[1]: decimal_number (2.0)
+│     │  ├──cols[2]: decimal_number (3.0)
+│     │  └──cols[3]: decimal_number (0.0)
+│     ├──rows[1]: col_init_list
+│     │  ├──cols[0]: decimal_number (2.0)
+│     │  ├──cols[1]: decimal_number (4.0)
+│     │  ├──cols[2]: decimal_number (8.0)
+│     │  └──cols[3]: decimal_number (0.0)
+│     └──rows[2]: col_init_list
+│        ├──cols[0]: decimal_number (3.0)
+│        ├──cols[1]: decimal_number (6.0)
+│        ├──cols[2]: decimal_number (9.0)
+│        └──cols[3]: decimal_number (0.0)
+├──funcs_vars[2]: range_definition
+│  ├──name: RANGE_IDENT (_starts)
+│  └──init: NONE
+├──funcs_vars[3]: range_definition
+│  ├──name: RANGE_IDENT (_ends)
+│  └──init: NONE
+├──funcs_vars[4]: range_definition
+│  ├──name: RANGE_IDENT (_sums)
+│  └──init: NONE
+├──funcs_vars[5]: range_definition
+│  ├──name: RANGE_IDENT (_sumrange)
+│  └──init: NONE
+├──stmt_list[0]: cell_assign
+│  ├──var: cell_ref
+│  │  ├──name: SHEET_IDENT (DATA)
+│  │  └──coord: coord ((3, 0, 'D1'))
+│  └──expr: function_call
+│     ├──name: FUNC_IDENT (Sum)
+│     ├──args[0]: range
+│     │  ├──coord1: cell_ref
+│     │  │  ├──name: SHEET_IDENT (DATA)
+│     │  │  └──coord: coord ((0, 0, 'A1'))
+│     │  └──coord2: cell_ref
+│     │     ├──name: SHEET_IDENT (DATA)
+│     │     └──coord: coord ((2, 0, 'C1'))
+│     └──usage: usage (scalar)
+├──stmt_list[1]: cell_assign
+│  ├──var: cell_ref
+│  │  ├──name: SHEET_IDENT (DATA)
+│  │  └──coord: coord ((3, 1, 'D2'))
+│  └──expr: function_call
+│     ├──name: FUNC_IDENT (Sum)
+│     ├──args[0]: range
+│     │  ├──coord1: cell_ref
+│     │  │  ├──name: SHEET_IDENT (DATA)
+│     │  │  └──coord: coord ((0, 1, 'A2'))
+│     │  └──coord2: cell_ref
+│     │     ├──name: SHEET_IDENT (DATA)
+│     │     └──coord: coord ((2, 1, 'C2'))
+│     └──usage: usage (scalar)
+├──stmt_list[2]: cell_assign
+│  ├──var: cell_ref
+│  │  ├──name: SHEET_IDENT (DATA)
+│  │  └──coord: coord ((3, 2, 'D3'))
+│  └──expr: function_call
+│     ├──name: FUNC_IDENT (Sum)
+│     ├──args[0]: range
+│     │  ├──coord1: cell_ref
+│     │  │  ├──name: SHEET_IDENT (DATA)
+│     │  │  └──coord: coord ((0, 2, 'A3'))
+│     │  └──coord2: cell_ref
+│     │     ├──name: SHEET_IDENT (DATA)
+│     │     └──coord: coord ((2, 2, 'C3'))
+│     └──usage: usage (scalar)
+├──stmt_list[3]: print_sheet
+│  ├──infostr: infostring (Direct sums)
+│  └──expr: sheet_ref
+│     └──name: SHEET_IDENT (DATA)
+├──stmt_list[4]: range_assign
+│  ├──var: range_ref
+│  │  └──name: RANGE_IDENT (_starts)
+│  └──expr: range
+│     ├──coord1: cell_ref
+│     │  ├──name: SHEET_IDENT (DATA)
+│     │  └──coord: coord ((0, 0, 'A1'))
+│     └──coord2: cell_ref
+│        ├──name: SHEET_IDENT (DATA)
+│        └──coord: coord ((0, 2, 'A3'))
+├──stmt_list[5]: range_assign
+│  ├──var: range_ref
+│  │  └──name: RANGE_IDENT (_ends)
+│  └──expr: range
+│     ├──coord1: cell_ref
+│     │  ├──name: SHEET_IDENT (DATA)
+│     │  └──coord: coord ((2, 0, 'C1'))
+│     └──coord2: cell_ref
+│        ├──name: SHEET_IDENT (DATA)
+│        └──coord: coord ((2, 2, 'C3'))
+├──stmt_list[6]: range_assign
+│  ├──var: range_ref
+│  │  └──name: RANGE_IDENT (_sums)
+│  └──expr: range
+│     ├──coord1: cell_ref
+│     │  ├──name: SHEET_IDENT (DATA)
+│     │  └──coord: coord ((3, 0, 'D1'))
+│     └──coord2: cell_ref
+│        ├──name: SHEET_IDENT (DATA)
+│        └──coord: coord ((3, 2, 'D3'))
+├──stmt_list[7]: for_stmt
+│  ├──ranges[0]: range_ref
+│  │  └──name: RANGE_IDENT (_starts)
+│  ├──ranges[1]: range_ref
+│  │  └──name: RANGE_IDENT (_ends)
+│  ├──stmts[0]: range_assign
+│  │  ├──var: range_ref
+│  │  │  └──name: RANGE_IDENT (_sumrange)
+│  │  └──expr: range
+│  │     ├──coord1: loopvar
+│  │     │  └──range_selector: range_ref
+│  │     │     └──name: RANGE_IDENT (_starts)
+│  │     └──coord2: loopvar
+│  │        └──range_selector: range_ref
+│  │           └──name: RANGE_IDENT (_ends)
+│  └──stmts[1]: cell_assign
+│     ├──var: loopvar
+│     │  └──range_selector: range_ref
+│     │     └──name: RANGE_IDENT (_sums)
+│     └──expr: function_call
+│        ├──name: FUNC_IDENT (Sum)
+│        ├──args[0]: range_ref
+│        │  └──name: RANGE_IDENT (_sumrange)
+│        └──usage: usage (scalar)
+└──stmt_list[8]: print_sheet
+   ├──infostr: infostring (For sums)
+   └──expr: sheet_ref
+      └──name: SHEET_IDENT (DATA)

@@ -331,7 +331,7 @@
 <g id="node21" class="node">
 <title>N20</title>
 <polygon fill="none" stroke="black" points="485,-36 366,-36 366,0 485,0 485,-36"/>
-<text text-anchor="middle" x="425.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A1&#39;))</text>
+<text text-anchor="middle" x="425.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((0, 0, &#39;A1&#39;))</text>
 </g>
 <!-- N18&#45;&gt;N20 -->
 <g id="edge14" class="edge">
@@ -383,7 +383,7 @@
 <g id="node26" class="node">
 <title>N25</title>
 <polygon fill="none" stroke="black" points="838,-36 719,-36 719,0 838,0 838,-36"/>
-<text text-anchor="middle" x="778.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((0, 2, &#39;A2&#39;))</text>
+<text text-anchor="middle" x="778.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A2&#39;))</text>
 </g>
 <!-- N23&#45;&gt;N25 -->
 <g id="edge19" class="edge">
@@ -435,7 +435,7 @@
 <g id="node31" class="node">
 <title>N30</title>
 <polygon fill="none" stroke="black" points="1199,-123 1080,-123 1080,-87 1199,-87 1199,-123"/>
-<text text-anchor="middle" x="1139.5" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 3, &#39;A3&#39;))</text>
+<text text-anchor="middle" x="1139.5" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 2, &#39;A3&#39;))</text>
 </g>
 <!-- N28&#45;&gt;N30 -->
 <g id="edge25" class="edge">

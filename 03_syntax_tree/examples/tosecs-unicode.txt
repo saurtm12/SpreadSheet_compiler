@@ -1,0 +1,50 @@
+program
+├──funcs_vars[0]: function-def
+│  ├──name: FUNC_IDENT (To_seconds)
+│  ├──formals[0]: formal_arg
+│  │  └──name: IDENT (hours)
+│  ├──formals[1]: formal_arg
+│  │  └──name: IDENT (minutes)
+│  ├──rettype: rettype (scalar)
+│  ├──vars[0]: scalar_definition
+│  │  ├──name: IDENT (retval)
+│  │  └──init: NONE
+│  ├──stmts[0]: scalar_assign
+│  │  ├──var: scalar_ref
+│  │  │  └──name: IDENT (retval)
+│  │  └──expr: oper +
+│  │     ├──left: oper *
+│  │     │  ├──left: oper *
+│  │     │  │  ├──left: scalar_ref
+│  │     │  │  │  └──name: IDENT (hours)
+│  │     │  │  └──right: decimal_number (60.0)
+│  │     │  └──right: decimal_number (60.0)
+│  │     └──right: oper *
+│  │        ├──left: scalar_ref
+│  │        │  └──name: IDENT (minutes)
+│  │        └──right: decimal_number (60.0)
+│  └──stmts[1]: return
+│     ├──expr: scalar_ref
+│     │  └──name: IDENT (retval)
+│     └──usage: usage (scalar)
+├──stmt_list[0]: print_scalar
+│  ├──infostr: infostring (1 hour 3 minutes (3780))
+│  └──expr: function_call
+│     ├──name: FUNC_IDENT (To_seconds)
+│     ├──args[0]: decimal_number (1.0)
+│     ├──args[1]: decimal_number (3.0)
+│     └──usage: usage (scalar)
+├──stmt_list[1]: print_scalar
+│  ├──infostr: infostring (2 hours (7200))
+│  └──expr: function_call
+│     ├──name: FUNC_IDENT (To_seconds)
+│     ├──args[0]: decimal_number (2.0)
+│     ├──args[1]: decimal_number (0.0)
+│     └──usage: usage (scalar)
+└──stmt_list[2]: print_scalar
+   ├──infostr: infostring (zero (0))
+   └──expr: function_call
+      ├──name: FUNC_IDENT (To_seconds)
+      ├──args[0]: decimal_number (0.0)
+      ├──args[1]: decimal_number (0.0)
+      └──usage: usage (scalar)

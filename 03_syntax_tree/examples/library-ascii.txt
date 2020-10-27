@@ -1,0 +1,135 @@
+program
++--funcs_vars[0]: function-def
+|  +--name: FUNC_IDENT (Sum)
+|  +--formals[0]: formal_arg
+|  |  +--name: RANGE_IDENT (_aa)
+|  +--rettype: rettype (scalar)
+|  +--vars[0]: scalar_definition
+|  |  +--name: IDENT (sum)
+|  |  +--init: NONE
+|  +--stmts[0]: scalar_assign
+|  |  +--var: scalar_ref
+|  |  |  +--name: IDENT (sum)
+|  |  +--expr: decimal_number (0.0)
+|  +--stmts[1]: for_stmt
+|  |  +--ranges[0]: range_ref
+|  |  |  +--name: RANGE_IDENT (_aa)
+|  |  +--stmts[0]: scalar_assign
+|  |     +--var: scalar_ref
+|  |     |  +--name: IDENT (sum)
+|  |     +--expr: oper +
+|  |        +--left: scalar_ref
+|  |        |  +--name: IDENT (sum)
+|  |        +--right: loopvar
+|  |           +--range_selector: NONE
+|  +--stmts[2]: return
+|     +--expr: scalar_ref
+|     |  +--name: IDENT (sum)
+|     +--usage: usage (scalar)
++--funcs_vars[1]: function-def
+|  +--name: FUNC_IDENT (Average)
+|  +--formals[0]: formal_arg
+|  |  +--name: RANGE_IDENT (_aa)
+|  +--rettype: rettype (scalar)
+|  +--vars[EMPTY]: NONE
+|  +--stmts[0]: if_stmt
+|     +--condition: oper =
+|     |  +--left: range_size
+|     |  |  +--range: range_ref
+|     |  |     +--name: RANGE_IDENT (_aa)
+|     |  +--right: decimal_number (0.0)
+|     +--then_stmts[0]: return
+|     |  +--expr: decimal_number (0.0)
+|     |  +--usage: usage (scalar)
+|     +--else_stmts[0]: return
+|        +--expr: oper /
+|        |  +--left: function_call
+|        |  |  +--name: FUNC_IDENT (Sum)
+|        |  |  +--args[0]: range_ref
+|        |  |  |  +--name: RANGE_IDENT (_aa)
+|        |  |  +--usage: usage (scalar)
+|        |  +--right: range_size
+|        |     +--range: range_ref
+|        |        +--name: RANGE_IDENT (_aa)
+|        +--usage: usage (scalar)
++--funcs_vars[2]: subroutine-def
+|  +--name: FUNC_IDENT (Map_lazy_incr)
+|  +--formals[0]: formal_arg
+|  |  +--name: RANGE_IDENT (_in)
+|  +--formals[1]: formal_arg
+|  |  +--name: RANGE_IDENT (_out)
+|  +--vars[EMPTY]: NONE
+|  +--stmts[0]: for_stmt
+|     +--ranges[0]: range_ref
+|     |  +--name: RANGE_IDENT (_in)
+|     +--ranges[1]: range_ref
+|     |  +--name: RANGE_IDENT (_out)
+|     +--stmts[0]: cell_assign
+|        +--var: loopvar
+|        |  +--range_selector: range_ref
+|        |     +--name: RANGE_IDENT (_out)
+|        +--expr: oper +
+|           +--left: loopvar
+|           |  +--range_selector: range_ref
+|           |     +--name: RANGE_IDENT (_in)
+|           +--right: decimal_number (1.0)
++--funcs_vars[3]: subroutine-def
+|  +--name: FUNC_IDENT (Map_eager_incr)
+|  +--formals[0]: formal_arg
+|  |  +--name: RANGE_IDENT (_in)
+|  +--formals[1]: formal_arg
+|  |  +--name: RANGE_IDENT (_out)
+|  +--vars[0]: scalar_definition
+|  |  +--name: IDENT (ss)
+|  |  +--init: NONE
+|  +--stmts[0]: for_stmt
+|     +--ranges[0]: range_ref
+|     |  +--name: RANGE_IDENT (_in)
+|     +--ranges[1]: range_ref
+|     |  +--name: RANGE_IDENT (_out)
+|     +--stmts[0]: scalar_assign
+|     |  +--var: scalar_ref
+|     |  |  +--name: IDENT (ss)
+|     |  +--expr: oper +
+|     |     +--left: loopvar
+|     |     |  +--range_selector: range_ref
+|     |     |     +--name: RANGE_IDENT (_in)
+|     |     +--right: decimal_number (1.0)
+|     +--stmts[1]: cell_assign
+|        +--var: loopvar
+|        |  +--range_selector: range_ref
+|        |     +--name: RANGE_IDENT (_out)
+|        +--expr: scalar_ref
+|           +--name: IDENT (ss)
++--funcs_vars[4]: function-def
+|  +--name: FUNC_IDENT (Max)
+|  +--formals[0]: formal_arg
+|  |  +--name: RANGE_IDENT (_aa)
+|  +--rettype: rettype (scalar)
+|  +--vars[0]: scalar_definition
+|  |  +--name: IDENT (max)
+|  |  +--init: NONE
+|  +--stmts[0]: scalar_assign
+|  |  +--var: scalar_ref
+|  |  |  +--name: IDENT (max)
+|  |  +--expr: decimal_number (0.0)
+|  +--stmts[1]: for_stmt
+|  |  +--ranges[0]: range_ref
+|  |  |  +--name: RANGE_IDENT (_aa)
+|  |  +--stmts[0]: if_stmt
+|  |     +--condition: oper >
+|  |     |  +--left: loopvar
+|  |     |  |  +--range_selector: NONE
+|  |     |  +--right: scalar_ref
+|  |     |     +--name: IDENT (max)
+|  |     +--then_stmts[0]: scalar_assign
+|  |     |  +--var: scalar_ref
+|  |     |  |  +--name: IDENT (max)
+|  |     |  +--expr: loopvar
+|  |     |     +--range_selector: NONE
+|  |     +--else_stmts[EMPTY]: NONE
+|  +--stmts[2]: return
+|     +--expr: scalar_ref
+|     |  +--name: IDENT (max)
+|     +--usage: usage (scalar)
++--stmt_list[EMPTY]: NONE

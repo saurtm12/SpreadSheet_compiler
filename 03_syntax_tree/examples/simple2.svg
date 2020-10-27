@@ -513,7 +513,7 @@
 <g id="node40" class="node">
 <title>N39</title>
 <polygon fill="none" stroke="black" points="2333.5,-36 2215.5,-36 2215.5,0 2333.5,0 2333.5,-36"/>
-<text text-anchor="middle" x="2274.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((1, 1, &#39;B1&#39;))</text>
+<text text-anchor="middle" x="2274.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((1, 0, &#39;B1&#39;))</text>
 </g>
 <!-- N37&#45;&gt;N39 -->
 <g id="edge35" class="edge">

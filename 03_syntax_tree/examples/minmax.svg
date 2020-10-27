@@ -552,7 +552,7 @@
 <g id="node39" class="node">
 <title>N38</title>
 <polygon fill="none" stroke="black" points="2390,-210 2271,-210 2271,-174 2390,-174 2390,-210"/>
-<text text-anchor="middle" x="2330.5" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A1&#39;))</text>
+<text text-anchor="middle" x="2330.5" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 0, &#39;A1&#39;))</text>
 </g>
 <!-- N36&#45;&gt;N38 -->
 <g id="edge35" class="edge">
@@ -578,7 +578,7 @@
 <g id="node42" class="node">
 <title>N41</title>
 <polygon fill="none" stroke="black" points="2720.5,-210 2588.5,-210 2588.5,-174 2720.5,-174 2720.5,-210"/>
-<text text-anchor="middle" x="2654.5" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 12, &#39;A12&#39;))</text>
+<text text-anchor="middle" x="2654.5" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 11, &#39;A12&#39;))</text>
 </g>
 <!-- N39&#45;&gt;N41 -->
 <g id="edge38" class="edge">

@@ -864,7 +864,7 @@
 <g id="node58" class="node">
 <title>N57</title>
 <polygon fill="none" stroke="black" points="2857.5,-297 2738.5,-297 2738.5,-261 2857.5,-261 2857.5,-297"/>
-<text text-anchor="middle" x="2798" y="-275.3" font-family="Times,serif" font-size="14.00">coord ((3, 1, &#39;D1&#39;))</text>
+<text text-anchor="middle" x="2798" y="-275.3" font-family="Times,serif" font-size="14.00">coord ((3, 0, &#39;D1&#39;))</text>
 </g>
 <!-- N55&#45;&gt;N57 -->
 <g id="edge55" class="edge">
@@ -955,7 +955,7 @@
 <g id="node64" class="node">
 <title>N63</title>
 <polygon fill="none" stroke="black" points="3108.5,-123 2989.5,-123 2989.5,-87 3108.5,-87 3108.5,-123"/>
-<text text-anchor="middle" x="3049" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A1&#39;))</text>
+<text text-anchor="middle" x="3049" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 0, &#39;A1&#39;))</text>
 </g>
 <!-- N61&#45;&gt;N63 -->
 <g id="edge59" class="edge">
@@ -981,7 +981,7 @@
 <g id="node67" class="node">
 <title>N66</title>
 <polygon fill="none" stroke="black" points="3453,-123 3335,-123 3335,-87 3453,-87 3453,-123"/>
-<text text-anchor="middle" x="3394" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 1, &#39;C1&#39;))</text>
+<text text-anchor="middle" x="3394" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 0, &#39;C1&#39;))</text>
 </g>
 <!-- N64&#45;&gt;N66 -->
 <g id="edge62" class="edge">
@@ -1033,7 +1033,7 @@
 <g id="node72" class="node">
 <title>N71</title>
 <polygon fill="none" stroke="black" points="3595.5,-297 3476.5,-297 3476.5,-261 3595.5,-261 3595.5,-297"/>
-<text text-anchor="middle" x="3536" y="-275.3" font-family="Times,serif" font-size="14.00">coord ((3, 2, &#39;D2&#39;))</text>
+<text text-anchor="middle" x="3536" y="-275.3" font-family="Times,serif" font-size="14.00">coord ((3, 1, &#39;D2&#39;))</text>
 </g>
 <!-- N69&#45;&gt;N71 -->
 <g id="edge69" class="edge">
@@ -1124,7 +1124,7 @@
 <g id="node78" class="node">
 <title>N77</title>
 <polygon fill="none" stroke="black" points="3799.5,-123 3680.5,-123 3680.5,-87 3799.5,-87 3799.5,-123"/>
-<text text-anchor="middle" x="3740" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 2, &#39;A2&#39;))</text>
+<text text-anchor="middle" x="3740" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A2&#39;))</text>
 </g>
 <!-- N75&#45;&gt;N77 -->
 <g id="edge73" class="edge">
@@ -1150,7 +1150,7 @@
 <g id="node81" class="node">
 <title>N80</title>
 <polygon fill="none" stroke="black" points="4144,-123 4026,-123 4026,-87 4144,-87 4144,-123"/>
-<text text-anchor="middle" x="4085" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 2, &#39;C2&#39;))</text>
+<text text-anchor="middle" x="4085" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 1, &#39;C2&#39;))</text>
 </g>
 <!-- N78&#45;&gt;N80 -->
 <g id="edge76" class="edge">
@@ -1202,7 +1202,7 @@
 <g id="node86" class="node">
 <title>N85</title>
 <polygon fill="none" stroke="black" points="4333.5,-297 4214.5,-297 4214.5,-261 4333.5,-261 4333.5,-297"/>
-<text text-anchor="middle" x="4274" y="-275.3" font-family="Times,serif" font-size="14.00">coord ((3, 3, &#39;D3&#39;))</text>
+<text text-anchor="middle" x="4274" y="-275.3" font-family="Times,serif" font-size="14.00">coord ((3, 2, &#39;D3&#39;))</text>
 </g>
 <!-- N83&#45;&gt;N85 -->
 <g id="edge83" class="edge">
@@ -1293,7 +1293,7 @@
 <g id="node92" class="node">
 <title>N91</title>
 <polygon fill="none" stroke="black" points="4493.5,-123 4374.5,-123 4374.5,-87 4493.5,-87 4493.5,-123"/>
-<text text-anchor="middle" x="4434" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 3, &#39;A3&#39;))</text>
+<text text-anchor="middle" x="4434" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 2, &#39;A3&#39;))</text>
 </g>
 <!-- N89&#45;&gt;N91 -->
 <g id="edge87" class="edge">
@@ -1319,7 +1319,7 @@
 <g id="node95" class="node">
 <title>N94</title>
 <polygon fill="none" stroke="black" points="4838,-123 4720,-123 4720,-87 4838,-87 4838,-123"/>
-<text text-anchor="middle" x="4779" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 3, &#39;C3&#39;))</text>
+<text text-anchor="middle" x="4779" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 2, &#39;C3&#39;))</text>
 </g>
 <!-- N92&#45;&gt;N94 -->
 <g id="edge90" class="edge">
@@ -1449,7 +1449,7 @@
 <g id="node107" class="node">
 <title>N106</title>
 <polygon fill="none" stroke="black" points="4983.5,-210 4864.5,-210 4864.5,-174 4983.5,-174 4983.5,-210"/>
-<text text-anchor="middle" x="4924" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A1&#39;))</text>
+<text text-anchor="middle" x="4924" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 0, &#39;A1&#39;))</text>
 </g>
 <!-- N104&#45;&gt;N106 -->
 <g id="edge103" class="edge">
@@ -1475,7 +1475,7 @@
 <g id="node110" class="node">
 <title>N109</title>
 <polygon fill="none" stroke="black" points="5329.5,-210 5210.5,-210 5210.5,-174 5329.5,-174 5329.5,-210"/>
-<text text-anchor="middle" x="5270" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 3, &#39;A3&#39;))</text>
+<text text-anchor="middle" x="5270" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((0, 2, &#39;A3&#39;))</text>
 </g>
 <!-- N107&#45;&gt;N109 -->
 <g id="edge106" class="edge">
@@ -1566,7 +1566,7 @@
 <g id="node117" class="node">
 <title>N116</title>
 <polygon fill="none" stroke="black" points="5674,-210 5556,-210 5556,-174 5674,-174 5674,-210"/>
-<text text-anchor="middle" x="5615" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((2, 1, &#39;C1&#39;))</text>
+<text text-anchor="middle" x="5615" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((2, 0, &#39;C1&#39;))</text>
 </g>
 <!-- N114&#45;&gt;N116 -->
 <g id="edge113" class="edge">
@@ -1592,7 +1592,7 @@
 <g id="node120" class="node">
 <title>N119</title>
 <polygon fill="none" stroke="black" points="6018,-210 5900,-210 5900,-174 6018,-174 6018,-210"/>
-<text text-anchor="middle" x="5959" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((2, 3, &#39;C3&#39;))</text>
+<text text-anchor="middle" x="5959" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((2, 2, &#39;C3&#39;))</text>
 </g>
 <!-- N117&#45;&gt;N119 -->
 <g id="edge116" class="edge">
@@ -1683,7 +1683,7 @@
 <g id="node127" class="node">
 <title>N126</title>
 <polygon fill="none" stroke="black" points="6363.5,-210 6244.5,-210 6244.5,-174 6363.5,-174 6363.5,-210"/>
-<text text-anchor="middle" x="6304" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((3, 1, &#39;D1&#39;))</text>
+<text text-anchor="middle" x="6304" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((3, 0, &#39;D1&#39;))</text>
 </g>
 <!-- N124&#45;&gt;N126 -->
 <g id="edge123" class="edge">
@@ -1709,7 +1709,7 @@
 <g id="node130" class="node">
 <title>N129</title>
 <polygon fill="none" stroke="black" points="6709.5,-210 6590.5,-210 6590.5,-174 6709.5,-174 6709.5,-210"/>
-<text text-anchor="middle" x="6650" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((3, 3, &#39;D3&#39;))</text>
+<text text-anchor="middle" x="6650" y="-188.3" font-family="Times,serif" font-size="14.00">coord ((3, 2, &#39;D3&#39;))</text>
 </g>
 <!-- N127&#45;&gt;N129 -->
 <g id="edge126" class="edge">

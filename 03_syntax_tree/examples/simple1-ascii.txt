@@ -1,0 +1,8 @@
+program
++--funcs_vars[0]: scalar_definition
+|  +--name: IDENT (variable)
+|  +--init: decimal_number (0.0)
++--stmt_list[0]: print_scalar
+   +--infostr: infostring (Hello world)
+   +--expr: scalar_ref
+      +--name: IDENT (variable)

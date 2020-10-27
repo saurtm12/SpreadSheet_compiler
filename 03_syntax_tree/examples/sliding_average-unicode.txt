@@ -1,0 +1,111 @@
+program
+├──funcs_vars[0]: sheet_definition
+│  ├──name: SHEET_IDENT (INDATA)
+│  └──init: sheet_init_list
+│     ├──rows[0]: col_init_list
+│     │  └──cols[0]: decimal_number (1.0)
+│     ├──rows[1]: col_init_list
+│     │  └──cols[0]: decimal_number (2.0)
+│     ├──rows[2]: col_init_list
+│     │  └──cols[0]: decimal_number (3.0)
+│     ├──rows[3]: col_init_list
+│     │  └──cols[0]: decimal_number (4.0)
+│     ├──rows[4]: col_init_list
+│     │  └──cols[0]: decimal_number (5.0)
+│     ├──rows[5]: col_init_list
+│     │  └──cols[0]: decimal_number (6.0)
+│     ├──rows[6]: col_init_list
+│     │  └──cols[0]: decimal_number (7.0)
+│     ├──rows[7]: col_init_list
+│     │  └──cols[0]: decimal_number (8.0)
+│     ├──rows[8]: col_init_list
+│     │  └──cols[0]: decimal_number (9.0)
+│     └──rows[9]: col_init_list
+│        └──cols[0]: decimal_number (10.0)
+├──funcs_vars[1]: sheet_definition
+│  ├──name: SHEET_IDENT (OUTDATA)
+│  └──init: sheet_init_size ((10, 2))
+├──funcs_vars[2]: function-def
+│  ├──name: FUNC_IDENT (Average)
+│  ├──formals[0]: formal_arg
+│  │  └──name: RANGE_IDENT (_rng)
+│  ├──rettype: rettype (scalar)
+│  ├──vars[0]: scalar_definition
+│  │  ├──name: IDENT (avgtmp)
+│  │  └──init: decimal_number (0.0)
+│  ├──stmts[0]: for_stmt
+│  │  ├──ranges[0]: range_ref
+│  │  │  └──name: RANGE_IDENT (_rng)
+│  │  └──stmts[0]: scalar_assign
+│  │     ├──var: scalar_ref
+│  │     │  └──name: IDENT (avgtmp)
+│  │     └──expr: oper +
+│  │        ├──left: scalar_ref
+│  │        │  └──name: IDENT (avgtmp)
+│  │        └──right: loopvar
+│  │           └──range_selector: NONE
+│  └──stmts[1]: return
+│     ├──expr: oper /
+│     │  ├──left: scalar_ref
+│     │  │  └──name: IDENT (avgtmp)
+│     │  └──right: range_size
+│     │     └──range: range_ref
+│     │        └──name: RANGE_IDENT (_rng)
+│     └──usage: usage (scalar)
+├──funcs_vars[3]: range_definition
+│  ├──name: RANGE_IDENT (_windowstart)
+│  └──init: range
+│     ├──coord1: cell_ref
+│     │  ├──name: SHEET_IDENT (OUTDATA)
+│     │  └──coord: coord ((0, 0, 'A1'))
+│     └──coord2: cell_ref
+│        ├──name: SHEET_IDENT (OUTDATA)
+│        └──coord: coord ((0, 6, 'A7'))
+├──funcs_vars[4]: range_definition
+│  ├──name: RANGE_IDENT (_windowend)
+│  └──init: range_shift ((2, 0))
+│     └──expr: range_ref
+│        └──name: RANGE_IDENT (_windowstart)
+├──funcs_vars[5]: range_definition
+│  ├──name: RANGE_IDENT (_avgresult)
+│  └──init: range_shift ((0, 1))
+│     └──expr: range_ref
+│        └──name: RANGE_IDENT (_windowend)
+├──funcs_vars[6]: range_definition
+│  ├──name: RANGE_IDENT (_window)
+│  └──init: NONE
+├──stmt_list[0]: sheet_assign
+│  ├──var: sheet_ref
+│  │  └──name: SHEET_IDENT (OUTDATA)
+│  └──expr: sheet_ref
+│     └──name: SHEET_IDENT (INDATA)
+├──stmt_list[1]: for_stmt
+│  ├──ranges[0]: range_ref
+│  │  └──name: RANGE_IDENT (_windowstart)
+│  ├──ranges[1]: range_ref
+│  │  └──name: RANGE_IDENT (_windowend)
+│  ├──ranges[2]: range_ref
+│  │  └──name: RANGE_IDENT (_avgresult)
+│  ├──stmts[0]: range_assign
+│  │  ├──var: range_ref
+│  │  │  └──name: RANGE_IDENT (_window)
+│  │  └──expr: range
+│  │     ├──coord1: loopvar
+│  │     │  └──range_selector: range_ref
+│  │     │     └──name: RANGE_IDENT (_windowstart)
+│  │     └──coord2: loopvar
+│  │        └──range_selector: range_ref
+│  │           └──name: RANGE_IDENT (_windowend)
+│  └──stmts[1]: cell_assign
+│     ├──var: loopvar
+│     │  └──range_selector: range_ref
+│     │     └──name: RANGE_IDENT (_avgresult)
+│     └──expr: function_call
+│        ├──name: FUNC_IDENT (Average)
+│        ├──args[0]: range_ref
+│        │  └──name: RANGE_IDENT (_window)
+│        └──usage: usage (scalar)
+└──stmt_list[2]: print_sheet
+   ├──infostr: NONE
+   └──expr: sheet_ref
+      └──name: SHEET_IDENT (OUTDATA)
