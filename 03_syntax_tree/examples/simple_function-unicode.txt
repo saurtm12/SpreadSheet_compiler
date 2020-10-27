@@ -13,10 +13,10 @@ program
 │  │  ├──name: RANGE_IDENT (_rng)
 │  │  └──init: range
 │  │     ├──coord1: cell_ref
-│  │     │  ├──name: SHEET_IDENT (SS)
+│  │     │  ├──name: SHEET_IDENT (XX)
 │  │     │  └──coord: coord ((0, 0, 'A1'))
 │  │     └──coord2: cell_ref
-│  │        ├──name: SHEET_IDENT (SS)
+│  │        ├──name: SHEET_IDENT (XX)
 │  │        └──coord: coord ((9, 0, 'J1'))
 │  └──stmts[0]: for_stmt
 │     ├──ranges[0]: range_ref
