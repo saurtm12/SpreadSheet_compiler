@@ -382,14 +382,14 @@
 <!-- N25 -->
 <g id="node26" class="node">
 <title>N25</title>
-<polygon fill="none" stroke="black" points="838,-36 719,-36 719,0 838,0 838,-36"/>
-<text text-anchor="middle" x="778.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((0, 1, &#39;A2&#39;))</text>
+<polygon fill="none" stroke="black" points="836.5,-36 718.5,-36 718.5,0 836.5,0 836.5,-36"/>
+<text text-anchor="middle" x="777.5" y="-14.3" font-family="Times,serif" font-size="14.00">coord ((1, 0, &#39;B1&#39;))</text>
 </g>
 <!-- N23&#45;&gt;N25 -->
 <g id="edge19" class="edge">
 <title>N23&#45;&gt;N25</title>
-<path fill="none" stroke="black" stroke-width="2" d="M690.76,-86.8C707.31,-74.01 730.08,-56.42 748.27,-42.36"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="750.5,-45.06 756.27,-36.18 746.22,-39.52 750.5,-45.06"/>
+<path fill="none" stroke="black" stroke-width="2" d="M690.56,-86.8C706.96,-74.01 729.52,-56.42 747.55,-42.36"/>
+<polygon fill="black" stroke="black" stroke-width="2" points="749.74,-45.08 755.48,-36.18 745.44,-39.56 749.74,-45.08"/>
 <text text-anchor="middle" x="746" y="-57.8" font-family="Times,serif" font-size="14.00">coord</text>
 </g>
 <!-- N28 -->
@@ -434,15 +434,15 @@
 <!-- N30 -->
 <g id="node31" class="node">
 <title>N30</title>
-<polygon fill="none" stroke="black" points="1199,-123 1080,-123 1080,-87 1199,-87 1199,-123"/>
-<text text-anchor="middle" x="1139.5" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((0, 2, &#39;A3&#39;))</text>
+<polygon fill="none" stroke="black" points="1197.5,-123 1079.5,-123 1079.5,-87 1197.5,-87 1197.5,-123"/>
+<text text-anchor="middle" x="1138.5" y="-101.3" font-family="Times,serif" font-size="14.00">coord ((2, 0, &#39;C1&#39;))</text>
 </g>
 <!-- N28&#45;&gt;N30 -->
 <g id="edge25" class="edge">
 <title>N28&#45;&gt;N30</title>
-<path fill="none" stroke="black" stroke-width="2" d="M1005.64,-175.8C1031.26,-162.45 1068.84,-142.85 1097.66,-127.82"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="1099.44,-130.84 1106.69,-123.11 1096.2,-124.63 1099.44,-130.84"/>
-<text text-anchor="middle" x="1084" y="-144.8" font-family="Times,serif" font-size="14.00">coord</text>
+<path fill="none" stroke="black" stroke-width="2" d="M1005.84,-175.61C1031.34,-162.22 1068.58,-142.69 1097.11,-127.72"/>
+<polygon fill="black" stroke="black" stroke-width="2" points="1098.82,-130.77 1106.04,-123.03 1095.56,-124.58 1098.82,-130.77"/>
+<text text-anchor="middle" x="1083" y="-144.8" font-family="Times,serif" font-size="14.00">coord</text>
 </g>
 <!-- N34 -->
 <g id="node35" class="node">

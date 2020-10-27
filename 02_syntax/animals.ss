@@ -7,7 +7,7 @@ sheet BARN = {
 }
 
 function Total_legs[ SS : sheet ] return scalar is
-  return (SS'A1 * 2.0 ) + (SS'A2 * 4.0) + (SS'A3 * 8.0)
+  return (SS'A1 * 2.0 ) + (SS'B1 * 4.0) + (SS'C1 * 8.0)
 end 
 
 print_scalar !Total legs:! Total_legs[ BARN ]

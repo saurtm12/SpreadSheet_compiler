@@ -23,12 +23,12 @@ program
 │     │  │  └──right: oper *
 │     │  │     ├──left: cell_ref
 │     │  │     │  ├──name: SHEET_IDENT (SS)
-│     │  │     │  └──coord: coord ((0, 1, 'A2'))
+│     │  │     │  └──coord: coord ((1, 0, 'B1'))
 │     │  │     └──right: decimal_number (4.0)
 │     │  └──right: oper *
 │     │     ├──left: cell_ref
 │     │     │  ├──name: SHEET_IDENT (SS)
-│     │     │  └──coord: coord ((0, 2, 'A3'))
+│     │     │  └──coord: coord ((2, 0, 'C1'))
 │     │     └──right: decimal_number (8.0)
 │     └──usage: usage (scalar)
 └──stmt_list[0]: print_scalar
