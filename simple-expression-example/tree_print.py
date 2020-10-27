@@ -43,10 +43,10 @@ def get_childvars(node, child_prefix=child_prefix_default,
         if val is None:
           childvars.append((label+"[NONE stored instead of a list!!!]", None))
         else:
-          assert not val is None, "'None' passed as children list!"
-          assert hasattr(val, "__iter__"), "Children list is not a list!!!"
+          if not hasattr(val, "__iter__"):
+            childvars.append((label+"[Not a list!!!]", None))
           # An empty list/iterable (no nodes)
-          if not val:
+          elif not val:
             childvars.append((label+"[EMPTY]", None))
           # A non-empty list/iterable
           else:

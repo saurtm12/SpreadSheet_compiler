@@ -1,0 +1,5 @@
+oper *
+├──left: number (2)
+└──right: oper +
+   ├──left: number (12)
+   └──right: number (3)
