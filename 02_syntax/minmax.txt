@@ -65,7 +65,7 @@ atom( min )
 factor
 term
 scalar_expr
-atom( num )
+atom
 factor
 term
 scalar_expr
@@ -78,7 +78,7 @@ atom( max )
 factor
 term
 scalar_expr
-atom( num )
+atom
 factor
 term
 scalar_expr
@@ -86,6 +86,7 @@ assignment( max )
 statement( if )
 statement( if )
 statement( for )
+statement( print_sheet )
 atom( min )
 factor
 term

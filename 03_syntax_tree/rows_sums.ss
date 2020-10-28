@@ -28,10 +28,10 @@ print_sheet !Direct sums! DATA
 ... The same with ranges ...
 
 _starts := range DATA'A1..DATA'A3
-_ends := range DATA'C1..DATA'C3
-_sums := range DATA'D1..DATA'D3
+_ends := _starts[2,0]
+_sums := _ends[1,0]
 
-for _starts,_ends do
+for _starts,_ends,_sums do
   _sumrange := range $:_starts..$:_ends
   $:_sums := Sum[ _sumrange ]
 done

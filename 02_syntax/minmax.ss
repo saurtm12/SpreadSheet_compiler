@@ -10,12 +10,13 @@ scalar max = -999.0
 for range S'A1..S'A12
 do
   if $ < min then
-    min := num
+    min := $
   else if $ > max then
-    max := num
-       endif
+    max := $
+    endif
   endif
 done
 
+print_sheet !Numbers! S
 print_scalar !Min! min
 print_scalar !Max! max

@@ -49,8 +49,8 @@ program
 │     ├──then_stmts[0]: scalar_assign
 │     │  ├──var: scalar_ref
 │     │  │  └──name: IDENT (min)
-│     │  └──expr: scalar_ref
-│     │     └──name: IDENT (num)
+│     │  └──expr: loopvar
+│     │     └──range_selector: NONE
 │     └──else_stmts[0]: if_stmt
 │        ├──condition: oper >
 │        │  ├──left: loopvar
@@ -60,14 +60,18 @@ program
 │        ├──then_stmts[0]: scalar_assign
 │        │  ├──var: scalar_ref
 │        │  │  └──name: IDENT (max)
-│        │  └──expr: scalar_ref
-│        │     └──name: IDENT (num)
+│        │  └──expr: loopvar
+│        │     └──range_selector: NONE
 │        └──else_stmts[EMPTY]: NONE
-├──stmt_list[1]: print_scalar
+├──stmt_list[1]: print_sheet
+│  ├──infostr: infostring (Numbers)
+│  └──expr: sheet_ref
+│     └──name: SHEET_IDENT (S)
+├──stmt_list[2]: print_scalar
 │  ├──infostr: infostring (Min)
 │  └──expr: scalar_ref
 │     └──name: IDENT (min)
-└──stmt_list[2]: print_scalar
+└──stmt_list[3]: print_scalar
    ├──infostr: infostring (Max)
    └──expr: scalar_ref
       └──name: IDENT (max)
