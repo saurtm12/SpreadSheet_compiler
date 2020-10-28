@@ -111,23 +111,15 @@ program
 ├──stmt_list[5]: range_assign
 │  ├──var: range_ref
 │  │  └──name: RANGE_IDENT (_ends)
-│  └──expr: range
-│     ├──coord1: cell_ref
-│     │  ├──name: SHEET_IDENT (DATA)
-│     │  └──coord: coord ((2, 0, 'C1'))
-│     └──coord2: cell_ref
-│        ├──name: SHEET_IDENT (DATA)
-│        └──coord: coord ((2, 2, 'C3'))
+│  └──expr: range_shift ((2, 0))
+│     └──expr: range_ref
+│        └──name: RANGE_IDENT (_starts)
 ├──stmt_list[6]: range_assign
 │  ├──var: range_ref
 │  │  └──name: RANGE_IDENT (_sums)
-│  └──expr: range
-│     ├──coord1: cell_ref
-│     │  ├──name: SHEET_IDENT (DATA)
-│     │  └──coord: coord ((3, 0, 'D1'))
-│     └──coord2: cell_ref
-│        ├──name: SHEET_IDENT (DATA)
-│        └──coord: coord ((3, 2, 'D3'))
+│  └──expr: range_shift ((1, 0))
+│     └──expr: range_ref
+│        └──name: RANGE_IDENT (_ends)
 ├──stmt_list[7]: for_stmt
 │  ├──ranges[0]: range_ref
 │  │  └──name: RANGE_IDENT (_starts)
