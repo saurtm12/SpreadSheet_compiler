@@ -133,6 +133,8 @@ program
 |  |  +--name: RANGE_IDENT (_starts)
 |  +--ranges[1]: range_ref
 |  |  +--name: RANGE_IDENT (_ends)
+|  +--ranges[2]: range_ref
+|  |  +--name: RANGE_IDENT (_sums)
 |  +--stmts[0]: range_assign
 |  |  +--var: range_ref
 |  |  |  +--name: RANGE_IDENT (_sumrange)
