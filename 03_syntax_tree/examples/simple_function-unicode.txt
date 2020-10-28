@@ -22,7 +22,7 @@ program
 │     ├──ranges[0]: range_ref
 │     │  └──name: RANGE_IDENT (_rng)
 │     ├──stmts[0]: cell_assign
-│     │  ├──var: loopvar
+│     │  ├──cell: loopvar
 │     │  │  └──range_selector: NONE
 │     │  └──expr: scalar_ref
 │     │     └──name: IDENT (ii)

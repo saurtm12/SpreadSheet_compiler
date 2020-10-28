@@ -97,7 +97,7 @@ program
 |  |        +--range_selector: range_ref
 |  |           +--name: RANGE_IDENT (_windowend)
 |  +--stmts[1]: cell_assign
-|     +--var: loopvar
+|     +--cell: loopvar
 |     |  +--range_selector: range_ref
 |     |     +--name: RANGE_IDENT (_avgresult)
 |     +--expr: function_call
