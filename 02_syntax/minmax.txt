@@ -1,51 +1,39 @@
 atom( -9.0 )
 factor
 term
-scalar_expr
 atom( 3.0 )
 factor
 term
-scalar_expr
 atom( 3.0 )
 factor
 term
-scalar_expr
 atom( 1.0 )
 factor
 term
-scalar_expr
 atom( 9.0 )
 factor
 term
-scalar_expr
 atom( 3.0 )
 factor
 term
-scalar_expr
 atom( 5.0 )
 factor
 term
-scalar_expr
 atom( -4.0 )
 factor
 term
-scalar_expr
 atom( 8.0 )
 factor
 term
-scalar_expr
 atom( 7.0 )
 factor
 term
-scalar_expr
 atom( 6.0 )
 factor
 term
-scalar_expr
 atom( 6.0 )
 factor
 term
-scalar_expr
 variable_definition( S:sheet )
 atom( 999.0 )
 factor

@@ -8,18 +8,15 @@ variable_definition( variable:scalar )
 atom( 1.0 )
 factor
 term
-scalar_expr
 atom( 2.0 )
 factor
 term
-scalar_expr
 atom( 1.0 )
 factor
 term
 atom( 2.0 )
 factor
 term
-scalar_expr
 variable_definition( SHEET:sheet )
 atom( 7.0 )
 factor

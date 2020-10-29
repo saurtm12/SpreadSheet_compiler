@@ -1,15 +1,12 @@
 atom( 4.0 )
 factor
 term
-scalar_expr
 atom( 2.0 )
 factor
 term
-scalar_expr
 atom( 1.0 )
 factor
 term
-scalar_expr
 variable_definition( BARN:sheet )
 atom
 factor

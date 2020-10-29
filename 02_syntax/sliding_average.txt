@@ -1,43 +1,33 @@
 atom( 1.0 )
 factor
 term
-scalar_expr
 atom( 2.0 )
 factor
 term
-scalar_expr
 atom( 3.0 )
 factor
 term
-scalar_expr
 atom( 4.0 )
 factor
 term
-scalar_expr
 atom( 5.0 )
 factor
 term
-scalar_expr
 atom( 6.0 )
 factor
 term
-scalar_expr
 atom( 7.0 )
 factor
 term
-scalar_expr
 atom( 8.0 )
 factor
 term
-scalar_expr
 atom( 9.0 )
 factor
 term
-scalar_expr
 atom( 10.0 )
 factor
 term
-scalar_expr
 variable_definition( INDATA:sheet )
 variable_definition( OUTDATA:sheet )
 atom( 0.0 )

@@ -21,51 +21,39 @@ function_definition( Sum )
 atom( 1.0 )
 factor
 term
-scalar_expr
 atom( 2.0 )
 factor
 term
-scalar_expr
 atom( 3.0 )
 factor
 term
-scalar_expr
 atom( 0.0 )
 factor
 term
-scalar_expr
 atom( 2.0 )
 factor
 term
-scalar_expr
 atom( 4.0 )
 factor
 term
-scalar_expr
 atom( 8.0 )
 factor
 term
-scalar_expr
 atom( 0.0 )
 factor
 term
-scalar_expr
 atom( 3.0 )
 factor
 term
-scalar_expr
 atom( 6.0 )
 factor
 term
-scalar_expr
 atom( 9.0 )
 factor
 term
-scalar_expr
 atom( 0.0 )
 factor
 term
-scalar_expr
 variable_definition( DATA:sheet )
 variable_definition( _starts:range )
 variable_definition( _ends:range )
