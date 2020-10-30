@@ -8,7 +8,6 @@ function Average[_rng : range] return scalar is
   for _rng do
     avgtmp := avgtmp + $
   done
-  print_scalar avgtmp / #_rng
   return avgtmp / #_rng ... # gives the size of a range ...
 end
 

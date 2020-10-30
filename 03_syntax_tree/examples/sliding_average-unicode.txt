@@ -44,15 +44,7 @@ program
 │  │        │  └──name: IDENT (avgtmp)
 │  │        └──right: loopvar
 │  │           └──range_selector: NONE
-│  ├──stmts[1]: print_scalar
-│  │  ├──infostr: NONE
-│  │  └──expr: oper /
-│  │     ├──left: scalar_ref
-│  │     │  └──name: IDENT (avgtmp)
-│  │     └──right: range_size
-│  │        └──range: range_ref
-│  │           └──name: RANGE_IDENT (_rng)
-│  └──stmts[2]: return
+│  └──stmts[1]: return
 │     ├──expr: oper /
 │     │  ├──left: scalar_ref
 │     │  │  └──name: IDENT (avgtmp)

@@ -51,14 +51,6 @@ atom
 factor
 term
 scalar_expr
-statement( print_scalar )
-atom( avgtmp )
-factor
-term
-atom
-factor
-term
-scalar_expr
 statement( return )
 function_definition( Average )
 variable_definition( _windowstart:range )
