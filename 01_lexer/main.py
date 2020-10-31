@@ -63,7 +63,10 @@ def t_ID(t):
     if (reserved.get(t.value) != None):
         t.type = reserved.get(t.value,'ID')
     else:
-        return t_IDENT(t)
+        if (t.value[0] != '_'):
+            return t_IDENT(t)
+        else:
+            return t_RANGE_IDENT(t)
     return t
 
 t_ASSIGN = r':='
@@ -122,6 +125,7 @@ def t_IDENT(t):
 
 def t_RANGE_IDENT(t):
     r'_[a-zA-Z0-9_]+\s'
+    t.type = "RANGE_IDENT"
     return t
 
 
