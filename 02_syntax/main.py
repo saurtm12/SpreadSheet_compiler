@@ -334,7 +334,7 @@ def p_term(p):
     print("term")
 
 def p_factor(p):
-    '''factor : empty atom
+    '''factor : atom
                 | MINUS atom'''
     print("factor")
 
@@ -345,8 +345,7 @@ def p_atom(p):
             | cell_ref 
             | NUMBER_SIGN range_expr
             | LPAREN scalar_expr RPAREN'''
-    if len(p) == 2:
-        print(f"atom( {p[1]} )")
+    print(f"atom( {p[1]} )")
 
 def p_function_call(p):
     '''function_call : FUNC_IDENT LSQUARE arguments RSQUARE
