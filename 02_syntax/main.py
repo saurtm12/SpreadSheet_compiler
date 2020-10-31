@@ -184,6 +184,7 @@ def p_variable_definition(p):
     '''variable_definition : scalar_definition 
                             | range_definition 
                             | sheet_definition'''
+    
 
 
 def p_function_definition(p):
@@ -271,7 +272,8 @@ def p_statement(p):
                     | RETURN scalar_expr
                     | RETURN range_expr
                     | assignment'''
-    print(f"statement( {p[1]} )")
+    if p[1] is not None:
+        print(f"statement( {p[1]} )")
 
 def p_info_string_opt(p):
     '''info_string_opt : INFO_STRING
@@ -300,8 +302,8 @@ def p_assignment(p):
                     | cell_ref ASSIGN scalar_expr
                     | RANGE_IDENT ASSIGN range_expr
                     | SHEET_IDENT ASSIGN SHEET_IDENT'''
-    print(f"assignment( {p[1]} )")
-
+    if p[1] is not None:
+        print(f"assignment( {p[1]} )")
 def p_range_expr(p):
     '''range_expr : RANGE_IDENT
                     | RANGE cell_ref DOTDOT cell_ref
