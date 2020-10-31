@@ -64,7 +64,10 @@ def t_ID(t):
     if (reserved.get(t.value) != None):
         t.type = reserved.get(t.value,'ID')
     else:
-        return t_IDENT(t)
+        if (t.value[0] != '_'):
+            return t_IDENT(t)
+        else:
+            return t_RANGE_IDENT(t)
     return t
 
 t_ASSIGN = r':='
@@ -123,7 +126,8 @@ def t_IDENT(t):
     return t
 
 def t_RANGE_IDENT(t):
-    r'_[a-zA-Z0-9_]+\s'
+    r'\_[a-zA-Z0-9_]+\s'
+    t.type = "RANGE_IDENT"
     return t
 
 
@@ -345,7 +349,10 @@ def p_atom(p):
             | cell_ref 
             | NUMBER_SIGN range_expr
             | LPAREN scalar_expr RPAREN'''
-    print(f"atom( {p[1]} )")
+    if len(p) == 2 and p[1] is not None:
+        print(f"atom( {p[1]} )")
+    else:
+        print("atom")
 
 def p_function_call(p):
     '''function_call : FUNC_IDENT LSQUARE arguments RSQUARE
