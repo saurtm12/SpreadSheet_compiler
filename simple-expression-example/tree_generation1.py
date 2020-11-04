@@ -23,10 +23,20 @@ class ASTnode:
 # in other words: after processing all input tokens, if this start-symbol
 # is the only one left, we do not have any syntax errors
 
-def p_program(p):
+def p_program1(p):
     '''program : expr'''
-    # Nothing todo, just pass the node onwards
-    p[0] = p[1]
+    # Create a program node, with a child expression and None to mark that the program doesn't go further
+    p[0] = ASTnode("program")
+    p[0].child_expr = p[1]
+    p[0].child_rest = None
+
+
+def p_program2(p):
+    '''program : expr COMMA program'''
+    # Create a program node, with a child expression and the "program" containing other exprs
+    p[0] = ASTnode("program")
+    p[0].child_expr = p[1]
+    p[0].child_rest = p[3]
 
 def p_expr1(p):
     '''expr : expr PLUS term

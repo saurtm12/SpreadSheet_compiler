@@ -11,7 +11,8 @@ tokens = lexer.tokens
 # in other words: after processing all input tokens, if this start-symbol
 # is the only one left, we do not have any syntax errors
 def p_program(p):
-    '''program : expr'''
+    '''program : expr
+               | expr COMMA program'''
 
 def p_expr(p):
     '''expr : expr PLUS term

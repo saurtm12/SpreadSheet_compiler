@@ -5,7 +5,7 @@ import sys, ply.lex
 tokens = (
     'NUMBER',
     'PLUS','MINUS','TIMES','DIVIDE',
-    'LPAREN','RPAREN',
+    'LPAREN','RPAREN', 'COMMA',
     )
 
 # Tokens
@@ -16,6 +16,7 @@ t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
+t_COMMA  = r','
 
 def t_NUMBER(t):
     r'\d+'
