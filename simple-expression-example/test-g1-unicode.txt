@@ -1,17 +1,20 @@
 program
-├──expr: number (3)
-└──rest: program
-   ├──expr: oper *
-   │  ├──left: number (2)
-   │  └──right: oper +
-   │     ├──left: number (12)
-   │     └──right: number (3)
-   └──rest: program
-      ├──expr: oper *
-      │  ├──left: oper -
-      │  │  ├──left: number (2)
-      │  │  └──right: number (1)
-      │  └──right: oper +
-      │     ├──left: number (1)
-      │     └──right: number (2)
-      └──rest: NONE
++--expr: assign (a)
+|  +--expr: number (3)
++--rest: program
+   +--expr: assign (b)
+   |  +--expr: oper *
+   |     +--left: number (2)
+   |     +--right: oper +
+   |        +--left: variable (a)
+   |        +--right: number (3)
+   +--rest: program
+      +--expr: assign (c)
+      |  +--expr: oper *
+      |     +--left: oper -
+      |     |  +--left: variable (a)
+      |     |  +--right: variable (b)
+      |     +--right: oper +
+      |        +--left: variable (a)
+      |        +--right: variable (b)
+      +--rest: NONE

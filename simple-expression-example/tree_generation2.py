@@ -24,17 +24,25 @@ class ASTnode:
 # is the only one left, we do not have any syntax errors
 
 def p_program1(p):
-    '''program : expr'''
+    '''program : assign'''
     # Create a program node, with a child list containing a single expression
     p[0] = ASTnode("program")
-    p[0].children_exprs = [ p[1] ]
+    p[0].children_assigns = [ p[1] ]
 
 def p_program2(p):
-    '''program : program COMMA expr'''
+    '''program : program COMMA assign'''
     # For longer lists, we just use the already created "program" (containing all exprs except the last)
     # and append the last expression there
+    # (Note: we switched the order of 'program' and 'assign')
     p[0] = p[1]
-    p[0].children_exprs.append(p[3])
+    p[0].children_assigns.append(p[3])
+
+def p_assign(p):
+    '''assign : ID ASSIGN expr'''
+    p[0] = ASTnode("assign")
+    p[0].value = p[1]
+    p[0].child_expr = p[3]
+    p[0].lineno = p.lineno(2) # Record the line number
 
 def p_expr1(p):
     '''expr : expr PLUS term
@@ -43,6 +51,7 @@ def p_expr1(p):
     p[0] = ASTnode("oper "+p[2])
     p[0].child_left = p[1] # Store left operand as a child node, tree_print() can print child_* fields as a tree
     p[0].child_right = p[3] # Store right operand as a child node, tree_print() can print child_* fields as a tree
+    p[0].lineno = p.lineno(2) # Record the line number
 
 def p_expr2(p):
     '''expr : term'''
@@ -56,6 +65,7 @@ def p_term1(p):
     p[0] = ASTnode("oper "+p[2])
     p[0].child_left = p[1] # Store left operand as a child node, tree_print() can print child_* fields as a tree
     p[0].child_right = p[3] # Store right operand as a child node, tree_print() can print child_* fields as a tree
+    p[0].lineno = p.lineno(2) # Record the line number
 
 def p_term2(p):
     '''term : factor'''
@@ -67,8 +77,16 @@ def p_factor1(p):
     # Create a new node for the number literal
     p[0] = ASTnode("number")
     p[0].value = p[1] # Store the value of the literal, tree_print() can print the "value" field nicely
+    p[0].lineno = p.lineno(1) # Record the line number
 
 def p_factor2(p):
+    '''factor : ID'''
+    # Create a new node for the number literal
+    p[0] = ASTnode("variable")
+    p[0].value = p[1] # Store the value of the literal, tree_print() can print the "value" field nicely
+    p[0].lineno = p.lineno(1) # Record the line number
+
+def p_factor3(p):
     '''factor : LPAREN expr RPAREN'''
     # Nothing todo, just pass the node onwards
     p[0] = p[2]

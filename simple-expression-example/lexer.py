@@ -5,7 +5,8 @@ import sys, ply.lex
 tokens = (
     'NUMBER',
     'PLUS','MINUS','TIMES','DIVIDE',
-    'LPAREN','RPAREN', 'COMMA',
+    'LPAREN','RPAREN', 'COMMA', 'ID',
+    'ASSIGN',
     )
 
 # Tokens
@@ -17,6 +18,7 @@ t_DIVIDE  = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_COMMA  = r','
+t_ASSIGN  = r'='
 
 def t_NUMBER(t):
     r'\d+'
@@ -25,6 +27,10 @@ def t_NUMBER(t):
     except ValueError:
         print("Integer value too large %d", t.value)
         t.value = 0
+    return t
+
+def t_ID(t):
+    r'[a-z]+'
     return t
 
 # Ignored characters

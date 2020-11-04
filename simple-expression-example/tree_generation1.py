@@ -24,7 +24,7 @@ class ASTnode:
 # is the only one left, we do not have any syntax errors
 
 def p_program1(p):
-    '''program : expr'''
+    '''program : assign'''
     # Create a program node, with a child expression and None to mark that the program doesn't go further
     p[0] = ASTnode("program")
     p[0].child_expr = p[1]
@@ -32,11 +32,17 @@ def p_program1(p):
 
 
 def p_program2(p):
-    '''program : expr COMMA program'''
+    '''program : assign COMMA program'''
     # Create a program node, with a child expression and the "program" containing other exprs
     p[0] = ASTnode("program")
     p[0].child_expr = p[1]
     p[0].child_rest = p[3]
+
+def p_assign(p):
+    '''assign : ID ASSIGN expr'''
+    p[0] = ASTnode("assign")
+    p[0].value = p[1]
+    p[0].child_expr = p[3]
 
 def p_expr1(p):
     '''expr : expr PLUS term
@@ -71,6 +77,12 @@ def p_factor1(p):
     p[0].value = p[1] # Store the value of the literal, tree_print() can print the "value" field nicely
 
 def p_factor2(p):
+    '''factor : ID'''
+    # Create a new node for the number literal
+    p[0] = ASTnode("variable")
+    p[0].value = p[1] # Store the value of the literal, tree_print() can print the "value" field nicely
+
+def p_factor3(p):
     '''factor : LPAREN expr RPAREN'''
     # Nothing todo, just pass the node onwards
     p[0] = p[2]
