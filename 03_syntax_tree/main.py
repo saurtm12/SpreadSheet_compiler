@@ -100,21 +100,25 @@ def t_INFO_STRING(t):
     r'!.*?!'
     t.value = t.value[1:-1]
     t.value = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",t.value)
+    t.type = 'INFO_STRING'
     return t
 
 def t_COORDINATE_IDENT(t):
     r'([A-Z]{1,2}[0-9]{1,3})'
+    t.type = 'COORINATE_IDENT'
     return t
 
 def t_DECIMAL_LITERAL(t):
     r'-?\d+\.\d'
     t.value = Decimal(t.value)
+    t.type = 'DECIMAL_LITERAL'
     return t
 
 def t_INT_LITERAL(t):
     r'-?\d+'
     try:
         t.value = int(t.value)
+        t.type = 'INT_LITERAL'
     except ValueError:
         print("Integer value too large %d", t.value)
         t.value = 0
@@ -133,10 +137,12 @@ def t_RANGE_IDENT(t):
 
 def t_FUNC_IDENT(t):
     r'[A-Z][a-z0-9_]+'
+    t.type = 'FUNC_IDENT'
     return t
 
 def t_SHEET_IDENT(t):
     r'[A-Z]+'
+    t.type = 'SHEET_IDENT'
     return t
 
 t_ignore = " \t"
@@ -335,7 +341,7 @@ def p_compare(p):
                 | LTEQ 
                 | GT 
                 | GTEQ'''
-
+                
 def p_simple_expr(p):
     '''simple_expr : simple_expr PLUS term
                     | simple_expr MINUS term
@@ -345,7 +351,7 @@ def p_term(p):
     '''term : term MULT factor
             | term DIV factor
             | factor'''
-
+    
 def p_factor(p):
     '''factor : atom
                 | MINUS atom'''
