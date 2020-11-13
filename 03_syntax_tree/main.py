@@ -193,28 +193,38 @@ class Node:
 def p_program(p):
     ''' program : function_or_variable_definition_star statement_list'''
     p[0] = Node("program")
+    p[0].addChild(p[1])
+    p[0].addChild(p[1])
     
 def p_function_or_variable_definition_star(p):
     '''function_or_variable_definition_star  : function_or_variable_definition_star function_or_variable_definition
                                             | empty'''
-    p[0] = Node("function_or_variable_definition_star")
-
+    if len(p) == 2: #t2
+        p[0] = Node("function_or_variable_definition_list")
+        return
+    p[0] = p[1]
+    p[0].addChild(p[2])
 def p_function_or_variable_definition(p):
     '''function_or_variable_definition   : variable_definition 
                                         | function_definition 
                                         | subroutine_definition'''
-    p[0] = Node("function_or_variable_definition")
+    p[0] = p[1]
 
 def p_variable_definition_star(p):
     '''variable_definition_star : variable_definition_star variable_definition
                                 | empty'''
-    p[0] = Node("variable_definition_star")
+    if len(p) == 2: #t2
+        p[0] = Node("variable_definition_list")
+        return
+    #t1
+    p[0] = p[1]
+    p[0].addChild(p[2])
     
 def p_variable_definition(p):
     '''variable_definition : scalar_definition 
                             | range_definition 
                             | sheet_definition'''
-    p[0] = Node("variable_definition")
+    p[0] = p[1]
 
 
 def p_function_definition(p):
@@ -228,73 +238,133 @@ def p_function_definition(p):
                             variable_definition_star \
                             statement_list \
                             END'''
-    p[0] = Node("function_definition")                        
+    p[0] = Node("function_definition")
+    p[0].addChild(Node('func',p[2]))
+    p[0].addChild(p[4])
+    p[0].addChild(Node(f'return_{p[7]}'))
+    p[0].addChild(p[9])
+    p[0].addChild(p[10])                        
  
 def p_subroutine_definition(p):
     '''subroutine_definition : SUBROUTINE FUNC_IDENT LSQUARE formals_opt RSQUARE IS \
                                 variable_definition_star \
                                 statement_list \
                                 END'''
-    p[0] = Node("subroutine_definition")      
+    p[0] = Node("subroutine_definition")
+    p[0].addChild(Node('func',p[2]))
+    p[0].addChild(p[4])
+    p[0].addChild(p[7])
+    p[0].addChild(p[8])
+
 
 def p_formals_opt(p):
     '''formals_opt : formals
                     | empty'''
-    p[0] = Node("formals_opt")    
+    p[0] = p[1]    
 
 def p_formals(p):
     '''formals : formals COMMA formal_arg
                 | formal_arg'''
-    p[0] = Node("formals") 
+    if len(p) == 2: #t2
+        p[0] = Node("formals")
+        p[0].addChild(p[1])
+        return
+    p[0] = p[1]
+    p[0].addChild(p[2]) 
 
 def p_formal_arg(p):
     '''formal_arg :  IDENT COLON SCALAR
                     | RANGE_IDENT COLON RANGE
                     | SHEET_IDENT COLON SHEET'''
-    p[0] = Node("formal_arg")             
+    p[0] = Node("formal_arg")
+    if p[3] == 'scalar': #t1
+        p[0].addChild(Node('ident',p[1]))
+        return
+    if p[3] == 'range': #t2
+        p[0].addChild(Node('range',p[1]))
+        return
+    #3
+    p[0].addChild(Node('sheet',p[1]))
 
 def p_sheet_definition(p):
     '''sheet_definition : SHEET SHEET_IDENT sheet_init_opt'''
     p[0] = Node("sheet_definition")
+    p[0].addChild(Node('sheet',p[2]))
+    if p[3] is not None:
+        p[0].addChild(p[3])
 
 def p_sheet_init_opt(p):
     '''sheet_init_opt : sheet_init
                         | empty'''
-    p[0] = Node("sheet_init_opt")                    
+    p[0] = p[1]                    
 
 def p_sheet_init(p):
     '''sheet_init : EQ sheet_init_list 
                     | EQ INT_LITERAL MULT INT_LITERAL'''
     p[0] = Node("sheet_init")
+    if len(p) == 3: #t1
+        p[0].addChild(p[2])
+        return
+    #t2:
+    p[0].addChild(Node('int',p[2]))
+    p[0].addChild(Node('int',p[4]))
 
 def p_sheet_init_list(p):
     '''sheet_init_list : LCURLY sheet_row_plus RCURLY'''
-    p[0] = Node("sheet_init_list")
+    p[0] = p[2]
 
 def p_sheet_row_plus(p):
     '''sheet_row_plus : sheet_row_plus sheet_row
                         | sheet_row'''
-    p[0] = Node("sheet_row_plus")                    
-
+    if len(p) == 2: #t2
+        p[0] = Node('sheet_init_list')
+        p[0].addChild(p[1])
+        return
+    #t1
+    p[0] = p[1]
+    p[0].addChild(p[2])
 def p_sheet_row(p):
     '''sheet_row : sheet_row COMMA simple_expr
                 | simple_expr'''
-    p[0] = Node("sheet_row")
+    if len(p) == 2: 
+        p[0] = Node("sheet_row")
+        p[0].addChild(p[1])
+        return
+    p[0] = p[1]
+    p[0].addChild(p[3])
 
 def p_range_definition(p):
     '''range_definition : RANGE RANGE_IDENT 
                         | RANGE RANGE_IDENT EQ range_expr'''
-    p[0] = Node("range_definition")
+    p[0] = Node("range_definition",p[2])
+    if len(p) == 3: #t1
+        # define behaviour when range is not intialized
+        p[0].addChild(None)
+        return
+    #t2
+    p[0].addChild(p[4])
 
 def p_scalar_definition(p):
     '''scalar_definition : SCALAR IDENT  
                             | SCALAR IDENT EQ scalar_expr'''
-    p[0] = Node("scalar_definition")
+    p[0] = Node("scalar_definition",p[2])
+    if len(p) == 3: #1
+        # define behaviour when variable is not intialized
+        p[0].addChild(Node('decimal',0.0))
+        return
+    #t2
+    p[0].addChild(p[4])
 
 def p_statement_list(p):
     '''statement_list : statement_list statement
                         | statement'''
-    p[0] = Node("statement_list")
+    if len(p) == 2: #t2
+        p[0] = Node("statement_list")
+        return
+    #t1
+    p[0] = p[1]
+    p[0].addChild(p[2])
+
 
 def p_statement(p):
     '''statement : PRINT_SHEET info_string_opt SHEET_IDENT
