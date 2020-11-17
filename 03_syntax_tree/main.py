@@ -3,6 +3,7 @@
 import sys, ply.lex
 import re
 from decimal import *
+import tree_print
 
 reserved = {
         'sheet':'SHEET',
@@ -194,7 +195,7 @@ def p_program(p):
     ''' program : function_or_variable_definition_star statement_list'''
     p[0] = Node("program")
     p[0].addChild(p[1])
-    p[0].addChild(p[1])
+    p[0].addChild(p[2])
     
 def p_function_or_variable_definition_star(p):
     '''function_or_variable_definition_star  : function_or_variable_definition_star function_or_variable_definition
@@ -276,15 +277,14 @@ def p_formal_arg(p):
     '''formal_arg :  IDENT COLON SCALAR
                     | RANGE_IDENT COLON RANGE
                     | SHEET_IDENT COLON SHEET'''
-    p[0] = Node("formal_arg")
     if p[3] == 'scalar': #t1
-        p[0].addChild(Node('ident',p[1]))
+        p[0] = Node('ident',p[1])
         return
     if p[3] == 'range': #t2
-        p[0].addChild(Node('range',p[1]))
+        p[0] = Node('range',p[1])
         return
     #3
-    p[0].addChild(Node('sheet',p[1]))
+    p[0] = Node('sheet',p[1])
 
 def p_sheet_definition(p):
     '''sheet_definition : SHEET SHEET_IDENT sheet_init_opt'''
@@ -360,6 +360,7 @@ def p_statement_list(p):
                         | statement'''
     if len(p) == 2: #t2
         p[0] = Node("statement_list")
+        p[0].addChild(p[1])
         return
     #t1
     p[0] = p[1]
@@ -453,16 +454,9 @@ def p_arg_expr(p):
                 | range_expr 
                 | SHEET_IDENT'''
     if not isinstance(p[1],Node): #t3
-        p[0] = Node('arg_sheet')
-        p[0].addChild(Node('sheet',p[1]))
+        p[0] = Node('sheet',p[1])
         return
-    if p[1].nodetype == "scalar_expr": #t1
-        p[0] = Node('arg_scalar_expr')
-        p[0].addChild(p[1])
-        return
-    #t2
-    p[0] = Node('arg_range_expr')
-    p[0].addChild(p[1])
+    p[0] = p[1]
 
 def p_subroutine_call(p):
     '''subroutine_call : FUNC_IDENT LSQUARE RSQUARE
@@ -590,10 +584,10 @@ def p_factor(p):
                 | MINUS atom'''
     if (len(p) == 2): #t1
         p[0] = p[1]
-        p[0].setValue("+")
+        p[0].value = ('+', p[0].value)
     else: #t2
         p[0] = p[2]
-        p[0].setValue("-")
+        p[0].value = ('-', p[0].value)
 
 def p_atom(p):
     '''atom : IDENT 
@@ -666,6 +660,5 @@ if __name__ == '__main__':
         lexer.input( data )
         data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
         result = parser.parse(data, lexer=lexer, debug=False)
-        if result is None:
-            print('syntax OK')
+        tree_print.treeprint(result)
         
