@@ -242,7 +242,7 @@ def p_function_definition(p):
     p[0] = Node("function_definition")
     p[0].addChild(Node('func',p[2]))
     p[0].addChild(p[4])
-    p[0].addChild(Node(f'return_{p[7]}'))
+    p[0].addChild(Node('return',p[7]))
     p[0].addChild(p[9])
     p[0].addChild(p[10])                        
  
@@ -278,7 +278,7 @@ def p_formal_arg(p):
                     | RANGE_IDENT COLON RANGE
                     | SHEET_IDENT COLON SHEET'''
     if p[3] == 'scalar': #t1
-        p[0] = Node('ident',p[1])
+        p[0] = Node('scalar',p[1])
         return
     if p[3] == 'range': #t2
         p[0] = Node('range',p[1])
@@ -301,13 +301,11 @@ def p_sheet_init_opt(p):
 def p_sheet_init(p):
     '''sheet_init : EQ sheet_init_list 
                     | EQ INT_LITERAL MULT INT_LITERAL'''
-    p[0] = Node("sheet_init")
     if len(p) == 3: #t1
-        p[0].addChild(p[2])
+        p[0] = p[2]
         return
     #t2:
-    p[0].addChild(Node('int',p[2]))
-    p[0].addChild(Node('int',p[4]))
+    p[0] = Node('sheet_init_size', (p[2], p[4]))
 
 def p_sheet_init_list(p):
     '''sheet_init_list : LCURLY sheet_row_plus RCURLY'''
@@ -350,7 +348,7 @@ def p_scalar_definition(p):
     p[0] = Node("scalar_definition",p[2])
     if len(p) == 3: #1
         # define behaviour when variable is not intialized
-        p[0].addChild(Node('decimal',0.0))
+        p[0].addChild(Node('decimal',('+',0.0)))
         return
     #t2
     p[0].addChild(p[4])
@@ -462,7 +460,7 @@ def p_subroutine_call(p):
     '''subroutine_call : FUNC_IDENT LSQUARE RSQUARE
                         | FUNC_IDENT LSQUARE arguments RSQUARE'''
     p[0] = Node("subroutine_call")
-    p[0].addChild('func',p[1])
+    p[0].addChild(Node('func',p[1]))
     if len(p) == 5: #t2
         p[0].addChild(p[3])
 
@@ -526,22 +524,31 @@ def p_cell_ref(p):
     else:
         if p[1] == '$': #t3
             p[0].addChild(Node('dollar',p[1]))
-            p[0].addChild(Node('colon',p[2]))
             p[0].addChild(Node('range',p[3]))
         else : #t1
             p[0].addChild(Node('sheet',p[1]))
-            p[0].addChild(Node('squote',p[2]))
-            p[0].addChild(Node('coordinate',p[3]))
+            col = re.search('[A-Z]+',p[3])
+            col = col.group(0)
+            if len(col) == 1 :
+                col = ord(col) - ord('A')
+            else :
+                col = (ord(col[0])- ord('A')+1)*26 + ord(col[1])-ord('A')
+            row = re.search('[0-9]+',p[3])
+            row = int(row.group(0))-1
+            p[0].addChild(Node('coordinate',(col,row,p[3])))
 
 
 def p_scalar_expr(p):
     '''scalar_expr : simple_expr
                     | scalar_expr compare simple_expr'''
     if len(p)== 2: #t1
-        p[0] = Node('scalar_expr')
-        p[0].addChild(p[1])
-    else: #t2
         p[0] = p[1]
+    else: #t2
+        if p[1].nodetype != 'scalar_expr':
+            p[0] = Node('scalar_expr')
+            p[0].addChild(p[1])
+        else :
+            p[0] = p[1]
         p[0].addChild(p[2])
         p[0].addChild(p[3])
 
@@ -559,10 +566,13 @@ def p_simple_expr(p):
                     | simple_expr MINUS term
                     | term'''
     if len(p) == 2: #t3
-        p[0] = Node('simple_expr')     
-        p[0].addChild(p[1])
-    else: #t1,2
         p[0] = p[1]
+    else: #t1,2
+        if p[1].nodetype != 'simple_expr':
+            p[0] = Node('simple_expr')     
+            p[0].addChild(p[1]) 
+        else :
+            p[0] = p[1]
         p[0].addChild(Node('oper',p[2]))
         p[0].addChild(p[3])
 
@@ -571,10 +581,13 @@ def p_term(p):
             | term DIV factor
             | factor'''
     if len(p) == 2: #t3
-        p[0] = Node("term")
-        p[0].addChild(p[1])
-    else: #t1,2
         p[0] = p[1]
+    else: #t1,2
+        if p[1].nodetype != 'term':
+            p[0] = Node('term')
+            p[0].addChild(p[1])
+        else :
+            p[0] = p[1]
         p[0].addChild(Node('oper',p[2]))
         p[0].addChild(p[3])
     
