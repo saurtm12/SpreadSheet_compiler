@@ -656,6 +656,7 @@ parser = yacc.yacc()
 # Phase 4
 
 from semantics_common import visit_tree, SymbolData, SemData
+import numpy
 
 def add_def(node, semdata):
     #skip if not a node
@@ -811,19 +812,34 @@ def print_symbol_table(semdata, title):
 def semantic_checks(tree, semdata):
     #check variable and basic scoping
     visit_tree(tree, add_def, clear_temp, semdata)
+
     #check range expression
     visit_tree(tree, check_range_expr, None, semdata)
+
     #check sheet initialization
     visit_tree(tree, check_sheet_initializing_list, None, semdata)
+
     #check subroutine/function call
     visit_tree(tree, check_subroutine_and_function_call, None, semdata)
+
     #check number of arguments:
     visit_tree(tree, check_number_args, None, semdata)
+
     #check return statments of subroutinee
     visit_tree(tree, return_check, None, semdata)
 
 def run_program(tree, semdata):
-    definition_list = tree.children_[0]
+    definition_list = tree.children_[0].children_
+
+    for definition in definition_list:
+        if definition.nodetype == "definition_scalar":
+            value = eval_node(definition.children_[0], semdata)
+            semdata.symtbl[definition.value].value = round(value, 1)
+        if definition.nodetype == "definition_sheet":
+            arr = eval_node(definition.children_[1], semdata)
+            semdata.symtbl[definition.value].value = arr
+
+
     statement_list =  tree.children_[1].children_
     for statement in statement_list:
         execute(statement, semdata)
@@ -837,6 +853,7 @@ def eval_node(node, semdata):
             return node.value[1]
         else:
             return -node.value[1]
+        
     if node.nodetype == "term":
         nodes = node.children_
         values = nodes[0::2]
@@ -861,16 +878,110 @@ def eval_node(node, semdata):
             else:
                 result -= values[i+1]
         return result
-    return None
+
+    if node.nodetype == "scalar":
+        if type(node.value) == tuple:
+            return semdata.symtbl[node.value[1]].value
+        else:
+            return semdata.symtbl[node.value].value
+    
+    if node.nodetype == "scalar_expr":
+        nodes = node.children_
+        values = nodes[0::2]
+        values = [eval_node(node, semdata) for node in values]
+        compare_operators = nodes[1::2]
+        for i in range(len(compare_operators)):
+            if compare_operators[i].value == "=":
+                if values[i] != values[i+1]:
+                    return 0.0
+            if compare_operators[i].value == "!=":
+                if values[i] == values[i+1]:
+                    return 0.0
+            if compare_operators[i].value == "<":
+                if values[i] >= values[i+1]:
+                    return 0.0
+            if compare_operators[i].value == ">":
+                if values[i] <= values[i+1]:
+                    return 0.0
+            if compare_operators[i].value == "<=":
+                if values[i] > values[i+1]:
+                    return 0.0
+            if compare_operators[i].value == ">=":
+                if values[i] < values[i+1]:
+                    return 0.0
+        return 1.0
+    
+    if node.nodetype == "sheet_init_list":
+        arr = []
+        sheet_rows = node.children_
+        for row in sheet_rows:
+            new_row = [eval_node(child, semdata) for child in row.children_]
+            arr.append(new_row)
+        arr = numpy.array(arr)
+        return arr
+
+    if node.nodetype == "sheet_init_size":
+        return numpy.zeros(node.value[1], node.value[0])
+
+    if node.nodetype == "cell_ref":
+        sheet = node.children_[0].value 
+        coord = node.children_[1].value
+        return semdata.symtbl[sheet].value[coord[1], coord[0]]
+    return 0.0
 
 def execute(statement, semdata):
     if not isinstance(statement, Node):
         return None
     if statement.nodetype == "print_scalar":
         if statement.children_[0].value is not None:
-            print(statement.children_[0].value, eval_node(statement.children_[1], semdata) ,sep='')
+            print(statement.children_[0].value, round( eval_node(statement.children_[1], semdata), 1) ,sep='')
         else:
-            print(eval_node(statement.children_[1], semdata))
+            print(round(eval_node(statement.children_[1], semdata), 1))
+    if statement.nodetype == "scalar_assignment":
+        semdata.symtbl[statement.children_[0].value].value = round( eval_node(statement.children_[1], semdata), 1)
+
+    if statement.nodetype == "if":
+        condition = eval_node(statement.children_[0], semdata)
+        if condition != 0.0:
+            statement_list = statement.children_[1].children_
+            for stm in statement_list :
+                execute(stm, semdata)
+
+    if statement.nodetype == "if_else":
+        condition = eval_node(statement.children_[0], semdata)
+        if condition != 0.0:
+            statement_list = statement.children_[1].children_
+            for stm in statement_list :
+                execute(stm, semdata)
+        else:
+            statement_list = statement.children_[2].children_
+            for stm in statement_list :
+                execute(stm, semdata)
+    
+    if statement.nodetype == "while":
+        condition = eval_node(statement.children_[0], semdata)
+        while condition != 0.0:
+            statement_list = statement.children_[1].children_
+            for stm in statement_list :
+                execute(stm, semdata)
+            condition = eval_node(statement.children_[0], semdata)
+    
+    if statement.nodetype == "print_sheet":
+        sheet = statement.children_[1].value
+        arr = semdata.symtbl[sheet].value
+        print(statement.children_[0].value, end="")
+        for row in arr:
+            for element in row:
+                print(element, end=" ")
+            print("/ ", end="")
+        print("")
+
+    if statement.nodetype == "cell_ref_assignment":
+        value = eval_node(statement.children_[1], semdata)
+        cell_ref = statement.children_[0]
+        sheet = cell_ref.children_[0].value
+        coord = cell_ref.children_[1].value
+        semdata.symtbl[sheet].value[coord[1]][coord[0]] = value
 
 if __name__ == '__main__':
     import argparse, codecs
