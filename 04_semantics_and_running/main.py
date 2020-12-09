@@ -821,6 +821,57 @@ def semantic_checks(tree, semdata):
     visit_tree(tree, check_number_args, None, semdata)
     #check return statments of subroutinee
     visit_tree(tree, return_check, None, semdata)
+
+def run_program(tree, semdata):
+    definition_list = tree.children_[0]
+    statement_list =  tree.children_[1].children_
+    for statement in statement_list:
+        execute(statement, semdata)
+    pass
+
+def eval_node(node, semdata):
+    if not isinstance(node, Node):
+        return None
+    if node.nodetype == "decimal":
+        if node.value[0] == "+":
+            return node.value[1]
+        else:
+            return -node.value[1]
+    if node.nodetype == "term":
+        nodes = node.children_
+        values = nodes[0::2]
+        values = [eval_node(node, semdata) for node in values]
+        operators = nodes[1::2]
+        result = values[0]
+        for i in range(len(operators)):
+            if operators[i].value == '*':
+                result *= values[i+1]
+            else:
+                result /= values[i+1]
+        return result
+    if node.nodetype == "simple_expr":
+        nodes = node.children_
+        values = nodes[0::2]
+        values = [eval_node(node, semdata) for node in values]
+        operators = nodes[1::2]
+        result = values[0]
+        for i in range(len(operators)):
+            if operators[i].value == '+':
+                result += values[i+1]
+            else:
+                result -= values[i+1]
+        return result
+    return None
+
+def execute(statement, semdata):
+    if not isinstance(statement, Node):
+        return None
+    if statement.nodetype == "print_scalar":
+        if statement.children_[0].value is not None:
+            print(statement.children_[0].value, eval_node(statement.children_[1], semdata) ,sep='')
+        else:
+            print(eval_node(statement.children_[1], semdata))
+
 if __name__ == '__main__':
     import argparse, codecs
     arg_parser = argparse.ArgumentParser()
@@ -844,6 +895,5 @@ if __name__ == '__main__':
         semdata = SemData()
         semdata.tempSymtbl = {}
         semantic_checks(tree, semdata)
-        print_symbol_table(semdata, "Symbol table:")
         print("Semantics ok")
-        
+        run_program(tree, semdata)
