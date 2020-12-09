@@ -735,6 +735,26 @@ def check_sheet_initializing_list(node, semdata):
                 if len(row.children_) != nOnRow:
                     return f"Incompatible in sheet initializing list, row {i}"
 
+def check_subroutine_and_function_call(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+
+    if node.nodetype == "subroutine_call":
+        ident = node.value
+        symboldata = semdata.symtbl[ident]
+        def_node = symboldata.defnode 
+        if def_node.nodetype == "definition_function":
+            return f"subroutine call for function {ident}"
+        return None
+    if node.nodetype == "function_call":
+        ident = node.value[1]
+        symboldata = semdata.symtbl[ident]
+        def_node = symboldata.defnode 
+        if def_node.nodetype == "definition_subroutine":
+            return f"function call for subroutine {ident}"
+        return None
+
 def check_number_args(node, semdata):
     #skip if not a node
     if not isinstance(node, Node):
@@ -788,6 +808,8 @@ def semantic_checks(tree, semdata):
     visit_tree(tree, check_range_expr, None, semdata)
     #check sheet initialization
     visit_tree(tree, check_sheet_initializing_list, None, semdata)
+    #check subrountine/function call
+    visit_tree(tree, check_subroutine_and_function_call, None, semdata)
     #check number of arguments:
     visit_tree(tree, check_number_args, None, semdata)
 if __name__ == '__main__':
