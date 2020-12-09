@@ -239,7 +239,7 @@ def p_function_definition(p):
                             variable_definition_star \
                             statement_list \
                             END'''
-    p[0] = Node("function_definition")
+    p[0] = Node("definition_function", p[2])
     p[0].addChild(Node('func',p[2]))
     p[0].addChild(p[4])
     p[0].addChild(Node('return',p[7]))
@@ -251,8 +251,8 @@ def p_subroutine_definition(p):
                                 variable_definition_star \
                                 statement_list \
                                 END'''
-    p[0] = Node("subroutine_definition")
-    p[0].addChild(Node('func',p[2]))
+    p[0] = Node("definition_subroutine", p[2])
+    p[0].addChild(Node('sub',p[2]))
     p[0].addChild(p[4])
     p[0].addChild(p[7])
     p[0].addChild(p[8])
@@ -271,7 +271,7 @@ def p_formals(p):
         p[0].addChild(p[1])
         return
     p[0] = p[1]
-    p[0].addChild(p[2]) 
+    p[0].addChild(p[3]) 
 
 def p_formal_arg(p):
     '''formal_arg :  IDENT COLON SCALAR
@@ -288,7 +288,7 @@ def p_formal_arg(p):
 
 def p_sheet_definition(p):
     '''sheet_definition : SHEET SHEET_IDENT sheet_init_opt'''
-    p[0] = Node("sheet_definition")
+    p[0] = Node("definition_sheet", p[2])
     p[0].addChild(Node('sheet',p[2]))
     if p[3] is not None:
         p[0].addChild(p[3])
@@ -334,7 +334,7 @@ def p_sheet_row(p):
 def p_range_definition(p):
     '''range_definition : RANGE RANGE_IDENT 
                         | RANGE RANGE_IDENT EQ range_expr'''
-    p[0] = Node("range_definition",p[2])
+    p[0] = Node("definition_range",p[2])
     if len(p) == 3: #t1
         # define behaviour when range is not intialized
         p[0].addChild(None)
@@ -345,7 +345,7 @@ def p_range_definition(p):
 def p_scalar_definition(p):
     '''scalar_definition : SCALAR IDENT  
                             | SCALAR IDENT EQ scalar_expr'''
-    p[0] = Node("scalar_definition",p[2])
+    p[0] = Node("definition_scalar",p[2])
     if len(p) == 3: #1
         # define behaviour when variable is not intialized
         p[0].addChild(Node('decimal',('+',0.0)))
@@ -460,7 +460,7 @@ def p_subroutine_call(p):
     '''subroutine_call : FUNC_IDENT LSQUARE RSQUARE
                         | FUNC_IDENT LSQUARE arguments RSQUARE'''
     p[0] = Node("subroutine_call")
-    p[0].addChild(Node('func',p[1]))
+    p[0].addChild(Node('sub',p[1]))
     if len(p) == 5: #t2
         p[0].addChild(p[3])
 
@@ -637,7 +637,7 @@ def p_function_call(p):
     '''function_call : FUNC_IDENT LSQUARE arguments RSQUARE
                         | FUNC_IDENT LSQUARE RSQUARE'''
     p[0] = Node('function_call')
-    p[0].addChild(p[1])
+    p[0].addChild(Node('func',p[1]))
     if (len(p) == 5): #t1
         p[0].addChild(p[3])
 
@@ -650,8 +650,84 @@ def p_error(p):
     print('Syntax error',p)
     raise SystemExit
 
-
 parser = yacc.yacc()
+
+# ------------------------------------------------------------------------------
+# Phase 4
+
+from semantics_common import visit_tree, SymbolData, SemData
+
+def add_def(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+    
+    nodetype = node.nodetype
+
+    #if it is a defninition
+    if nodetype.startswith("definition"):
+        vtype = nodetype.split("_")[1]
+        ident = node.value
+        if ident in semdata.symtbl or ident in semdata.tempSymtbl:
+            return f"Error, redefine {vtype} {ident}"
+        else:
+            symdata = SymbolData(vtype, node)
+            semdata.symtbl[ident] = symdata
+            node.symdata = symdata
+
+    if nodetype == "definition_function" or nodetype == "definition_subroutine":
+        formals = node.children_[1]
+        if isinstance(formals, Node): #if formals is not empty
+            list_formals = formals.children_
+            for arg in list_formals:
+                symdata = SymbolData(arg.nodetype, node)
+                semdata.tempSymtbl[arg.value] = symdata
+    #check usage
+    TYPE = ['func', 'sub', 'range', 'sheet', 'scalar']
+    if nodetype in TYPE:
+        if not isinstance(node.value, str): #ident is in an expression as expression node value contain the sign of the value as well, eg (+, sum)
+            ident = node.value[1]
+        else:  
+            ident = node.value
+        if not (ident in semdata.symtbl or ident in semdata.tempSymtbl):
+            return f"Error, no {nodetype} \"{ident}\""
+        
+
+    
+def clear_temp(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+    
+    if node.nodetype == "definition_function" or node.nodetype == "definition_function":
+        semdata.tempSymtbl.clear()
+
+
+# def check_range_expr(node):
+
+def print_symbol_table(semdata, title):
+    '''Print the symbol table in semantic data
+  
+     Parameters:
+     semdata: A SemData data structure containing semantic data
+     title: String printed at the beginning
+    '''
+    print(title)
+    for name,data in semdata.symtbl.items():
+        print(name, ":")
+        for attr,value in vars(data).items():
+            printvalue = value
+            if hasattr(value, "nodetype"): # If the value seems to be a ASTnode
+                printvalue = value.nodetype
+                if hasattr(value, "lineno"):
+                    printvalue = printvalue + ", line " + str(value.lineno)
+            print("  ", attr, "=", printvalue)
+
+    
+
+def semantic_checks(tree, semdata):
+    #check variable
+    visit_tree(tree, add_def, clear_temp, semdata)
 
 
 if __name__ == '__main__':
@@ -669,9 +745,14 @@ if __name__ == '__main__':
     else:
         with codecs.open( ns.file, 'r', encoding='utf-8' ) as INFILE:
             data = INFILE.read() 
-                    
+        
         lexer.input( data )
-        data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
-        result = parser.parse(data, lexer=lexer, debug=False)
-        tree_print.treeprint(result)
+        tree = parser.parse(data, lexer=lexer, debug=False)
+        tree_print.treeprint(tree)
+
+        semdata = SemData()
+        semdata.tempSymtbl = {}
+        semantic_checks(tree, semdata)
+        print_symbol_table(semdata, "Symbol table:")
+        print("Semantics ok")
         
