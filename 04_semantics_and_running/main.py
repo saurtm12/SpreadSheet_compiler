@@ -707,7 +707,6 @@ def check_range_expr(node, semdata):
         return None
     
     if node.nodetype == "range_expr":
-        tree_print.treeprint(node)
         if len(node.children_) == 2 and node.children_[0].nodetype == "cell_ref":
             start = node.children_[0]
             end = node.children_[1]
@@ -780,7 +779,15 @@ def check_number_args(node, semdata):
             if def_n != n :
                 return f"Incompatible number of arguments, def {def_n} but found {n}"
         
-
+def return_check(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+    if node.nodetype == "definition_subroutine":
+        statement_list = node.children_[3].children_
+        for statement in statement_list:
+            if statement.nodetype == "return":
+                return f"Found return in subroutine {node.value}"
 
 def print_symbol_table(semdata, title):
     '''Print the symbol table in semantic data
@@ -802,16 +809,18 @@ def print_symbol_table(semdata, title):
 
 
 def semantic_checks(tree, semdata):
-    #check variable
+    #check variable and basic scoping
     visit_tree(tree, add_def, clear_temp, semdata)
     #check range expression
     visit_tree(tree, check_range_expr, None, semdata)
     #check sheet initialization
     visit_tree(tree, check_sheet_initializing_list, None, semdata)
-    #check subrountine/function call
+    #check subroutine/function call
     visit_tree(tree, check_subroutine_and_function_call, None, semdata)
     #check number of arguments:
     visit_tree(tree, check_number_args, None, semdata)
+    #check return statments of subroutinee
+    visit_tree(tree, return_check, None, semdata)
 if __name__ == '__main__':
     import argparse, codecs
     arg_parser = argparse.ArgumentParser()
