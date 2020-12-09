@@ -698,12 +698,31 @@ def clear_temp(node, semdata):
     #skip if not a node
     if not isinstance(node, Node):
         return None
-    
+    #clear temporary symtbl
     if node.nodetype == "definition_function" or node.nodetype == "definition_function":
         semdata.tempSymtbl.clear()
 
 
-# def check_range_expr(node):
+def check_range_expr(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+    
+    if node.nodetype == "range_expr":
+        tree_print.treeprint(node)
+        if len(node.children_) == 2 and node.children_[0].nodetype == "cell_ref":
+            start = node.children_[0]
+            end = node.children_[1]
+            if start.children_[0].nodetype != "sheet":
+                return None
+            #check if not in the same sheet
+            if start.children_[0].value != end.children_[0].value:
+                return f"Incompatible range for different sheets: \"{start.children_[0].value}\" and \"{end.children_[0].value}\"" 
+            coordStart = start.children_[1].value
+            coordEnd = end.children_[1].value
+            if coordStart[0] != coordEnd[0] and coordStart[1] != coordEnd[1]:
+                return f"Range is not valid: from {coordStart[2]} to {coordEnd[2]}"
+            
 
 def print_symbol_table(semdata, title):
     '''Print the symbol table in semantic data
@@ -728,7 +747,8 @@ def print_symbol_table(semdata, title):
 def semantic_checks(tree, semdata):
     #check variable
     visit_tree(tree, add_def, clear_temp, semdata)
-
+    #check range expression
+    visit_tree(tree, check_range_expr, None, semdata)
 
 if __name__ == '__main__':
     import argparse, codecs
