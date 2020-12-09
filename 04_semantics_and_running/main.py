@@ -459,7 +459,7 @@ def p_arg_expr(p):
 def p_subroutine_call(p):
     '''subroutine_call : FUNC_IDENT LSQUARE RSQUARE
                         | FUNC_IDENT LSQUARE arguments RSQUARE'''
-    p[0] = Node("subroutine_call")
+    p[0] = Node("subroutine_call",p[1])
     p[0].addChild(Node('sub',p[1]))
     if len(p) == 5: #t2
         p[0].addChild(p[3])
@@ -636,7 +636,7 @@ def p_atom(p):
 def p_function_call(p):
     '''function_call : FUNC_IDENT LSQUARE arguments RSQUARE
                         | FUNC_IDENT LSQUARE RSQUARE'''
-    p[0] = Node('function_call')
+    p[0] = Node('function_call',p[1])
     p[0].addChild(Node('func',p[1]))
     if (len(p) == 5): #t1
         p[0].addChild(p[3])
@@ -735,6 +735,32 @@ def check_sheet_initializing_list(node, semdata):
                 if len(row.children_) != nOnRow:
                     return f"Incompatible in sheet initializing list, row {i}"
 
+def check_number_args(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+    
+    if node.nodetype == "function_call" or node.nodetype == "subroutine_call":
+        tree_print.treeprint(node)
+        if len(node.children_) == 1: #no args
+            n = 0
+        else:
+            agruments = node.children_[1]
+            n = len(agruments.children_)
+        ident = node.children_[0].value
+        symdata = semdata.symtbl[ident]
+        node_def = symdata.defnode  
+        
+        defined_args = node_def.children_[1]
+        if not isinstance(defined_args, Node): #empty arg
+            if n != 0:
+                return f"Incompatible number of arguments, def 0 but found {n}"
+        else:
+            def_n = len(defined_args.children_)
+            if def_n != n :
+                return f"Incompatible number of arguments, def {def_n} but found {n}"
+        
+
 
 def print_symbol_table(semdata, title):
     '''Print the symbol table in semantic data
@@ -754,7 +780,6 @@ def print_symbol_table(semdata, title):
                     printvalue = printvalue + ", line " + str(value.lineno)
             print("  ", attr, "=", printvalue)
 
-# def check_number_args()
 
 def semantic_checks(tree, semdata):
     #check variable
@@ -763,6 +788,8 @@ def semantic_checks(tree, semdata):
     visit_tree(tree, check_range_expr, None, semdata)
     #check sheet initialization
     visit_tree(tree, check_sheet_initializing_list, None, semdata)
+    #check number of arguments:
+    visit_tree(tree, check_number_args, None, semdata)
 if __name__ == '__main__':
     import argparse, codecs
     arg_parser = argparse.ArgumentParser()
