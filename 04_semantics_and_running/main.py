@@ -692,8 +692,6 @@ def add_def(node, semdata):
         if not (ident in semdata.symtbl or ident in semdata.tempSymtbl):
             return f"Error, no {nodetype} \"{ident}\""
         
-
-    
 def clear_temp(node, semdata):
     #skip if not a node
     if not isinstance(node, Node):
@@ -722,7 +720,21 @@ def check_range_expr(node, semdata):
             coordEnd = end.children_[1].value
             if coordStart[0] != coordEnd[0] and coordStart[1] != coordEnd[1]:
                 return f"Range is not valid: from {coordStart[2]} to {coordEnd[2]}"
-            
+
+def check_sheet_initializing_list(node, semdata):
+    #skip if not a node
+    if not isinstance(node, Node):
+        return None
+    if node.nodetype == "sheet_init_list":
+        rows = node.children_
+        if len(rows) <= 1:
+            return None
+        else:
+            nOnRow = len(rows[0].children_)
+            for i, row in enumerate(rows):
+                if len(row.children_) != nOnRow:
+                    return f"Incompatible in sheet initializing list, row {i}"
+
 
 def print_symbol_table(semdata, title):
     '''Print the symbol table in semantic data
@@ -742,14 +754,15 @@ def print_symbol_table(semdata, title):
                     printvalue = printvalue + ", line " + str(value.lineno)
             print("  ", attr, "=", printvalue)
 
-    
+# def check_number_args()
 
 def semantic_checks(tree, semdata):
     #check variable
     visit_tree(tree, add_def, clear_temp, semdata)
     #check range expression
     visit_tree(tree, check_range_expr, None, semdata)
-
+    #check sheet initialization
+    visit_tree(tree, check_sheet_initializing_list, None, semdata)
 if __name__ == '__main__':
     import argparse, codecs
     arg_parser = argparse.ArgumentParser()
