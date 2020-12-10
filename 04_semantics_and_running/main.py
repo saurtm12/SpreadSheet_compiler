@@ -443,7 +443,6 @@ def p_arguments(p):
         return
     #t1
     p[0] = p[1]
-    print(len(p))
     p[0].addChild(p[3])
 
 
