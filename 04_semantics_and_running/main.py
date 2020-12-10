@@ -698,7 +698,7 @@ def clear_temp(node, semdata):
     if not isinstance(node, Node):
         return None
     #clear temporary symtbl
-    if node.nodetype == "definition_function" or node.nodetype == "definition_function":
+    if node.nodetype == "definition_function" or node.nodetype == "definition_subroutine":
         semdata.tempSymtbl.clear()
 
 
@@ -761,7 +761,6 @@ def check_number_args(node, semdata):
         return None
     
     if node.nodetype == "function_call" or node.nodetype == "subroutine_call":
-        tree_print.treeprint(node)
         if len(node.children_) == 1: #no args
             n = 0
         else:
@@ -812,7 +811,6 @@ def print_symbol_table(semdata, title):
 def semantic_checks(tree, semdata):
     #check variable and basic scoping
     visit_tree(tree, add_def, clear_temp, semdata)
-
     #check range expression
     visit_tree(tree, check_range_expr, None, semdata)
 
@@ -982,6 +980,47 @@ def execute(statement, semdata):
         sheet = cell_ref.children_[0].value
         coord = cell_ref.children_[1].value
         semdata.symtbl[sheet].value[coord[1]][coord[0]] = value
+
+    if statement.nodetype == "subroutine_call":
+        static_link = semdata.symtbl[statement.value].defnode
+        if (len(statement.children_) == 1):
+            arguments = None
+        else:
+            arguments = statement.children_[1].children_
+        semdata.tempSymtbl.clear()
+        if static_link.children_[1] is not None: #have arguments
+            arguments_val = ( eval_node(node, semdata) for node in arguments )
+            for arg in static_link.children_[1].children_:
+                semdata.symtbl[arg.value] = SymbolData('auto', None) #autotype
+                semdata.symtbl[arg.value].value = next(arguments_val)
+                semdata.tempSymtbl[arg.value] = True
+                execute_subroutine(static_link, semdata)
+                for key in semdata.tempSymtbl :
+                    semdata.symtbl.pop(key)
+                semdata.tempSymtbl.clear()
+        else:
+            execute_subroutine(static_link, semdata)
+            for key in semdata.tempSymtbl :
+                semdata.symtbl.pop(key)
+            semdata.tempSymtbl.clear()
+
+def execute_subroutine(node, semdata):
+    definition_list = node.children_[2].children_
+
+    for definition in definition_list:
+        if definition.nodetype == "definition_scalar":
+            value = eval_node(definition.children_[0], semdata)
+            semdata.symtbl[definition.value].value = round(value, 1)
+            semdata.tempSymtbl[definition.value] = True
+
+        if definition.nodetype == "definition_sheet":
+            arr = eval_node(definition.children_[1], semdata)
+            semdata.symtbl[definition.value].value = arr
+
+    statement_list =  node.children_[3].children_
+    for statement in statement_list:
+        execute(statement, semdata)
+    
 
 if __name__ == '__main__':
     import argparse, codecs
