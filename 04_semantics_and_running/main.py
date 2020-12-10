@@ -683,6 +683,10 @@ def add_def(node, semdata):
             for arg in list_formals:
                 symdata = SymbolData(arg.nodetype, node)
                 semdata.tempSymtbl[arg.value] = symdata
+        
+            
+
+
     #check usage
     TYPE = ['func', 'sub', 'range', 'sheet', 'scalar']
     if nodetype in TYPE:
@@ -700,6 +704,11 @@ def clear_temp(node, semdata):
     #clear temporary symtbl
     if node.nodetype == "definition_function" or node.nodetype == "definition_subroutine":
         semdata.tempSymtbl.clear()
+        #delete local from symtbl
+        temp_vars = node.children_[2]
+        for var in temp_vars.children_:
+            ident = var.value
+            semdata.symtbl.pop(ident)
 
 
 def check_range_expr(node, semdata):
@@ -846,6 +855,7 @@ def run_program(tree, semdata):
 def eval_node(node, semdata):
     if not isinstance(node, Node):
         return None
+
     if node.nodetype == "decimal":
         if node.value[0] == "+":
             return node.value[1]
@@ -930,6 +940,7 @@ def eval_node(node, semdata):
 def execute(statement, semdata):
     if not isinstance(statement, Node):
         return None
+        
     if statement.nodetype == "print_scalar":
         if statement.children_[0].value is not None:
             print(statement.children_[0].value, round( eval_node(statement.children_[1], semdata), 1) ,sep='')
@@ -995,11 +1006,15 @@ def execute(statement, semdata):
                 semdata.symtbl[arg.value].value = next(arguments_val)
                 semdata.tempSymtbl[arg.value] = True
                 execute_subroutine(static_link, semdata)
-                for key in semdata.tempSymtbl :
-                    semdata.symtbl.pop(key)
-                semdata.tempSymtbl.clear()
+        
+            #clean up
+            for key in semdata.tempSymtbl :
+                semdata.symtbl.pop(key)
+            semdata.tempSymtbl.clear()
         else:
             execute_subroutine(static_link, semdata)
+
+            #clean up
             for key in semdata.tempSymtbl :
                 semdata.symtbl.pop(key)
             semdata.tempSymtbl.clear()
@@ -1010,12 +1025,15 @@ def execute_subroutine(node, semdata):
     for definition in definition_list:
         if definition.nodetype == "definition_scalar":
             value = eval_node(definition.children_[0], semdata)
+            semdata.symtbl[definition.value] = SymbolData('scalar', None)
             semdata.symtbl[definition.value].value = round(value, 1)
             semdata.tempSymtbl[definition.value] = True
 
         if definition.nodetype == "definition_sheet":
+            semdata.symtbl[definition.value] = SymbolData('sheet', None)
             arr = eval_node(definition.children_[1], semdata)
             semdata.symtbl[definition.value].value = arr
+            semdata.tempSymtbl[definition.value] = True
 
     statement_list =  node.children_[3].children_
     for statement in statement_list:
