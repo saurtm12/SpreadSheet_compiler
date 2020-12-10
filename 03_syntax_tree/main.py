@@ -239,7 +239,7 @@ def p_function_definition(p):
                             variable_definition_star \
                             statement_list \
                             END'''
-    p[0] = Node("function_definition")
+    p[0] = Node("function_definition", p[2])
     p[0].addChild(Node('func',p[2]))
     p[0].addChild(p[4])
     p[0].addChild(Node('return',p[7]))
@@ -251,8 +251,8 @@ def p_subroutine_definition(p):
                                 variable_definition_star \
                                 statement_list \
                                 END'''
-    p[0] = Node("subroutine_definition")
-    p[0].addChild(Node('func',p[2]))
+    p[0] = Node("subroutine_definition", p[2])
+    p[0].addChild(Node('sub',p[2]))
     p[0].addChild(p[4])
     p[0].addChild(p[7])
     p[0].addChild(p[8])
@@ -460,7 +460,7 @@ def p_subroutine_call(p):
     '''subroutine_call : FUNC_IDENT LSQUARE RSQUARE
                         | FUNC_IDENT LSQUARE arguments RSQUARE'''
     p[0] = Node("subroutine_call")
-    p[0].addChild(Node('func',p[1]))
+    p[0].addChild(Node('sub',p[1]))
     if len(p) == 5: #t2
         p[0].addChild(p[3])
 
@@ -671,7 +671,6 @@ if __name__ == '__main__':
             data = INFILE.read() 
                     
         lexer.input( data )
-        data = re.sub(r"\.{3,3}([\s\S]*?)\.{3,3}","",data)
         result = parser.parse(data, lexer=lexer, debug=False)
         tree_print.treeprint(result)
         

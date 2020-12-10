@@ -352,7 +352,7 @@ def p_atom(p):
             | NUMBER_SIGN range_expr
             | LPAREN scalar_expr RPAREN'''
     if len(p) == 2 and p[1] is not None:
-        print(f"atom( {p[1]} )")
+        print(f"atom( {p[1].value} )")
     else:
         print("atom")
 
