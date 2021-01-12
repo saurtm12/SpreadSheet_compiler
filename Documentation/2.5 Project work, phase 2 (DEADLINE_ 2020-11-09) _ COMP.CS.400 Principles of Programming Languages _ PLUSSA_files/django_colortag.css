@@ -1,0 +1,25 @@
+.btn.colortag,
+.label.colortag,
+.dropdown.create-tagging {
+	transition: all 0.2s ease 0s;
+	opacity: 1;
+	font-size: 100%;
+	display: inline-block;
+	margin: 0.2em 0; /* spacing between lines */
+}
+.btn.colortag-light,
+.label.colortag-light {
+	color: #000;
+}
+.btn.colortag-dark,
+.label.colortag-dark {
+	color: #fff;
+}
+.btn.colortag:not(.colortag-active):not(.active):not(:hover),
+.label.colortag:not(.colortag-active):not(.active):not(:hover) {
+	color: #000;
+	background-color: #ddd !important;
+}
+.btn.colortag:hover {
+	opacity: 0.6;
+}

@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/ -->
+<html lang="en" class="js-focus-visible" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>2.7 Project work, phase 4 (DEADLINE: 2020-12-14) | COMP.CS.400 Principles of Programming Languages | PLUSSA </title>
+
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/jquery-1.12.4.min.js.download" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/bootstrap3.min.js.download"></script>
+
+	<link href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/solid.css" rel="stylesheet" integrity="sha384-VGP9aw4WtGH/uPAOseYxZ+Vz/vaTb1ehm1bwx92Fm8dTrE+3boLfF1SpAtB1z7HW" crossorigin="anonymous">
+	<link href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/regular.css" rel="stylesheet" integrity="sha384-ZlNfXjxAqKFWCwMwQFGhmMh3i89dWDnaFU2/VZg9CvsMGA7hXHQsPIqS+JIAmgEq" crossorigin="anonymous">
+
+	<link href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/github.min.css" rel="stylesheet">
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/highlight.min.js.download"></script>
+
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/clipboard.min.js.download"></script>
+
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/translate.min.js.download"></script>
+
+	
+	<link data-translation="" rel="preload" as="fetch" crossorigin="anonymous" type="application/json, text/javascript, */*; q=0.01" hreflang="fi" href="https://plus.tuni.fi/static/js-translations/utils.fi.json">
+
+	
+<link data-translation="" rel="preload" as="fetch" crossorigin="anonymous" type="application/json" hreflang="fi" href="https://plus.tuni.fi/static/js-translations/exercise.fi.json">
+
+
+
+	<link rel="stylesheet" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/main.css">
+	<link rel="stylesheet" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/submission.css">
+	<link rel="stylesheet" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/django_colortag.css">
+    <link rel="stylesheet" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/tuni.css">
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/polyfill-find.js.download"></script>
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/focus-visible-polyfill.min.js.download"></script>
+	<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/aplus.js.download"></script>
+
+	
+
+
+	
+	
+
+
+
+<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/external_launcher.js.download"></script>
+<link rel="stylesheet" type="text/css" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/external_services.css">
+<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/poll.js.download"></script>
+<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/group.js.download"></script>
+<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/chapter.js.download"></script>
+<script src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/language_link.js.download" data-set-lang="/comp.cs.400/fall-2020/user/setlang"></script>
+<script>
+// Visualize loading in case of slow POST operations.
+/*$(function() {
+    var forms = $("#exercise-page-content").find("form:not([data-aplus-exercise] form)");
+    forms.on("submit", function(event) {
+        $("#submit-progress").removeClass("hide");
+    });
+});*/
+
+// Add an Ajax exercise event listener to refresh the info column.
+window.addEventListener("message", function (event) {
+    if (event.data.type === "a-plus-refresh-stats") {
+        $("#submit-progress").addClass("hide");
+        var $stats = $("#exercise-info"),
+            url = $stats.data("url");
+        $stats.load(url, function() {
+            $stats.find('[data-toggle="tooltip"]').tooltip();
+        });
+    }
+});
+</script>
+<link data-aplus="yes" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/default.css" rel="stylesheet" type="text/css">
+<link data-aplus="yes" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/pygments.css" rel="stylesheet" type="text/css">
+<script async="" data-aplus="" src="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/MathJax.js.download" type="text/javascript"></script>
+<link data-aplus="" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/course.css" rel="stylesheet" type="text/css">
+<link data-aplus="" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/active_element.css" rel="stylesheet" type="text/css">
+<link data-aplus="" href="./2.7 Project work, phase 4 (DEADLINE_ 2020-12-14) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/popl.css" rel="stylesheet" type="text/css">
+
+
+	<!-- Some favicons courtesy of http://realfavicongenerator.net/ -->
+	<link rel="apple-touch-icon" sizes="57x57" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-32x32.png" sizes="32x32">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/static/mstile-144x144.png">
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body class="internal-student lang-en" data-view-tag="exercise"><div id="MathJax_Message" style="display: none;"></div>
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#content" class="skip-link">Skip main navigation</a>
+	<div class="page-wrap">
+		<header>
+			<nav class="topbar navbar navbar-inverse navbar-static-top" aria-label="Main">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="https://plus.tuni.fi/">PLUSSA</a>
+						<ul class="nav navbar-dropdown">
+							<li role="separator" class="divider"></li>
+							<li role="presentation" class="dropdown">
+								<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									
+									COMP.CS.400 COMP.CS.400 Principles of Programming Languages
+									
+									
+									<span class="caret"></span>
+								</a>
+								
+<ul class="dropdown-menu">
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.310/spring-2021/">
+			COMP.CS.310 COMP.CS.310 Rinnakkaisuus / Concurrency: spring-2021
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/math.app.210/2020/">
+			MATH.APP.210 MATH.APP.210 Johdatus todennäköisyyslaskentaan ja tilastolliseen päättelyyn: 2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v3/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v3
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+			COMP.CS.400 COMP.CS.400 Principles of Programming Languages: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0240x/fall-2020/">
+			TIE-0240x TIE-02402 Ohjelmointi 3: Tekniikat / TIE-02408 Programming 3: Techniques: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.500/fall-2020/">
+			COMP.CS.500 COMP.CS.500 Web Development 1 - Programming: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.130/2020-ver1/">
+			COMP.CS.130 COMP.CS.130 Functional Programming I: 2020-ver1
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0220x/spring-2020/">
+			TIE-0220x TIE-02201 Ohjelmointi 2: Perusteet / TIE-02207 Programming 2: Basics: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-02107/autumn-2019/">
+			TIE-02107 TIE-02107 Programming 1: Introduction: autumn-2019
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v2/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v2
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-2010x/spring-2020/">
+			TIE-2010x TIE-2010x Tietorakenteet ja algoritmit / Data Structures and Algorithms: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/EXAM-0210x/1/">
+			EXAM-0210x EXAM-0210x Ohjelmointi 1: Tentti: exam
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation" class="divider"></li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/COMP.CS.300/spring-2021/">
+			COMP.CS.300 COMP.CS.300 Tietorakenteet ja algoritmit 1: spring-2021
+		</a>
+	</li>
+	
+	
+</ul>
+
+							</li>
+						</ul>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-navbar-collapse">
+						<ul class="user-menu nav navbar-nav navbar-right hidden-xs">
+							
+							
+
+
+
+							
+
+
+							<li role="presentation" class="profile-menu dropdown">
+								<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									Duc Hong <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li role="presentation">
+										<a href="https://plus.tuni.fi/accounts/accounts/">Profile</a>
+									</li>
+									<li role="separator" class="divider"></li>
+									<li role="presentation">
+										<a href="https://plus.tuni.fi/accounts/logout/">
+											<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+											Log out
+										</a>
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+
+						
+						<ul class="nav navbar-nav visible-xs">
+							
+							
+							
+
+
+							
+
+
+
+							
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#course-content" class="skip-link page-skip-link hidden-xs">
+		Skip course navigation
+	</a>
+</li>
+
+
+<li class="header">
+	<h4 id="course-menu-heading">Course</h4>
+</li>
+
+
+<li class="menu-home">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+		COMP.CS.400
+	</a>
+</li>
+<li class="menu-toc">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+		<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		Course materials
+	</a>
+</li>
+<li class="menu-results">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/user/results/">
+		<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+		Exercise results
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+							<li class="header">
+								<h4>Site</h4>
+							</li>
+							<li>
+								<a href="https://plus.tuni.fi/">
+									<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+									Home
+								</a>
+							</li>
+							
+<ul class="dropdown-menu">
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.310/spring-2021/">
+			COMP.CS.310 COMP.CS.310 Rinnakkaisuus / Concurrency: spring-2021
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/math.app.210/2020/">
+			MATH.APP.210 MATH.APP.210 Johdatus todennäköisyyslaskentaan ja tilastolliseen päättelyyn: 2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v3/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v3
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+			COMP.CS.400 COMP.CS.400 Principles of Programming Languages: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0240x/fall-2020/">
+			TIE-0240x TIE-02402 Ohjelmointi 3: Tekniikat / TIE-02408 Programming 3: Techniques: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.500/fall-2020/">
+			COMP.CS.500 COMP.CS.500 Web Development 1 - Programming: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.130/2020-ver1/">
+			COMP.CS.130 COMP.CS.130 Functional Programming I: 2020-ver1
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0220x/spring-2020/">
+			TIE-0220x TIE-02201 Ohjelmointi 2: Perusteet / TIE-02207 Programming 2: Basics: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-02107/autumn-2019/">
+			TIE-02107 TIE-02107 Programming 1: Introduction: autumn-2019
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v2/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v2
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-2010x/spring-2020/">
+			TIE-2010x TIE-2010x Tietorakenteet ja algoritmit / Data Structures and Algorithms: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/EXAM-0210x/1/">
+			EXAM-0210x EXAM-0210x Ohjelmointi 1: Tentti: exam
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation" class="divider"></li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/COMP.CS.300/spring-2021/">
+			COMP.CS.300 COMP.CS.300 Tietorakenteet ja algoritmit 1: spring-2021
+		</a>
+	</li>
+	
+	
+</ul>
+
+							
+							<li>
+								<a href="https://plus.tuni.fi/accounts/accounts/">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									Duc Hong
+								</a>
+							</li>
+							<li>
+								<a href="https://plus.tuni.fi/accounts/logout/">
+									<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+									Log out
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		
+<div class="site-content container-fluid" id="content">
+
+			
+			
+
+			
+<div data-taggings="user-internal" class="row">
+    <div class="col-sm-2 hidden-xs">
+        <nav class="course-menu fixed" id="main-course-menu" aria-labelledby="course-menu-heading" style="width: 223px;">
+            <ul class="nav nav-pills nav-stacked">
+                
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#course-content" class="skip-link page-skip-link hidden-xs">
+		Skip course navigation
+	</a>
+</li>
+
+
+<li class="header">
+	<h4 id="course-menu-heading">Course</h4>
+</li>
+
+
+<li class="menu-home">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+		COMP.CS.400
+	</a>
+</li>
+<li class="menu-toc">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+		<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		Course materials
+	</a>
+</li>
+<li class="menu-results">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/user/results/">
+		<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+		Exercise results
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+            </ul>
+            
+            
+        </nav>
+
+        
+    </div>
+    <div class="col-sm-10" id="course-content">
+        
+        
+        
+
+
+
+<nav class="row siblings" aria-label="Pagination">
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/" class="nav-flex-left">
+		<span aria-hidden="true">«</span> 2.6 Project work, phase 3 (DEADLINE: 2020-11-23)
+	</a>
+	
+	
+
+	<span class="hidden-md hidden-sm hidden-xs" style="display: block; margin: auto; text-align: center;">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+			Course materials
+		</a>
+	</span>
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/essays_essay1/" class="nav-flex-right">
+		3. Attendance for lecture week 1 <span aria-hidden="true">»</span>
+	</a>
+	
+	
+
+</nav>
+
+
+        
+        <ol class="breadcrumb">
+            
+
+            <li><a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">COMP.CS.400</a></li>
+            
+<li><a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/">2. Course Project</a></li>
+
+
+<li class="active">2.7 Project work, phase 4 (DEADLINE: 2020-12-14)</li>
+
+
+        </ol>
+        
+        <main class="row">
+            
+<div class="col-lg-12 exercise-column">
+
+  
+
+  
+
+
+
+<div id="exercise-page-content">
+  
+  <div class="overlay-parent">
+    
+    <div>
+      <div id="exercise">
+                  <div class="content">
+  <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">05</span><span class="p">:</span> <span class="n">First</span> <span class="n">public</span> <span class="n">version</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span><span class="p">:</span> <span class="n">Changed</span> <span class="n">the</span> <span class="n">order</span> <span class="n">of</span> <span class="n">semantic</span> <span class="n">check</span> <span class="ow">and</span> <span class="n">interpretation</span> <span class="n">levels</span> <span class="n">a</span> <span class="n">bit</span> <span class="n">to</span> <span class="n">better</span> <span class="n">reflect</span> <span class="n">their</span> <span class="n">assumed</span> <span class="n">difficulty</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span><span class="p">:</span> <span class="n">Added</span> <span class="n">links</span> <span class="n">to</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">semantic</span> <span class="n">checks</span> <span class="ow">and</span> <span class="n">interpretation</span>
+</pre></div>
+</div>
+<div class="section" id="project-work-phase-4-deadline-2020-12-14">
+<h1>Project work, phase 4 (DEADLINE: 2020-12-14)<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#project-work-phase-4-deadline-2020-12-14" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="semantic-checks-and-or-running-the-program">
+<h2>Semantic checks and/or running the program<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#semantic-checks-and-or-running-the-program" title="Permalink to this headline">¶</a></h2>
+<p>Using the abstract syntax tree (AST) from phase 3
+it is now time for semantic checks and running the
+program. For full credits you DO NOT have to implement everything listed
+here. One can easily think about dozens of different checks and
+implementing them all would be too much work for this project.</p>
+<p>So select the items you are interested in and concentrate creating a
+clearly documented, easy to read implementation of them. You might
+concentrate on hunting semantic errors or running the program.</p>
+<p>A fully functional example on how to do semantic checks and a simple
+interpreter using our abstract syntax tree <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/tree/master/simple-expression-example">can be found
+here</a>.</p>
+<ul class="simple">
+<li>File <code class="docutils literal language-en">semantics_common.py</code> has utility functions for the symbol
+table and visiting nodes of the syntax tree (which you can use in
+your own phase 4, too). The provided function and class are described
+at the end of this page.</li>
+<li>File <code class="docutils literal language-en">semantics_check.py</code> has functions to perform semantic checks
+by visiting all tree nodes, recognizing node types and checking them.
+Running this file performs the semantic checks for a given program.</li>
+<li>File <code class="docutils literal language-en">semantics_run.py</code> contains a simple interpreter which
+recursively evaluates the syntax tree. Running this file performs
+semantic checks, prints out the syntax tree and then runs the
+interpreter.</li>
+</ul>
+</div>
+<div class="section" id="semantics-of-the-language">
+<h2>Semantics of the language<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#semantics-of-the-language" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the intended semantics (= meaning) of the
+language constructs. Please note that this is just a description, you
+don’t have to implement all of these! The following sections describe
+what semantic checks and functionality to implement.</p>
+<p><strong>These are just quidelines.</strong> You decide the exact semantics yourself
+(and document them in your submission).</p>
+<p>Below, <em>undefined</em> behaviour means: you decide what you do in such a case,
+and that include not doing anything and allowing the program to crash or
+behave erratically.</p>
+<div class="section" id="datatypes-and-variables">
+<h3>Datatypes and variables<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#datatypes-and-variables" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The language has three different kinds of types: <em>scalars</em> (decimal numbers),
+<em>sheets</em> (2-dimensional arrays of decimal numbers), and <em>ranges</em> (ways to refer
+to a series of sheet elements in a sheet).</li>
+<li>Arithmetic on decimal numbers of performed with 1 decimal of accuracy. Results are
+rounded to 1 decimal of accuracy (you may decide the way rounding works yourself).</li>
+<li>Relational operators =, &lt;, &gt;=, etc. return 0.0 if the comparison is false and
+1.0 if it is true (however, the if- and while-statements interpret anything not
+equal to 0.0 as true).</li>
+<li>Sheets have a fixed size that is determined during definition. If you assign a sheet
+to another sheet of different size, cells that do not fit into the target sheet are
+ignored, and “extra” cells in the target sheet are set to zero.</li>
+<li>If a variable is uninitialized (like <code class="docutils literal language-en">scalar aa</code>), it’s undefined what it’s
+initial values is and what happens if you use such a variable without assigning
+a value to it first.</li>
+<li><code class="docutils literal language-en">scalar aa = 3.0</code> creates a scalar variable and initializes it to a given value</li>
+<li><code class="docutils literal language-en">sheet SS = 10 * 3</code> creates a sheet variable of 10 columns and 3 rows (note the order!)
+and initializes it to zeroes</li>
+<li>The following creates a sheet of appropriate size and initializes it with given values
+<em>Checking that each row contains the same number of values is a possible semantic check.</em></li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sheet</span> <span class="n">SS</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span>
+  <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Sheet cells can be accessed with syntax <code class="docutils literal language-en">SS'A1</code>. Like in spreadsheets, the A in A1 refers
+to a column and 1 refers to a row. Columns start from A, rows start from 1, and A1 is the top left corner.
+The column after Z is AA, then comes AB, etc., until AZ, then the next column is BA, etc.
+(again just like in real spreasheets).</li>
+<li><code class="docutils literal language-en">range _rng = &lt;range-expression&gt;</code> creates a range variable that refers to a series
+of cells in a sheet. Ranges are 1-dimensional (either horizontal or vertical).</li>
+<li>Range expression <code class="docutils literal language-en">range SS'A1..SS'A5</code> is a range that refers to sheet SS’s cells
+from A1 to A5. It is undefined what happens if a range is not 1-dimensional (like
+<code class="docutils literal language-en">SS'A1..SS'Z10</code>), if the range expression refers to cells outside the sheet’s size,
+or if the start and end of a range refer to different sheets. <em>These are possible semantic checks.</em></li>
+<li>Range expression <code class="docutils literal language-en">_rng[1,-2]</code> create a range that has been moved/shifted in the sheet.
+In the example, it create a range that’s shifted one column to the right (1) and 2 rows up (-2).
+It’s undefined what happens if a range is shifted outside the sheet’s boundaries.</li>
+<li>Expression <code class="docutils literal language-en">#_rng</code> returns the number of cells in the range.</li>
+<li><strong>NOTE</strong>: You can choose whether sheet cells contain decimal values or if assinging an expression
+to a sheet cell stores the <em>expression</em> in the cell and evaluates it only when the cell’s
+value is needed (lazy evaluation). See separate section on optional (more challenging) lazy evaluation.</li>
+</ul>
+</div>
+<div class="section" id="variables-and-scopes">
+<h3>Variables and scopes<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#variables-and-scopes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Each variable can only be declared once. <em>This is a possible semantic check.</em></li>
+<li>Variables can only be used after they have been defined (just as in
+most programming languages) <em>This is a possible semantic check.</em></li>
+<li>You don’t <em>have to</em> implement scoping. I.e., it’s ok to assume that
+all variables are “global” regardless where they are defined. This
+implies that all variables and function parameters have different
+names so that there’s no overlap.</li>
+<li>A little more challenging alternative (which gives you bonus points)
+is to have all variables still as global, but check that local
+variables and parameter names can only be used in the function body.</li>
+<li>Final most challenging alternative is to implement scoping, i.e.
+global variables and local varibles (or parameters) can have the same
+name, but both still refer to a different variable.</li>
+</ul>
+</div>
+<div class="section" id="functions-and-subroutines">
+<h3>Functions and subroutines<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#functions-and-subroutines" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>A function can only be called from expressions and a subroutine
+can only be called as a statement. <em>This is a possible semantic check.</em></li>
+<li>A function parameter name can be used only inside the respective
+function. <em>This is a possible semantic check.</em></li>
+<li>The language does not support recursion, i.e. it’s not possible for
+two calls to the same function to be active at the same time. (This
+makes it unnecessary to implement dynamic activation records, etc.
+You are allowed to support recursion, if you want, though, which
+gives you bonus points.) (implementing recursion requires some sort
+of activation records for local variables, which may be quite
+complicated to do, so we do not recommend it (too much work for this
+course)).</li>
+<li>Each parameter name is unique in the program, see the “Variables”
+section for alternatives</li>
+<li>For parameter passing, you can decide whether to use pass-by-value
+or pass-by-reference.</li>
+<li>Functions returning a scalar can only be called from scalar expressions
+and functions returning a range can only called from range expressions
+(<code class="docutils literal language-en">[ Rangefunc[...] ]</code>) <em>This is a possible semantic check.</em></li>
+<li>(Since recursion is not supported, you can implement function return
+values by creating a new global variable for each function’s return
+value and using that to pass return values from a function.)</li>
+</ul>
+</div>
+<div class="section" id="statements">
+<h3>Statements<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#statements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The <code class="docutils literal language-en">print_...</code> statements print out the optional info string and
+then on a new line the given value. Scalars are printed as a single
+decimal number. Ranges are printed as a series of numbers (separated
+by spaces). Sheets are printed row by row (separating row’s numbers
+with spaces).</li>
+<li>If-statement behaves as if statements in most languages. Since
+SheetScript doesn’t have boolean values, If-statement considers
+value 0.0 as false and other values as true.</li>
+<li>While-statement behaves as while statements in most languages. Since
+SheetScript doesn’t have boolean values, While-statement considers
+value 0.0 as false and other values as true.</li>
+<li>The simple version of for statement has the form below. The loop goes
+through all cells in the range, and <code class="docutils literal language-en">$</code> in the loop body refers
+to the current cell (i.e. <code class="docutils literal language-en">print_scalar $</code> prints out current cell’s
+value and <code class="docutils literal language-en">$ := 3.0</code> assigns to it).</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>for range SS'A1..SS'A5 do ...(or any other range expression)...
+  print_scalar $
+  $ := 3.0
+done
+</pre></div>
+</div>
+<ul class="simple">
+<li>The multi-range version of for statement has the form below. It
+<em>simultaneously</em> goes through the cells of all the given ranges
+in tandem, and <code class="docutils literal language-en">$:_rng</code> refers to the current cell in range _rng
+(this means the given ranges should always be range variables, although
+this is not forced in the syntax). The for loop ends when the <em>shortest</em>
+range ends.</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>for _rng1,_rng2,_rng3 do
+  $:_rng3 := $:_rng1 + $:_rng2
+done
+</pre></div>
+</div>
+<ul class="simple">
+<li>It’s up to you whether you support nested for loops or not (it’s of course
+better if you do).</li>
+<li>(Invent more built-in funtions or your own, if you wish!)</li>
+</ul>
+</div>
+<div class="section" id="optional-lazy-evaluation-challenging">
+<h3>Optional Lazy evaluation (challenging!)<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#optional-lazy-evaluation-challenging" title="Permalink to this headline">¶</a></h3>
+<p>Actual spreadsheet programs to “formulas” to each spreadsheet cell, so that
+if variables/cells in that formula change, the value of the cell changes also.
+This can be optionally implemented in SheetScript by <em>lazy sheet cells.</em>
+This means that when you assign (or initialize) or value to a sheet cell,
+the program actually stores the <em>expression</em> in the cell (and doesn’t yet
+calculate its value). Only when the value of the cell is actually needed,
+the expression is evaluated.</p>
+<p>Since SheetScript is an imperative language, some extra rules are needed to
+make lazy evaluation useful:</p>
+<ul class="simple">
+<li>Values of <em>scalar variables</em> and <em>range expressions</em> are not lazy, i.e.
+if the current value of scalar variable ‘aa’ is 3.0, then in
+<code class="docutils literal language-en">SS'A1 := SS'B1 + aa</code>, the value of ‘aa’ is evaluated already
+during the assignment, and expression <code class="docutils literal language-en">SS'B1 + 3.0</code> stored in SS’A1.
+This also means that <code class="docutils literal language-en">aa := aa + SS'A1</code> etc. are never lazy, since
+we are assigning to a scalar variable and not a sheet cell.</li>
+<li>References to sheets, sheet cells, and function calls are always lazy.</li>
+<li>With loop variables ($), the calculation of which cell the loop variable
+refers to is done immediately during assignment, but after that the
+calculated cell is lazy just like other cells.</li>
+</ul>
+<p>(Probably the easiest way to implement lazy evaluation is to have a separate
+lazy expression evaluation function in the interpreter. Instead of actually
+evaluatin the expression, this function can return a new syntax tree which
+contains the expression that is the “result” of the lazy evaluation (i.e. a copy
+of the original expression tree, with just the eagerly evaluated parts
+replaced by their calculated values). That resulting syntax tree can then
+by stored in sheet cells, and evaluated later when necessary.)</p>
+</div>
+</div>
+<div class="section" id="semantic-checks">
+<h2>Semantic checks<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#semantic-checks" title="Permalink to this headline">¶</a></h2>
+<p>In this assigment, semantic checks are performed <strong>on the abstract syntax tree</strong>
+before running the program (even if you implement the interpreter
+part). In many programming languages ALL the checks are done and results
+printed out. However, it’s easier to stop at the first semantic error
+(since recovering from the error and continuing is often quite
+complicated), so that’s what we’ll do in this assignment.</p>
+<p>In the Semantics of the language section above, ideas for possible
+semantic checks are marked with “<em>This is a possible semantic check.</em>”.
+However, there are more possible semantic checks that could be
+performed, so it’s ok to also include your own, if you wish
+(if you do so, please document your own checks in the document). The list
+below lists the mentioned semantic checks in their estimated order of
+easiness (the easiness of course depends somewhat on your own design
+choices):</p>
+<ol class="arabic simple">
+<li>Variables (+ functions and parameters if you’ve implemented them)
+have to be defined before being used, no double definitions allowed
+(for this basic checks, you don’t have to pay attention to variables’
+scopes).</li>
+<li>In range expression <code class="docutils literal language-en">range SS'A1..SS'A5</code> (where both ends of the range
+directly specify the sheet and cell position), both the start and end must
+refer to the same sheet, and the range has to be either a vertical or
+horizontal sequence of cells.</li>
+<li>Each row in a sheet initialization has the same number of cell values.</li>
+<li>A function call syntax can only call functions (not subroutines) and
+a subroutine call statement can only call subroutines (not functions).</li>
+<li>The number of actual parameters in a function call has to match the
+number for formal parameters in the function definition.</li>
+<li>If a function returns a scalar, it can only be used in
+a place where scalars are ok. If a function returns a range,
+it can only be used in range context (<code class="docutils literal language-en">[ Func[...] ]</code>).</li>
+<li>Return statement can only appear in a function (not in a subroutine).
+The type of the value returned must match with the function’s return type.</li>
+<li>Parameters and local variables are only allowed to appear in the function
+in which they have been defined (i.e. basic scoping).</li>
+<li>In multi-range for-statement (<code class="docutils literal language-en">for _rng1,_rng2,...</code>), the loop variable
+can must refer to one of the given ranges (i.e. <code class="docutils literal language-en">$:_rng1</code> is ok, but
+<code class="docutils literal language-en">$:_blabla</code> is not). If you decide to allow nested for loops (a for loop
+inside another for loop), you can decide whether you allow $:… to
+only refer to ranges of the innermost for loop, or a range in any of the
+nested loops.</li>
+</ol>
+<div class="section" id="implementing-semantic-checks">
+<h3>Implementing semantic checks<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#implementing-semantic-checks" title="Permalink to this headline">¶</a></h3>
+<p>Probably easiest way to implement semantic checking of the syntax tree
+is to use the provided visitor pattern based function <code class="docutils literal language-en">visit_tree()</code>,
+as well as provided simple data structure <code class="docutils literal language-en">SemData</code>. The visitor can
+be used to perform checking passes over the tree, selecting which types
+of nodes to act on. The SemData class can be used to store the symbol
+table as well as other information needed for semantic checking, as well
+as passing that information along when performing the checks
+(and interpreting the code after checks). For more
+hints on how to implement phase 4, please watch the ##.##. lecture
+recording, and read the description of the provided helpers at the end
+of this page.</p>
+<p>Semantic errors are reported by returning an error message string
+instead of <code class="docutils literal language-en">None</code> from the functions provided to the visitor
+implementation. The provided visitor then prints out this error message
+and stops the program. If syntax tree nodes contain an attribute called
+“<code class="docutils literal language-en">lineno</code>”, the line number is included in the error message.</p>
+</div>
+<div class="section" id="testing-semantic-checks">
+<h3>Testing semantic checks<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#testing-semantic-checks" title="Permalink to this headline">¶</a></h3>
+<p>The public_examples repository has a folder <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/tree/master/04_semantics_and_running/semantic_error_examples">04_semantics_and_running/semantic_error_examples</a>, which contains tests for each semantic check level (you may have to edit them a little, if you choose to skip levels).</p>
+</div>
+</div>
+<div class="section" id="running-the-program">
+<h2>Running the program<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#running-the-program" title="Permalink to this headline">¶</a></h2>
+<p>After running semantic checks, you now should have an abstract syntax tree
+(of the program) which can be executed, with help from the symbol
+table collected from the tree. We suggest that you write an
+interpreter which interprets (= runs) the syntax tree. (Alternatively
+you can implement a compiler and generate code from the tree, but that’s
+probably more complicated than interpretation. If you choose this
+option, contact the course staff first).</p>
+<p>While running the program you don’t have to implement any run-time
+semantic checks, if you don’t want to. I.e. you can assume the program
+is semantically correct, even if you don’t write all semantic checks,
+and you can assume there are no run-time errors which would require
+error handling in the interpreter. If the program to be run has
+errors, your program is allowed to do anything, including behaving
+incorrectly, crashing, etc.</p>
+<div class="section" id="interpreting">
+<h3>Interpreting<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#interpreting" title="Permalink to this headline">¶</a></h3>
+<p>One way to implement an interpreter is to have an “evaluate()” function that
+recursively evaluates the nodes in the syntax tree. You call the topmost
+evaluate() for the root of the tree,
+and it goes through the tree, executing the node statements in the
+correct order. For example, before running a plus(+) operation the left and
+right children are evaluated first (the value of the evaluated expression
+can be the return value of eval()). The example Unicode calculator can
+be used as the basis for your interpreter (or you are welcome to design
+your own).</p>
+</div>
+<div class="section" id="levels-of-interpretation">
+<h3>Levels of interpretation<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#levels-of-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>Below are different levels of implementing execution. Since levels
+depend on each other, it’s advisable to implement them in order. Also,
+it’s ok if some level is only implemented partially (of course that will
+be taken into account in grading).</p>
+<ol class="arabic simple">
+<li>Evaluation of expressions consisting of arithmetic expressions and
+decimal literals, and the print_scalar statement. With this you can
+print out the results of simple calculations.</li>
+<li>Additionally, using scalar variables works (i.e., definition, assignment, and
+reading the value).</li>
+<li>The if- and while-statements also work.</li>
+<li>In addition to scalar variables, sheet variables and referring
+to sheet cells work (using “conventional” eager semantics),
+and the print_sheet statement is implemented.</li>
+<li>Subroutine definitions and calls work (this requires that you’ve first
+implemented the first two bullets).</li>
+<li>In addition to subroutines, function definitions, calls, and return value passing work.</li>
+<li>Ranges, range variables and simple for-statement with one range works
+(This requires that you’ve also implemented sheets).</li>
+<li>Multi-range for statement works (this of course requires implementation for the
+simple for statement).</li>
+<li>Implementation of lazy sheet cell semantics (see explanation in its
+own section, requires implementation of sheets of course). <em>Challenging.</em></li>
+<li>Implementing recursion and proper local variables and parameters
+(if you’ve implemented subroutines). <em>Challenging.</em></li>
+</ol>
+</div>
+<div class="section" id="testing-interpretation">
+<h3>Testing interpretation<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#testing-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>The public_examples repository has a folder <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/tree/master/04_semantics_and_running/running_examples">04_semantics_and_running/running_examples</a>, which contains tests for each interpretation level (you may have to edit them a little, if you choose to skip levels).</p>
+</div>
+</div>
+<div class="section" id="grading-in-this-phase">
+<h2>Grading in this phase<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#grading-in-this-phase" title="Permalink to this headline">¶</a></h2>
+<p>From this phase you can raise your preliminary grade from phase 3 by at
+most 3 grades:</p>
+<ul class="simple">
+<li>If you implement at least 2 semantic checks, 2 levels of
+interpretation, or 1 level in both, you can improve your grade by 1.</li>
+<li>If you implement at least 5 things that include both semantic checks
+and interpretation levels, you can improve your grade by 2 (i.e.,
+doing only semantic checks or only interpretation levels is not
+enough).</li>
+<li>If you implement more than 5 things, your chances of raising the
+grade by 3 points improves. Remember that it’s possible to get grade
+6 from this project, i.e. “really excellent”!</li>
+<li>If you come up with semantic checks/interpretation things of your
+own, those can help improving the grade, provided that you also
+document them well.</li>
+<li><strong>NOTE:</strong> The above is the maximum grade improvement, assuming that
+your semantic check / interpretation level is “well done”. It’s of
+course possible to get partial points for incomplete / less well done
+things.</li>
+</ul>
+</div>
+<div class="section" id="minimal-functionality">
+<h2>Minimal functionality<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#minimal-functionality" title="Permalink to this headline">¶</a></h2>
+<p>Your program must start when executed in python by: <code class="docutils literal language-en">python3 main.py</code>
+in your submission directory. You can assume that this python
+interpreter has PLY installed.</p>
+<p>Your program must understand the following command line arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">who</span> <span class="o">|</span> <span class="o">-</span><span class="n">f</span> <span class="n">FILE</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">who</span>                 <span class="nb">print</span> <span class="n">out</span> <span class="n">student</span> <span class="n">IDs</span> <span class="ow">and</span> <span class="n">NAMEs</span> <span class="n">of</span> <span class="n">authors</span>
+  <span class="o">-</span><span class="n">f</span> <span class="n">FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">file</span> <span class="n">FILE</span>  <span class="n">filename</span> <span class="n">to</span> <span class="n">process</span>
+</pre></div>
+</div>
+<p>(See <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/simple-expression-example/semantics_run.py">the example</a>
+on how to implement this using python standard library.)</p>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#errors" title="Permalink to this headline">¶</a></h2>
+<p>Your code should be built on top the previous phase (syntax), so the
+same errors messages from there should be used here also. As mentioned
+before, you don’t have to implement run-time error checking, if writing
+the interpreter.</p>
+</div>
+<div class="section" id="required-text-document">
+<h2>Required text document<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#required-text-document" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the code, the group submits a text document in either
+plain text (.txt), markdown (.md) or pdf (.pdf) format. It should
+document each semantic check / interpretation level you’ve done,
+explaining how it works. If you implemented any things of your own,
+explain them also in the document. Also tell what you thought about this
+assignment? What was difficult? What was easy? Did you learn anything
+useful?</p>
+</div>
+<div class="section" id="extras">
+<h2>Extras<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#extras" title="Permalink to this headline">¶</a></h2>
+<p>If you have an idea, feel free to implement it (AND remember to document
+it)</p>
+</div>
+<div class="section" id="tools-provided-by-the-course">
+<h2>Tools provided by the course<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#tools-provided-by-the-course" title="Permalink to this headline">¶</a></h2>
+<p>The file
+<a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/04_semantics_and_running/semantics_common.py">semantics_common.py</a>
+contains a helper function visit_tree() and classes SemData and
+SymbolData to help with semantic checks (the classes may be useful also
+during interpretation). The visit_tree() function depends on the tree printing
+module given in phase 3.</p>
+<ul class="simple">
+<li>The <code class="docutils literal language-en">SemData</code> class is meant to be used as a place where you can
+store all kinds of information required by the semantic checks and
+interpretation, including the symbol table (which is already included
+in the class). Create a single object of this class at the beginning,
+and pass it to every function as a parameter to share data across the
+checking the interpretation. Examples of possible stuff to keep in
+SemData (in addition to the symbol table) are call stack
+(interpretation), what function you are in (semantic checking), etc.</li>
+<li>The <code class="docutils literal language-en">SymbolData</code> class is an example of what you could use as a
+symbol table entry (i.e. store in the .symtbl of SemData). Now it
+contains the type of the symbol (variable, function, you choose what
+to put there) and a pointer to the node where the symbol is defined
+in the tree, but you can choose to put anything there.</li>
+<li>Finally, the <code class="docutils literal language-en">visit_tree</code> function can be used during semantic
+checking to perform operations on every node of the tree. You give it
+two functions: one function is called when <code class="docutils literal language-en">visit_tree</code> starts
+handling a node, and the other when all the children of the node have
+been handled (visited). In those functions you can choose which nodes
+you are interested in, collect information to <code class="docutils literal language-en">SemData</code> or the node
+itself, and/or check that things are semantically ok.</li>
+</ul>
+</div>
+<div class="section" id="questions-with-answers">
+<h2>Questions with answers<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/#questions-with-answers" title="Permalink to this headline">¶</a></h2>
+<p>Nothing at the moment.</p>
+</div>
+</div>
+
+
+                  </div>
+                  
+                   
+                </div>
+    </div>
+  </div>
+</div>
+
+<div id="submit-progress" class="hide progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%;">
+    Posting submission...
+  </div>
+</div>
+
+
+
+
+
+
+<div id="loading-indicator" class="hide progress" data-msg-load="Loading exercise..." data-msg-submit="Posting submission..." data-msg-error="Communication error with the exercise.">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%;"></div>
+</div>
+
+</div>
+
+
+
+        </main>
+        
+
+
+
+<nav class="row siblings" aria-label="Pagination">
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/" class="nav-flex-left">
+		<span aria-hidden="true">«</span> 2.6 Project work, phase 3 (DEADLINE: 2020-11-23)
+	</a>
+	
+	
+
+	<span class="hidden-md hidden-sm hidden-xs" style="display: block; margin: auto; text-align: center;">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+			Course materials
+		</a>
+	</span>
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/essays_essay1/" class="nav-flex-right">
+		3. Attendance for lecture week 1 <span aria-hidden="true">»</span>
+	</a>
+	
+	
+
+</nav>
+
+
+    </div>
+</div>
+
+			
+</div>
+
+
+		
+		<footer role="contentinfo">
+			<div class="site-footer navbar navbar-default navbar-fixed-bottom" role="presentation">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						
+						<li><a href="https://plus.tuni.fi/accounts/privacy-notice/">Privacy Notice</a></li>
+						<li><a href="https://plus.tuni.fi/accounts/accessibility-statement/">Accessibility Statement</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		
+	</div>
+	<div id="page-modal" class="modal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-progress">
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%" data-msg-error="Loading failed!">
+							Loading...
+						</div>
+					</div>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="aplus-button--secondary aplus-button--md" data-dismiss="modal">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="file-modal" class="modal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-progress">
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%" data-msg-error="Loading failed!">
+							Loading...
+						</div>
+					</div>
+				</div>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body"></div>
+			</div>
+		</div>
+	</div>
+	<div id="search-select-widget" class="hide">
+		<ul class="list-inline search-selected">
+			<li><button type="button"><span class="name">None</span> <span aria-label="Remove">×</span></button></li>
+		</ul>
+		<div class="input-group">
+			<span class="input-group-btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+				<button class="btn btn-default" data-toggle="dropdown" type="button" aria-label="Search">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+				<ul class="dropdown-menu search-options">
+					<li class="not-found"><a>No matches</a></li>
+				</ul>
+			</span>
+			<input type="text" aria-label="Search for..." class="form-control" placeholder="Search for...">
+		</div>
+	</div>
+	
+
+
+
+</body></html>

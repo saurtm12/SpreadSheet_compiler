@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/ -->
+<html lang="en" class="js-focus-visible" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>2.6 Project work, phase 3 (DEADLINE: 2020-11-23) | COMP.CS.400 Principles of Programming Languages | PLUSSA </title>
+
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/jquery-1.12.4.min.js.download" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/bootstrap3.min.js.download"></script>
+
+	<link href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/solid.css" rel="stylesheet" integrity="sha384-VGP9aw4WtGH/uPAOseYxZ+Vz/vaTb1ehm1bwx92Fm8dTrE+3boLfF1SpAtB1z7HW" crossorigin="anonymous">
+	<link href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/regular.css" rel="stylesheet" integrity="sha384-ZlNfXjxAqKFWCwMwQFGhmMh3i89dWDnaFU2/VZg9CvsMGA7hXHQsPIqS+JIAmgEq" crossorigin="anonymous">
+
+	<link href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/github.min.css" rel="stylesheet">
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/highlight.min.js.download"></script>
+
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/clipboard.min.js.download"></script>
+
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/translate.min.js.download"></script>
+
+	
+	<link data-translation="" rel="preload" as="fetch" crossorigin="anonymous" type="application/json, text/javascript, */*; q=0.01" hreflang="fi" href="https://plus.tuni.fi/static/js-translations/utils.fi.json">
+
+	
+<link data-translation="" rel="preload" as="fetch" crossorigin="anonymous" type="application/json" hreflang="fi" href="https://plus.tuni.fi/static/js-translations/exercise.fi.json">
+
+
+
+	<link rel="stylesheet" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/main.css">
+	<link rel="stylesheet" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/submission.css">
+	<link rel="stylesheet" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/django_colortag.css">
+    <link rel="stylesheet" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/tuni.css">
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/polyfill-find.js.download"></script>
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/focus-visible-polyfill.min.js.download"></script>
+	<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/aplus.js.download"></script>
+
+	
+
+
+	
+	
+
+
+
+<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/external_launcher.js.download"></script>
+<link rel="stylesheet" type="text/css" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/external_services.css">
+<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/poll.js.download"></script>
+<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/group.js.download"></script>
+<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/chapter.js.download"></script>
+<script src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/language_link.js.download" data-set-lang="/comp.cs.400/fall-2020/user/setlang"></script>
+<script>
+// Visualize loading in case of slow POST operations.
+/*$(function() {
+    var forms = $("#exercise-page-content").find("form:not([data-aplus-exercise] form)");
+    forms.on("submit", function(event) {
+        $("#submit-progress").removeClass("hide");
+    });
+});*/
+
+// Add an Ajax exercise event listener to refresh the info column.
+window.addEventListener("message", function (event) {
+    if (event.data.type === "a-plus-refresh-stats") {
+        $("#submit-progress").addClass("hide");
+        var $stats = $("#exercise-info"),
+            url = $stats.data("url");
+        $stats.load(url, function() {
+            $stats.find('[data-toggle="tooltip"]').tooltip();
+        });
+    }
+});
+</script>
+<link data-aplus="yes" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/default.css" rel="stylesheet" type="text/css">
+<link data-aplus="yes" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/pygments.css" rel="stylesheet" type="text/css">
+<script async="" data-aplus="" src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/MathJax.js.download" type="text/javascript"></script>
+<link data-aplus="" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/course.css" rel="stylesheet" type="text/css">
+<link data-aplus="" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/active_element.css" rel="stylesheet" type="text/css">
+<link data-aplus="" href="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/popl.css" rel="stylesheet" type="text/css">
+
+
+	<!-- Some favicons courtesy of http://realfavicongenerator.net/ -->
+	<link rel="apple-touch-icon" sizes="57x57" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://plus.tuni.fi/static/favicons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="https://plus.tuni.fi/static/favicons/favicon-32x32.png" sizes="32x32">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/static/mstile-144x144.png">
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body class="internal-student lang-en" data-view-tag="exercise"><div id="MathJax_Message" style="display: none;"></div>
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#content" class="skip-link">Skip main navigation</a>
+	<div class="page-wrap">
+		<header>
+			<nav class="topbar navbar navbar-inverse navbar-static-top" aria-label="Main">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="https://plus.tuni.fi/">PLUSSA</a>
+						<ul class="nav navbar-dropdown">
+							<li role="separator" class="divider"></li>
+							<li role="presentation" class="dropdown">
+								<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									
+									COMP.CS.400 COMP.CS.400 Principles of Programming Languages
+									
+									
+									<span class="caret"></span>
+								</a>
+								
+<ul class="dropdown-menu">
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.310/spring-2021/">
+			COMP.CS.310 COMP.CS.310 Rinnakkaisuus / Concurrency: spring-2021
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/math.app.210/2020/">
+			MATH.APP.210 MATH.APP.210 Johdatus todennäköisyyslaskentaan ja tilastolliseen päättelyyn: 2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v3/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v3
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+			COMP.CS.400 COMP.CS.400 Principles of Programming Languages: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0240x/fall-2020/">
+			TIE-0240x TIE-02402 Ohjelmointi 3: Tekniikat / TIE-02408 Programming 3: Techniques: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.500/fall-2020/">
+			COMP.CS.500 COMP.CS.500 Web Development 1 - Programming: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.130/2020-ver1/">
+			COMP.CS.130 COMP.CS.130 Functional Programming I: 2020-ver1
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0220x/spring-2020/">
+			TIE-0220x TIE-02201 Ohjelmointi 2: Perusteet / TIE-02207 Programming 2: Basics: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-02107/autumn-2019/">
+			TIE-02107 TIE-02107 Programming 1: Introduction: autumn-2019
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v2/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v2
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-2010x/spring-2020/">
+			TIE-2010x TIE-2010x Tietorakenteet ja algoritmit / Data Structures and Algorithms: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/EXAM-0210x/1/">
+			EXAM-0210x EXAM-0210x Ohjelmointi 1: Tentti: exam
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation" class="divider"></li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/COMP.CS.300/spring-2021/">
+			COMP.CS.300 COMP.CS.300 Tietorakenteet ja algoritmit 1: spring-2021
+		</a>
+	</li>
+	
+	
+</ul>
+
+							</li>
+						</ul>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-navbar-collapse">
+						<ul class="user-menu nav navbar-nav navbar-right hidden-xs">
+							
+							
+
+
+
+							
+
+
+							<li role="presentation" class="profile-menu dropdown">
+								<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									Duc Hong <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li role="presentation">
+										<a href="https://plus.tuni.fi/accounts/accounts/">Profile</a>
+									</li>
+									<li role="separator" class="divider"></li>
+									<li role="presentation">
+										<a href="https://plus.tuni.fi/accounts/logout/">
+											<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+											Log out
+										</a>
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+
+						
+						<ul class="nav navbar-nav visible-xs">
+							
+							
+							
+
+
+							
+
+
+
+							
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#course-content" class="skip-link page-skip-link hidden-xs">
+		Skip course navigation
+	</a>
+</li>
+
+
+<li class="header">
+	<h4 id="course-menu-heading">Course</h4>
+</li>
+
+
+<li class="menu-home">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+		COMP.CS.400
+	</a>
+</li>
+<li class="menu-toc">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+		<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		Course materials
+	</a>
+</li>
+<li class="menu-results">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/user/results/">
+		<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+		Exercise results
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+							<li class="header">
+								<h4>Site</h4>
+							</li>
+							<li>
+								<a href="https://plus.tuni.fi/">
+									<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+									Home
+								</a>
+							</li>
+							
+<ul class="dropdown-menu">
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.310/spring-2021/">
+			COMP.CS.310 COMP.CS.310 Rinnakkaisuus / Concurrency: spring-2021
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/math.app.210/2020/">
+			MATH.APP.210 MATH.APP.210 Johdatus todennäköisyyslaskentaan ja tilastolliseen päättelyyn: 2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v3/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v3
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+			COMP.CS.400 COMP.CS.400 Principles of Programming Languages: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0240x/fall-2020/">
+			TIE-0240x TIE-02402 Ohjelmointi 3: Tekniikat / TIE-02408 Programming 3: Techniques: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.500/fall-2020/">
+			COMP.CS.500 COMP.CS.500 Web Development 1 - Programming: fall-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/comp.cs.130/2020-ver1/">
+			COMP.CS.130 COMP.CS.130 Functional Programming I: 2020-ver1
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-0220x/spring-2020/">
+			TIE-0220x TIE-02201 Ohjelmointi 2: Perusteet / TIE-02207 Programming 2: Basics: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-02107/autumn-2019/">
+			TIE-02107 TIE-02107 Programming 1: Introduction: autumn-2019
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-git/v2/">
+			TIE-GIT TIE-GIT git-kurssi / git course: v2
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/tie-2010x/spring-2020/">
+			TIE-2010x TIE-2010x Tietorakenteet ja algoritmit / Data Structures and Algorithms: spring-2020
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/EXAM-0210x/1/">
+			EXAM-0210x EXAM-0210x Ohjelmointi 1: Tentti: exam
+		</a>
+	</li>
+	
+	
+	
+	<li role="presentation" class="divider"></li>
+	
+	
+	
+	<li role="presentation">
+		<a href="https://plus.tuni.fi/COMP.CS.300/spring-2021/">
+			COMP.CS.300 COMP.CS.300 Tietorakenteet ja algoritmit 1: spring-2021
+		</a>
+	</li>
+	
+	
+</ul>
+
+							
+							<li>
+								<a href="https://plus.tuni.fi/accounts/accounts/">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									Duc Hong
+								</a>
+							</li>
+							<li>
+								<a href="https://plus.tuni.fi/accounts/logout/">
+									<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+									Log out
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		
+<div class="site-content container-fluid" id="content">
+
+			
+			
+
+			
+<div data-taggings="user-internal" class="row">
+    <div class="col-sm-2 hidden-xs">
+        <nav class="course-menu" id="main-course-menu" aria-labelledby="course-menu-heading">
+            <ul class="nav nav-pills nav-stacked">
+                
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#course-content" class="skip-link page-skip-link hidden-xs">
+		Skip course navigation
+	</a>
+</li>
+
+
+<li class="header">
+	<h4 id="course-menu-heading">Course</h4>
+</li>
+
+
+<li class="menu-home">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+		COMP.CS.400
+	</a>
+</li>
+<li class="menu-toc">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+		<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		Course materials
+	</a>
+</li>
+<li class="menu-results">
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/user/results/">
+		<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+		Exercise results
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+            </ul>
+            
+            
+        </nav>
+
+        
+    </div>
+    <div class="col-sm-10" id="course-content">
+        
+        
+        
+
+
+
+<nav class="row siblings" aria-label="Pagination">
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase2_yacc/" class="nav-flex-left">
+		<span aria-hidden="true">«</span> 2.5 Project work, phase 2 (DEADLINE: 2020-11-09)
+	</a>
+	
+	
+
+	<span class="hidden-md hidden-sm hidden-xs" style="display: block; margin: auto; text-align: center;">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+			Course materials
+		</a>
+	</span>
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/" class="nav-flex-right">
+		2.7 Project work, phase 4 (DEADLINE: 2020-12-14) <span aria-hidden="true">»</span>
+	</a>
+	
+	
+
+</nav>
+
+
+        
+        <ol class="breadcrumb">
+            
+
+            <li><a href="https://plus.tuni.fi/comp.cs.400/fall-2020/">COMP.CS.400</a></li>
+            
+<li><a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/">2. Course Project</a></li>
+
+
+<li class="active">2.6 Project work, phase 3 (DEADLINE: 2020-11-23)</li>
+
+
+        </ol>
+        
+        <main class="row">
+            
+<div class="col-lg-12 exercise-column">
+
+  
+
+  
+
+
+
+<div id="exercise-page-content">
+  
+  <div class="overlay-parent">
+    
+    <div>
+      <div id="exercise">
+                  <div class="content">
+  <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2020</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span><span class="p">:</span> <span class="n">First</span> <span class="n">public</span> <span class="n">version</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span> <span class="n">Included</span> <span class="n">a</span> <span class="n">clarification</span> <span class="n">of</span> <span class="n">different</span> <span class="n">attributes</span> <span class="n">inside</span> <span class="n">an</span> <span class="n">ASTnode</span>
+</pre></div>
+</div>
+<div class="section" id="project-work-phase-3-deadline-2020-11-23">
+<h1>Project work, phase 3 (DEADLINE: 2020-11-23)<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#project-work-phase-3-deadline-2020-11-23" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="abstract-syntax-tree">
+<h2>Abstract Syntax Tree<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#abstract-syntax-tree" title="Permalink to this headline">¶</a></h2>
+<p>To process a program source code further we need a data structure for
+it, the syntax tree (or parse tree). The (first iteration of the) tree is typically
+collected during the syntax checking. This syntax tree is then the base
+for all the next operations (semantic checks, optimizations, generating
+code, interpretation, etc.)</p>
+</div>
+<div class="section" id="tree-in-python">
+<h2>Tree in Python<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#tree-in-python" title="Permalink to this headline">¶</a></h2>
+<p>Use <a class="reference external" href="https://realpython.com/python3-object-oriented-programming/">python
+objects</a>
+to implement your tree structure. Your submitted program MUST have two
+distinct phases:</p>
+<ol class="arabic simple">
+<li>Collecting the tree datastructure in PLY</li>
+<li>Printing out the tree (using a function provided by the course)</li>
+</ol>
+<p>(I.e., you are not allowed to directly print the tree while creating it
+in the PLY actions, you must first create the tree data structures completely and then print
+it. This is because we need the tree in phase 4.)</p>
+<p>Because a tree printing operation is not the core problem in this
+course, we provide you <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/03_syntax_tree/tree_print.py">a fully functional module for
+it</a>.
+It recognizes the following attributes (fields) in your tree node objects: <code class="docutils literal language-en">nodetype</code>
+and a optional <code class="docutils literal language-en">value</code> (which has to be something Python knows how to
+print). If the node has child nodes then they are named with prefix
+<code class="docutils literal language-en">child_</code> (a single node) or <code class="docutils literal language-en">children_</code> (a list of nodes). The
+tree_print module automatically recognizes these and prints the child
+trees as well.</p>
+<div class="figure" id="id1">
+<img alt="A tree node interface for the tree_print.py module" src="./2.6 Project work, phase 3 (DEADLINE_ 2020-11-23) _ COMP.CS.400 Principles of Programming Languages _ PLUSSA_files/tree_uml.png">
+<p class="caption"><span class="caption-text">A tree node interface for the tree_print.py module</span></p>
+</div>
+<p>Here’s a brief description on what we’ve intended those attributes to be used for:</p>
+<ul class="simple">
+<li>nodetype: this distinguishes different kinds of nodes from each other. Printed out inside the
+node in tree print-out. Needed also for both semantic checks and interpreter to react to different
+kinds of nodes differently.</li>
+<li>value: any “helpful” information about the node you also want to include in the tree print-out
+(like the name of a variable, for example). Could be of course needed for other things, too.</li>
+<li>child_XX: child AST nodes. Select XX so that both the visual tree and your code remain readable and
+understandable.</li>
+<li>children_XX: a list of child AST nodes. Select XX so that both the visual tree and your code remain
+readable and understandable.</li>
+<li>any other attribute: you may add any other information into your tree, if it makes semantic checks
+and interpretation easier. That includes line number information form the lexer/syntax checker,
+or any other information added during semantic checking (like links to symbol table, etc.).</li>
+</ul>
+<p>tree_print-module can print out a tree in this structure in three
+different output formats:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/simple-expression-example/test-uni.txt">Unicode</a>
+(using Unicode box-drawing characters)</li>
+<li><a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/simple-expression-example/test-ascii.txt">ASCII</a>
+(using |, -, and +, use if Unicode doesn’t work for you)</li>
+<li><a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/simple-expression-example/test.dot">Dot</a>
+(a graph visualization format used by
+<a class="reference external" href="http://www.graphviz.org/">Graphwiz</a>, see Extras at the bottom of
+this document for instructions on how to convert it to <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/simple-expression-example/test.svg">graphical
+form</a>)</li>
+</ul>
+<p>A simple example on how to create a syntax tree and use the tree print module <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/tree/master/simple-expression-example">can be found
+here</a>.
+A somewhat larger example <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/tree/master/roman-numerals">can be found
+here</a>.
+In both examples, file <code class="docutils literal language-en">tree_generation.py</code> has an example tree generation using
+PLY-rules and tree nodes using a provided ASTnode-class (which should be suitable for your use as well).
+This ASTNode-tree is then printed out using the tree_print-module.</p>
+<p>The public examples repository also has the same <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/tree/master/03_syntax_tree/examples">example
+programs</a>
+as in phase 2, and syntax trees generated from them (if you view them on Gitlab using
+a browser, it might help to select “open image in new tab/window” to view them larger).
+<strong>PLEASE NOTE</strong>
+that these are for <em>example</em> purposes only, your own syntax trees <em>do
+not</em> have to be the same. There are multiple equally good ways to create
+a syntax tree, and we don’t want to force you to any single form. (You
+are also allowed to change your syntax tree any way you find useful in
+phase 4, when you actually start using the tree.)</p>
+</div>
+<div class="section" id="tree-in-ply">
+<h2>Tree in PLY<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#tree-in-ply" title="Permalink to this headline">¶</a></h2>
+<p>Implement the syntax tree <a class="reference external" href="http://www.dabeaz.com/ply/ply.html#ply_nn34">using PLY
+rules.</a> If there is a
+syntax error, stop the whole compiler with error message (same as in the
+previous phase). If there are no errors, then print out your tree using
+the tree_print-module.</p>
+<ul class="simple">
+<li>The PLY documentation has two parser examples. In one (6.1)
+PLY is used to directly execute (interpret) the code as it is parsed.
+This is <em>not</em> what we want, since we want to create a syntax tree. The
+second example (6.10) is closer to what we want, we just use the ASTnode
+class as tree nodes instead of a Python tuple.</li>
+<li>Your tree node objects can contain any attributes (fields) you need (and
+you probably need to add more in phase 4), the tree_print-module does
+not care about any extras - it only uses the ones defined in it’s
+interface.</li>
+<li>Omitting “useless”/trivial intermediate nodes is allowed. So if
+you end up in a situation where you would have a node, which serves no
+other purpose than to have a child node, then you can make those into a
+single node (i.e. leave the intermediate node out). In the Roman numerals public
+example, this is done for “cmd_block”, for example. Please note however
+that in some cases you might have to revert that decision during phase
+4, if those nodes end up being important, after all.</li>
+<li>Similarly you are allowed to combine a recursive structure into
+a list of child nodes. I.e., a “list_node” that contains a value and a
+list node, which contains a value and a list_node, etc, could be
+implemented in the tree as a list_node that contains a list of children
+nodes. In the Roman numerals public example, this is done for “program”.</li>
+</ul>
+</div>
+<div class="section" id="minimum-requirements">
+<h2>Minimum requirements<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#minimum-requirements" title="Permalink to this headline">¶</a></h2>
+<p>In order to pass phase 3, you must implement syntax tree generation of
+the grammar given in phase 2. Again, function/subroutine definitions
+and calls, and
+things only needed by function/subroutine definitions/calls don’t have to be
+included in the language for passing with minimum grade. However,
+implementing them (well) improves your grade for the phase. As a
+guideline, implement the rest of the syntax tree first, then add
+functions and subroutines last if you have time.</p>
+</div>
+<div class="section" id="running-the-syntax-tree-generator">
+<h2>Running the syntax tree generator<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#running-the-syntax-tree-generator" title="Permalink to this headline">¶</a></h2>
+<p>Your program must start when executed in python by: <code class="docutils literal language-en">python3 main.py</code>
+in your submission directory. You can assume that this python
+interpreter has PLY installed into it.</p>
+<p>Your program must understand the following command line arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">who</span> <span class="o">|</span> <span class="o">-</span><span class="n">f</span> <span class="n">FILE</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">who</span>                 <span class="nb">print</span> <span class="n">out</span> <span class="n">student</span> <span class="n">IDs</span> <span class="ow">and</span> <span class="n">NAMEs</span> <span class="n">of</span> <span class="n">authors</span>
+  <span class="o">-</span><span class="n">f</span> <span class="n">FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">file</span> <span class="n">FILE</span>  <span class="n">filename</span> <span class="n">to</span> <span class="n">process</span>
+</pre></div>
+</div>
+<p>(See <a class="reference external" href="https://course-gitlab.tuni.fi/compcs400-principles-of-programming-languages_2020-2021/public_examples/-/blob/master/simple-expression-example/tree_generation.py">the course
+snippet</a>
+on how to implement this using python standard library.)</p>
+<p>The default output format should be unicode (this is the default in the
+tree_print-module). If you want to support the other available formats
+(ascii and dot), you can add an extra command line argument(s) to select
+them (as is done in the examples).</p>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#errors" title="Permalink to this headline">¶</a></h2>
+<p>Your code should be built on top the previous phase (syntax), so the
+same errors messages from there should be used here also.</p>
+</div>
+<div class="section" id="required-text-document">
+<h2>Required text document<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#required-text-document" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the code, the submit a text document in either plain text
+(.txt), markdown (.md) or pdf (.pdf) format. It should contain answers
+to the following questions (again, in the groups <strong>own words</strong>, no
+copying from other sources):</p>
+<ol class="arabic simple">
+<li>What is an (abstract) syntax tree and how is it related to other
+parts in compilation?</li>
+<li>How is the syntax tree generated using the PLY tool? I.e., what
+things are needed in the code and how are they related to syntactic
+rules of the language and the tree?</li>
+<li>Explain in English what kind of tree is formed in your code from the
+following syntactic elements:<ol class="loweralpha">
+<li>Variable definitions</li>
+<li>For loop</li>
+<li>Function call (if you implemented it)</li>
+</ol>
+</li>
+<li>Answer the following based on the syntax definition and your
+implementation:<ol class="loweralpha">
+<li>In which cases is it possible in your implementation to end up
+with a tree with empty child attributes (somewhere in the tree
+there is a place for a child node (or nodes), but there is none)?
+I.e., in which situations you end up with tree nodes with
+<code class="docutils literal language-en">child_...</code> attribute being None, or <code class="docutils literal language-en">children_...</code> attribute being an
+empty list?</li>
+<li>Are there places in your implementation where you were able to
+“simplify” the tree by omitting trivial/non-useful nodes or by
+collecting a recursive repeating structure into a list of child
+nodes?</li>
+</ol>
+</li>
+<li>Please mention in the document if you didn’t implement functions/subroutines
+(i.e. you are ok with passing with the minimum grade).</li>
+<li>What did you think of this assignment? What was difficult? What was
+easy? Did you learn anything useful?</li>
+</ol>
+</div>
+<div class="section" id="extras">
+<h2>Extras<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#extras" title="Permalink to this headline">¶</a></h2>
+<p>We actually did not invent any potential extra functionality for this
+phase. If you have an idea, feel free to implement it (AND remember to
+document it)</p>
+<p>If you want to see a graphical view of your tree, <a class="reference external" href="https://www.graphviz.org/doc/info/lang.html">using the GraphViz
+DOT language</a>, you can
+either</p>
+<ul class="simple">
+<li>copy-paste the dot-description <a class="reference external" href="https://dreampuf.github.io/GraphvizOnline/">to an online
+tool</a>, or</li>
+<li>convert the dot-output to an image:
+<code class="docutils literal language-en">python3 tree_generation.py -f test.rom -t dot | dot -Tpng -o test-tree.png</code></li>
+</ul>
+</div>
+<div class="section" id="questions-with-answers">
+<h2>Questions with answers<a class="headerlink" href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase3_tree/#questions-with-answers" title="Permalink to this headline">¶</a></h2>
+<p>Nothing at the moment.</p>
+</div>
+</div>
+
+
+                  </div>
+                  
+                   
+                </div>
+    </div>
+  </div>
+</div>
+
+<div id="submit-progress" class="hide progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%;">
+    Posting submission...
+  </div>
+</div>
+
+
+
+
+
+
+<div id="loading-indicator" class="hide progress" data-msg-load="Loading exercise..." data-msg-submit="Posting submission..." data-msg-error="Communication error with the exercise.">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%;"></div>
+</div>
+
+</div>
+
+
+
+        </main>
+        
+
+
+
+<nav class="row siblings" aria-label="Pagination">
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase2_yacc/" class="nav-flex-left">
+		<span aria-hidden="true">«</span> 2.5 Project work, phase 2 (DEADLINE: 2020-11-09)
+	</a>
+	
+	
+
+	<span class="hidden-md hidden-sm hidden-xs" style="display: block; margin: auto; text-align: center;">
+		<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/toc/">
+			Course materials
+		</a>
+	</span>
+
+	
+	
+	
+	
+	
+	<a href="https://plus.tuni.fi/comp.cs.400/fall-2020/project/phase4_run/" class="nav-flex-right">
+		2.7 Project work, phase 4 (DEADLINE: 2020-12-14) <span aria-hidden="true">»</span>
+	</a>
+	
+	
+
+</nav>
+
+
+    </div>
+</div>
+
+			
+</div>
+
+
+		
+		<footer role="contentinfo">
+			<div class="site-footer navbar navbar-default navbar-fixed-bottom" role="presentation">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						
+						<li><a href="https://plus.tuni.fi/accounts/privacy-notice/">Privacy Notice</a></li>
+						<li><a href="https://plus.tuni.fi/accounts/accessibility-statement/">Accessibility Statement</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		
+	</div>
+	<div id="page-modal" class="modal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-progress">
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%" data-msg-error="Loading failed!">
+							Loading...
+						</div>
+					</div>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="aplus-button--secondary aplus-button--md" data-dismiss="modal">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="file-modal" class="modal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-progress">
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%" data-msg-error="Loading failed!">
+							Loading...
+						</div>
+					</div>
+				</div>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body"></div>
+			</div>
+		</div>
+	</div>
+	<div id="search-select-widget" class="hide">
+		<ul class="list-inline search-selected">
+			<li><button type="button"><span class="name">None</span> <span aria-label="Remove">×</span></button></li>
+		</ul>
+		<div class="input-group">
+			<span class="input-group-btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+				<button class="btn btn-default" data-toggle="dropdown" type="button" aria-label="Search">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+				<ul class="dropdown-menu search-options">
+					<li class="not-found"><a>No matches</a></li>
+				</ul>
+			</span>
+			<input type="text" aria-label="Search for..." class="form-control" placeholder="Search for...">
+		</div>
+	</div>
+	
+
+
+
+</body></html>

@@ -1,0 +1,123 @@
+/* tuni.css versio 2020-06 */
+
+@media (min-width: 768px) {
+.course-thumbnail {
+    height: 400px !important;
+}
+}
+
+/*
+.course-thumbnails {
+    display: flex !important;
+    flex-direction: row !important;
+    height: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+}
+
+.course-thumbnail {
+    min-height: 300px !important;
+}
+*/
+
+.aplus-button--default {
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+.btn-success {
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+.btn-info {
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+.panel-heading {
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+.panel-primary {
+    border-color: rgb(78,0,142) !important;
+}
+.nav-pills>li.active>a { 
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+
+.label-success {
+    background-color: rgb(78,0,142) !important;
+}
+
+.dropdown-menu {
+    background-color: rgb(78,0,142) !important;
+}
+.dropdown-menu>li>a:hover {
+    background-color: rgb(78,0,142) !important;
+    filter: brightness(150%);
+}
+.dropdown-menu>li button {
+    background-color: rgb(78,0,142) !important;
+    color: white !important;
+}
+.dropdown-menu>li button:hover {
+    filter: brightness(150%);
+}
+
+.dropdown-menu>li>a {
+    color: white !important;
+}
+a {
+    color: rgb(78,0,142) !important;
+}
+.topbar a {
+    color: white !important;
+}
+.badge {
+  border: 0 !important;
+}
+
+@media screen and (min-width: 400px) {
+.topbar:before {
+ background-image: url('/static/logo2.svg');
+ background-size: contain;
+ height: 52px;
+ width: 130px;
+ float: left;
+ margin-right: 1.1em;
+ }
+}
+
+@media screen and (min-height: 600px) {
+}
+
+/* jyke 2020-06 */
+nav.topbar {
+    background-color: rgb(78,0,142) !important;
+
+    background-image: linear-gradient(to bottom right, rgb(79, 1, 142) 0%, rgb(27, 24, 116) 100%) !important;
+
+
+    background-image: -moz-linear-gradient(top, #337ab7, #2e6da4);
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#337ab7), to(#2e6da4)); */
+    /* background-image: -webkit-linear-gradient(top, #337ab7, #2e6da4); */
+    background-image: -o-linear-gradient(top, #337ab7, #2e6da4);
+    /* background-image: linear-gradient(to bottom, #337ab7, #2e6da4); */
+}
+
+.exercise-summary {
+    background-color: rgb(130,200,240) !important;
+}
+.alert-info {
+    background-color: rgb(130,200,240) !important;
+}
+.label-info {
+    background-color: rgb(130,200,240) !important;
+    color: rgb(78,0,142) !important;
+}
+
+
