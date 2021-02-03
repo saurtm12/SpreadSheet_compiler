@@ -17,5 +17,4 @@ directory to another!)
 
 # Info:
 This project is done based on PLY library (Python Lex-Yacc)
-Although the project doesnt generate the source code but overall, most of phases in producing a compiler was done, except code optimization and generating source code.
 
