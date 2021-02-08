@@ -1,0 +1,20 @@
+program
++--expr: assign (a)
+|  +--expr: number (3)
++--rest: program
+   +--expr: assign (b)
+   |  +--expr: oper *
+   |     +--left: number (2)
+   |     +--right: oper +
+   |        +--left: variable (a)
+   |        +--right: number (3)
+   +--rest: program
+      +--expr: assign (c)
+      |  +--expr: oper *
+      |     +--left: oper -
+      |     |  +--left: variable (a)
+      |     |  +--right: variable (b)
+      |     +--right: oper +
+      |        +--left: variable (a)
+      |        +--right: variable (b)
+      +--rest: NONE

@@ -1,0 +1,24 @@
+digraph parsetree {
+    ratio=fill
+    node [shape="box"]
+    edge [style=bold]
+    ranksep=equally
+    nodesep=0.5
+    rankdir = TB
+    clusterrank = local
+N0 [label="program"]
+N1 [label="scalar_definition"]
+N2 [label="IDENT (variable)"]
+N1->N2 [label="name"]
+N3 [label="decimal_number (0.0)"]
+N1->N3 [label="init"]
+N0->N1 [label="funcs_vars[0]"]
+N4 [label="print_scalar"]
+N5 [label="infostring (Hello world)"]
+N4->N5 [label="infostr"]
+N6 [label="scalar_ref"]
+N7 [label="IDENT (variable)"]
+N6->N7 [label="name"]
+N4->N6 [label="expr"]
+N0->N4 [label="stmt_list[0]"]
+}

@@ -1,0 +1,40 @@
+program
+├──funcs_vars[0]: scalar_definition
+│  ├──name: IDENT (meaning)
+│  └──init: decimal_number (42.0)
+├──funcs_vars[1]: scalar_definition
+│  ├──name: IDENT (nn)
+│  └──init: NONE
+├──funcs_vars[2]: scalar_definition
+│  ├──name: IDENT (variable)
+│  └──init: NONE
+├──funcs_vars[3]: sheet_definition
+│  ├──name: SHEET_IDENT (SHEET)
+│  └──init: sheet_init_list
+│     └──rows[0]: col_init_list
+│        ├──cols[0]: decimal_number (1.0)
+│        ├──cols[1]: decimal_number (2.0)
+│        └──cols[2]: oper +
+│           ├──left: decimal_number (1.0)
+│           └──right: decimal_number (2.0)
+├──stmt_list[0]: scalar_assign
+│  ├──var: scalar_ref
+│  │  └──name: IDENT (nn)
+│  └──expr: decimal_number (7.0)
+├──stmt_list[1]: scalar_assign
+│  ├──var: scalar_ref
+│  │  └──name: IDENT (variable)
+│  └──expr: oper +
+│     ├──left: decimal_number (7.0)
+│     └──right: decimal_number (3.0)
+└──stmt_list[2]: print_scalar
+   ├──infostr: infostring (Result)
+   └──expr: oper +
+      ├──left: scalar_ref
+      │  └──name: IDENT (meaning)
+      └──right: oper *
+         ├──left: scalar_ref
+         │  └──name: IDENT (nn)
+         └──right: cell_ref
+            ├──name: SHEET_IDENT (SHEET)
+            └──coord: coord ((1, 0, 'B1'))

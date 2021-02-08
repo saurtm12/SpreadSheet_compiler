@@ -1,0 +1,17 @@
+program
++--assigns[0]: assign (a)
+|  +--expr: number (3)
++--assigns[1]: assign (b)
+|  +--expr: oper *
+|     +--left: number (2)
+|     +--right: oper +
+|        +--left: variable (a)
+|        +--right: number (3)
++--assigns[2]: assign (c)
+   +--expr: oper *
+      +--left: oper -
+      |  +--left: variable (a)
+      |  +--right: variable (b)
+      +--right: oper +
+         +--left: variable (a)
+         +--right: variable (b)

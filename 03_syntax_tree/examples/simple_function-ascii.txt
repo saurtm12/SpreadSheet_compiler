@@ -1,0 +1,43 @@
+program
++--funcs_vars[0]: sheet_definition
+|  +--name: SHEET_IDENT (SS)
+|  +--init: sheet_init_size ((10, 1))
++--funcs_vars[1]: subroutine-def
+|  +--name: FUNC_IDENT (Init)
+|  +--formals[0]: formal_arg
+|  |  +--name: SHEET_IDENT (XX)
+|  +--vars[0]: scalar_definition
+|  |  +--name: IDENT (ii)
+|  |  +--init: decimal_number (1.0)
+|  +--vars[1]: range_definition
+|  |  +--name: RANGE_IDENT (_rng)
+|  |  +--init: range
+|  |     +--coord1: cell_ref
+|  |     |  +--name: SHEET_IDENT (XX)
+|  |     |  +--coord: coord ((0, 0, 'A1'))
+|  |     +--coord2: cell_ref
+|  |        +--name: SHEET_IDENT (XX)
+|  |        +--coord: coord ((9, 0, 'J1'))
+|  +--stmts[0]: for_stmt
+|     +--ranges[0]: range_ref
+|     |  +--name: RANGE_IDENT (_rng)
+|     +--stmts[0]: cell_assign
+|     |  +--cell: loopvar
+|     |  |  +--range_selector: NONE
+|     |  +--expr: scalar_ref
+|     |     +--name: IDENT (ii)
+|     +--stmts[1]: scalar_assign
+|        +--var: scalar_ref
+|        |  +--name: IDENT (ii)
+|        +--expr: oper +
+|           +--left: scalar_ref
+|           |  +--name: IDENT (ii)
+|           +--right: decimal_number (1.0)
++--stmt_list[0]: subroutine_call
+|  +--name: FUNC_IDENT (Init)
+|  +--args[0]: sheet_ref
+|     +--name: SHEET_IDENT (SS)
++--stmt_list[1]: print_sheet
+   +--infostr: infostring (Numbers 1-10)
+   +--expr: sheet_ref
+      +--name: SHEET_IDENT (SS)

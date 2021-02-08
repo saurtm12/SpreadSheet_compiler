@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 COMP.CS.400 Principles of Programming Languages
 ===============================================
 
@@ -19,3 +20,6 @@ directory to another!)
 This project is done based on PLY library (Python Lex-Yacc)
 Although the project doesnt generate the source code but overall, most of phases in producing a compiler was done, except code optimization and generating source code.
 
+=======
+This repository contains public examples for the autumn 2020 implementation. It will be updated as the course progresses.
+>>>>>>> b6eba6b3fe32495b64779995510a4ac05183aa57

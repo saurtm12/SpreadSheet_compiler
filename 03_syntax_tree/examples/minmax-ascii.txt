@@ -1,0 +1,77 @@
+program
++--funcs_vars[0]: sheet_definition
+|  +--name: SHEET_IDENT (S)
+|  +--init: sheet_init_list
+|     +--rows[0]: col_init_list
+|     |  +--cols[0]: decimal_number (-9.0)
+|     +--rows[1]: col_init_list
+|     |  +--cols[0]: decimal_number (3.0)
+|     +--rows[2]: col_init_list
+|     |  +--cols[0]: decimal_number (3.0)
+|     +--rows[3]: col_init_list
+|     |  +--cols[0]: decimal_number (1.0)
+|     +--rows[4]: col_init_list
+|     |  +--cols[0]: decimal_number (9.0)
+|     +--rows[5]: col_init_list
+|     |  +--cols[0]: decimal_number (3.0)
+|     +--rows[6]: col_init_list
+|     |  +--cols[0]: decimal_number (5.0)
+|     +--rows[7]: col_init_list
+|     |  +--cols[0]: decimal_number (-4.0)
+|     +--rows[8]: col_init_list
+|     |  +--cols[0]: decimal_number (8.0)
+|     +--rows[9]: col_init_list
+|     |  +--cols[0]: decimal_number (7.0)
+|     +--rows[10]: col_init_list
+|     |  +--cols[0]: decimal_number (6.0)
+|     +--rows[11]: col_init_list
+|        +--cols[0]: decimal_number (6.0)
++--funcs_vars[1]: scalar_definition
+|  +--name: IDENT (min)
+|  +--init: decimal_number (999.0)
++--funcs_vars[2]: scalar_definition
+|  +--name: IDENT (max)
+|  +--init: decimal_number (-999.0)
++--stmt_list[0]: for_stmt
+|  +--ranges[0]: range
+|  |  +--coord1: cell_ref
+|  |  |  +--name: SHEET_IDENT (S)
+|  |  |  +--coord: coord ((0, 0, 'A1'))
+|  |  +--coord2: cell_ref
+|  |     +--name: SHEET_IDENT (S)
+|  |     +--coord: coord ((0, 11, 'A12'))
+|  +--stmts[0]: if_stmt
+|     +--condition: oper <
+|     |  +--left: loopvar
+|     |  |  +--range_selector: NONE
+|     |  +--right: scalar_ref
+|     |     +--name: IDENT (min)
+|     +--then_stmts[0]: scalar_assign
+|     |  +--var: scalar_ref
+|     |  |  +--name: IDENT (min)
+|     |  +--expr: loopvar
+|     |     +--range_selector: NONE
+|     +--else_stmts[0]: if_stmt
+|        +--condition: oper >
+|        |  +--left: loopvar
+|        |  |  +--range_selector: NONE
+|        |  +--right: scalar_ref
+|        |     +--name: IDENT (max)
+|        +--then_stmts[0]: scalar_assign
+|        |  +--var: scalar_ref
+|        |  |  +--name: IDENT (max)
+|        |  +--expr: loopvar
+|        |     +--range_selector: NONE
+|        +--else_stmts[EMPTY]: NONE
++--stmt_list[1]: print_sheet
+|  +--infostr: infostring (Numbers)
+|  +--expr: sheet_ref
+|     +--name: SHEET_IDENT (S)
++--stmt_list[2]: print_scalar
+|  +--infostr: infostring (Min)
+|  +--expr: scalar_ref
+|     +--name: IDENT (min)
++--stmt_list[3]: print_scalar
+   +--infostr: infostring (Max)
+   +--expr: scalar_ref
+      +--name: IDENT (max)

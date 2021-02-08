@@ -1,0 +1,14 @@
+program
++--exprs[0]: number (3)
++--exprs[1]: oper *
+|  +--left: number (2)
+|  +--right: oper +
+|     +--left: number (12)
+|     +--right: number (3)
++--exprs[2]: oper *
+   +--left: oper -
+   |  +--left: number (2)
+   |  +--right: number (1)
+   +--right: oper +
+      +--left: number (1)
+      +--right: number (2)

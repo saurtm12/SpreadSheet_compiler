@@ -1,0 +1,46 @@
+atom( 42.0 )
+factor
+term
+scalar_expr
+variable_definition( meaning:scalar )
+variable_definition( nn:scalar )
+variable_definition( variable:scalar )
+atom( 1.0 )
+factor
+term
+atom( 2.0 )
+factor
+term
+atom( 1.0 )
+factor
+term
+atom( 2.0 )
+factor
+term
+variable_definition( SHEET:sheet )
+atom( 7.0 )
+factor
+term
+scalar_expr
+assignment( nn )
+atom( 7.0 )
+factor
+term
+atom( 3.0 )
+factor
+term
+scalar_expr
+assignment( variable )
+atom( meaning )
+factor
+term
+atom( nn )
+factor
+term
+atom
+factor
+term
+scalar_expr
+statement( print_scalar )
+program
+syntax OK

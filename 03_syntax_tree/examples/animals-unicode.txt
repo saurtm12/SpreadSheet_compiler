@@ -1,0 +1,40 @@
+program
+├──funcs_vars[0]: sheet_definition
+│  ├──name: SHEET_IDENT (BARN)
+│  └──init: sheet_init_list
+│     └──rows[0]: col_init_list
+│        ├──cols[0]: decimal_number (4.0)
+│        ├──cols[1]: decimal_number (2.0)
+│        └──cols[2]: decimal_number (1.0)
+├──funcs_vars[1]: function-def
+│  ├──name: FUNC_IDENT (Total_legs)
+│  ├──formals[0]: formal_arg
+│  │  └──name: SHEET_IDENT (SS)
+│  ├──rettype: rettype (scalar)
+│  ├──vars[EMPTY]: NONE
+│  └──stmts[0]: return
+│     ├──expr: oper +
+│     │  ├──left: oper +
+│     │  │  ├──left: oper *
+│     │  │  │  ├──left: cell_ref
+│     │  │  │  │  ├──name: SHEET_IDENT (SS)
+│     │  │  │  │  └──coord: coord ((0, 0, 'A1'))
+│     │  │  │  └──right: decimal_number (2.0)
+│     │  │  └──right: oper *
+│     │  │     ├──left: cell_ref
+│     │  │     │  ├──name: SHEET_IDENT (SS)
+│     │  │     │  └──coord: coord ((1, 0, 'B1'))
+│     │  │     └──right: decimal_number (4.0)
+│     │  └──right: oper *
+│     │     ├──left: cell_ref
+│     │     │  ├──name: SHEET_IDENT (SS)
+│     │     │  └──coord: coord ((2, 0, 'C1'))
+│     │     └──right: decimal_number (8.0)
+│     └──usage: usage (scalar)
+└──stmt_list[0]: print_scalar
+   ├──infostr: infostring (Total legs:)
+   └──expr: function_call
+      ├──name: FUNC_IDENT (Total_legs)
+      ├──args[0]: sheet_ref
+      │  └──name: SHEET_IDENT (BARN)
+      └──usage: usage (scalar)

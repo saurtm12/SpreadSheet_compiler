@@ -1,0 +1,90 @@
+atom( 0.0 )
+factor
+term
+scalar_expr
+variable_definition( sum:scalar )
+atom( sum )
+factor
+term
+atom
+factor
+term
+scalar_expr
+assignment( sum )
+statement( for )
+atom( sum )
+factor
+term
+scalar_expr
+statement( return )
+function_definition( Sum )
+atom( 1.0 )
+factor
+term
+atom( 2.0 )
+factor
+term
+atom( 3.0 )
+factor
+term
+atom( 0.0 )
+factor
+term
+atom( 2.0 )
+factor
+term
+atom( 4.0 )
+factor
+term
+atom( 8.0 )
+factor
+term
+atom( 0.0 )
+factor
+term
+atom( 3.0 )
+factor
+term
+atom( 6.0 )
+factor
+term
+atom( 9.0 )
+factor
+term
+atom( 0.0 )
+factor
+term
+variable_definition( DATA:sheet )
+variable_definition( _starts:range )
+variable_definition( _ends:range )
+variable_definition( _sums:range )
+variable_definition( _sumrange:range )
+function_call( Sum )
+atom
+factor
+term
+scalar_expr
+function_call( Sum )
+atom
+factor
+term
+scalar_expr
+function_call( Sum )
+atom
+factor
+term
+scalar_expr
+statement( print_sheet )
+assignment( _starts )
+assignment( _ends )
+assignment( _sums )
+assignment( _sumrange )
+function_call( Sum )
+atom
+factor
+term
+scalar_expr
+statement( for )
+statement( print_sheet )
+program
+syntax OK

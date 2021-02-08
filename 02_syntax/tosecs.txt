@@ -1,0 +1,76 @@
+variable_definition( retval:scalar )
+atom( hours )
+factor
+term
+atom( 60.0 )
+factor
+term
+atom( 60.0 )
+factor
+term
+scalar_expr
+atom
+factor
+term
+atom( minutes )
+factor
+term
+atom( 60.0 )
+factor
+term
+scalar_expr
+atom
+factor
+term
+scalar_expr
+assignment( retval )
+atom( retval )
+factor
+term
+scalar_expr
+statement( return )
+function_definition( To_seconds )
+atom( 1.0 )
+factor
+term
+scalar_expr
+atom( 3.0 )
+factor
+term
+scalar_expr
+function_call( To_seconds )
+atom
+factor
+term
+scalar_expr
+statement( print_scalar )
+atom( 2.0 )
+factor
+term
+scalar_expr
+atom( 0.0 )
+factor
+term
+scalar_expr
+function_call( To_seconds )
+atom
+factor
+term
+scalar_expr
+statement( print_scalar )
+atom( 0.0 )
+factor
+term
+scalar_expr
+atom( 0.0 )
+factor
+term
+scalar_expr
+function_call( To_seconds )
+atom
+factor
+term
+scalar_expr
+statement( print_scalar )
+program
+syntax OK

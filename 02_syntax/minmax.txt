@@ -1,0 +1,89 @@
+atom( -9.0 )
+factor
+term
+atom( 3.0 )
+factor
+term
+atom( 3.0 )
+factor
+term
+atom( 1.0 )
+factor
+term
+atom( 9.0 )
+factor
+term
+atom( 3.0 )
+factor
+term
+atom( 5.0 )
+factor
+term
+atom( -4.0 )
+factor
+term
+atom( 8.0 )
+factor
+term
+atom( 7.0 )
+factor
+term
+atom( 6.0 )
+factor
+term
+atom( 6.0 )
+factor
+term
+variable_definition( S:sheet )
+atom( 999.0 )
+factor
+term
+scalar_expr
+variable_definition( min:scalar )
+atom( -999.0 )
+factor
+term
+scalar_expr
+variable_definition( max:scalar )
+atom
+factor
+term
+scalar_expr
+atom( min )
+factor
+term
+scalar_expr
+atom
+factor
+term
+scalar_expr
+assignment( min )
+atom
+factor
+term
+scalar_expr
+atom( max )
+factor
+term
+scalar_expr
+atom
+factor
+term
+scalar_expr
+assignment( max )
+statement( if )
+statement( if )
+statement( for )
+statement( print_sheet )
+atom( min )
+factor
+term
+scalar_expr
+statement( print_scalar )
+atom( max )
+factor
+term
+scalar_expr
+statement( print_scalar )
+program
+syntax OK
